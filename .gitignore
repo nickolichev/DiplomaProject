@@ -1,6 +1,8 @@
 reserve.md
 HELP.md
+.gradle
 google-services.json
+build/
 app/release/
 
 ### STS ###
@@ -13,9 +15,11 @@ app/release/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+.idea
 *.iws
 *.iml
 *.ipr
+out/
 
 ### Android Studio ###
 local.properties

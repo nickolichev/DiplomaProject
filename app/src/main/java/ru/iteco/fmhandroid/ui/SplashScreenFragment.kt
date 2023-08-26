@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.api.UserApi
 import ru.iteco.fmhandroid.auth.AppAuth
@@ -155,10 +156,10 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        ProjectIdlingResources.increment()
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentSplashScreenBinding.bind(view)
-
         when (splashscreenImage.titleBackground) {
             R.drawable.background_splash_screen_title_1 -> {
                 binding.splashScreenCircularProgressIndicator.setIndicatorColor(
@@ -230,11 +231,12 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
             setBackgroundResource(splashscreenImage.titleBackground)
             setTextColor(ContextCompat.getColor(context, splashscreenImage.titleColor))
         }
-
         lifecycleScope.launch {
             delay(3_000)
             authViewModel.authorization()
+            ProjectIdlingResources.decrement()
         }
+
     }
 
     override fun onDestroyView() {

@@ -17,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.NewsControlPanelListAdapter
 import ru.iteco.fmhandroid.adapter.NewsOnInteractionListener
@@ -45,6 +46,7 @@ class NewsControlPanelFragment : Fragment(R.layout.fragment_news_control_panel) 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        ProjectIdlingResources.decrement()//Декремент перехода из раздела NewListFragment.
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNewsControlPanelBinding.bind(view)
 
@@ -90,7 +92,9 @@ class NewsControlPanelFragment : Fragment(R.layout.fragment_news_control_panel) 
         authorizationMenu.inflate(R.menu.authorization)
 
         binding.containerCustomAppBarIncludeOnFragmentNewsControlPanel.authorizationImageButton.setOnClickListener {
+            ProjectIdlingResources.increment()//Выход из аккаунта.
             authorizationMenu.show()
+            ProjectIdlingResources.decrement()
         }
 
         authorizationMenu.setOnMenuItemClickListener {
@@ -119,6 +123,7 @@ class NewsControlPanelFragment : Fragment(R.layout.fragment_news_control_panel) 
             }
 
             override fun onRemove(newItemWithCategory: NewsWithCategory) {
+                ProjectIdlingResources.increment()//Удаление сообщения.
                 dialog.setMessage(R.string.irrevocable_deletion)
                     .setPositiveButton(R.string.fragment_positive_button) { alertDialog, _ ->
                         newItemWithCategory.newsItem.id?.let { viewModel.remove(it) }
@@ -129,6 +134,7 @@ class NewsControlPanelFragment : Fragment(R.layout.fragment_news_control_panel) 
                     }
                     .create()
                     .show()
+                ProjectIdlingResources.decrement()//Удаление сообщения.
             }
         })
 

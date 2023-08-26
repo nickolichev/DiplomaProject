@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimListAdapter
 import ru.iteco.fmhandroid.adapter.NewsListAdapter
@@ -68,14 +69,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 findNavController().navigate(R.id.action_mainFragment_to_createEditClaimFragment)
             }
         }
+
     }
 
     @SuppressLint("Recycle")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        ProjectIdlingResources.decrement()
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentMainBinding.bind(view)
-
         val mainMenu = PopupMenu(
             context,
             binding.containerCustomAppBarIncludeOnFragmentMain.mainMenuImageButton
@@ -87,6 +88,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             mainMenu.show()
         }
         mainMenu.setOnMenuItemClickListener {
+            ProjectIdlingResources.increment()
             when (it.itemId) {
                 R.id.menu_item_claims -> {
                     findNavController().navigate(R.id.action_mainFragment_to_claimListFragment)
@@ -113,11 +115,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.containerCustomAppBarIncludeOnFragmentMain.authorizationImageButton.setOnClickListener {
             authorizationMenu.show()
         }
-
         binding.containerCustomAppBarIncludeOnFragmentMain.ourMissionImageButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_our_mission_fragment)
         }
-
         authorizationMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.authorization_logout_menu_item -> {
@@ -128,7 +128,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 else -> false
             }
         }
-
         binding.containerListClaimIncludeOnFragmentMain.apply {
             expandMaterialButton.visibility = View.VISIBLE
             allClaimsTextView.visibility = View.VISIBLE
@@ -218,7 +217,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 binding.mainSwipeRefresh.isRefreshing = false
             }
         }
+
     }
+
 
     private fun showErrorToast(text: Int) {
         Toast.makeText(
@@ -227,4 +228,5 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             Toast.LENGTH_LONG
         ).show()
     }
+
 }

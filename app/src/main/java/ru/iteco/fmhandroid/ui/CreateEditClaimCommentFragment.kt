@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.databinding.FragmentCreateEditCommentBinding
 import ru.iteco.fmhandroid.dto.ClaimComment
@@ -64,6 +65,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
             authorizationImageButton.visibility = View.GONE
             ourMissionImageButton.visibility = View.GONE
             trademarkImageView.visibility = View.GONE
+            ProjectIdlingResources.decrement()
         }
 
         if (comment != null) {
@@ -77,6 +79,7 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
             binding.commentTextInputLayout.editText?.setText(comment.description)
 
             binding.saveButton.setOnClickListener {
+                ProjectIdlingResources.increment()
                 val newCommentDescription = binding.commentTextInputLayout.editText?.text.toString()
                 if (newCommentDescription.isNotBlank()) {
                     claimCardViewModel.updateClaimComment(
@@ -98,7 +101,9 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
                 .setText(R.string.genitive_comment)
 
             binding.saveButton.setOnClickListener {
-                val newCommentDescription = binding.commentTextInputLayout.editText?.text.toString().trim()
+                ProjectIdlingResources.increment()
+                val newCommentDescription =
+                    binding.commentTextInputLayout.editText?.text.toString().trim()
 
                 if (newCommentDescription.isNotBlank()) {
                     claimCardViewModel.createClaimComment(
@@ -121,9 +126,11 @@ class CreateEditClaimCommentFragment : Fragment(R.layout.fragment_create_edit_co
                 } else {
                     showErrorToast(R.string.toast_empty_field)
                 }
+
             }
         }
         binding.cancelButton.setOnClickListener {
+            ProjectIdlingResources.increment()
             findNavController().navigateUp()
         }
     }

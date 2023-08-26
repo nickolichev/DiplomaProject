@@ -7,13 +7,11 @@
         android:targetSdkVersion="32" />
 
     <instrumentation
-        android:name="android.test.InstrumentationTestRunner"
+        android:name="androidx.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
         android:label="Tests for ru.iteco.fmhandroid"
         android:targetPackage="ru.iteco.fmhandroid" />
-
-    <uses-permission android:name="android.permission.REORDER_TASKS" />
 
     <queries>
         <package android:name="androidx.test.orchestrator" />
@@ -21,31 +19,33 @@
         <package android:name="com.google.android.apps.common.testing.services" />
     </queries>
 
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
     <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
 
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
             android:exported="true"
-            android:theme="@android:style/Theme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/WhiteBackgroundTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
             android:exported="true"
-            android:theme="@android:style/Theme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/WhiteBackgroundTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
             android:exported="true"
-            android:theme="@android:style/Theme.Dialog" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/WhiteBackgroundDialogTheme" >
+            <intent-filter android:priority="-100" >
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
