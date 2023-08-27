@@ -1,20 +1,7 @@
 package ru.iteco.fmhandroid.ui.AuthorizationTests;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
-import static java.util.EnumSet.allOf;
-
-import androidx.test.espresso.Espresso;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
@@ -29,8 +16,6 @@ import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.AuthUtils;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils;
-import ru.iteco.fmhandroid.ui.resourceIDData.AuthorizationElements;
-import ru.iteco.fmhandroid.ui.testData.AuthorizationPage;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -55,7 +40,7 @@ public class AuthorizationTests {
     public void unregisterIdlingResources() {
         IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
     }
-
+// Сделано 26.08.23
     @Test
     public void validAuthorizationTest() {
 
@@ -67,27 +52,25 @@ public class AuthorizationTests {
         new AuthUtils().logOut();
     }
 
-
-
-
-
-
-
+    // Сделано 26.08.23
     @Test
     public void invalidAuthorizationTest() {
 
         new AuthUtils().titleCheck();
         new AuthUtils().inputInvalidLogin();
         new AuthUtils().inputInvalidPassword();
+        new AuthUtils().buttonSignIn();
+        new AuthUtils().titleCheck();
     }
 
+    // Сделано 26.08.23
     @Test
     public void emptyAuthorizationTest() {
 
         new AuthUtils().titleCheck();
-        new AuthUtils().inputInvalidLogin();
-        new AuthUtils().inputInvalidPassword();
+        new AuthUtils().inputEmptyLogin();
+        new AuthUtils().inputEmptyPassword();
+        new AuthUtils().buttonSignIn();
+        new AuthUtils().titleCheck();
     }
-
 }
-

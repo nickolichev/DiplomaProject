@@ -2,8 +2,6 @@ package ru.iteco.fmhandroid.ui.PageObject;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -15,56 +13,60 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 
-
 import ru.iteco.fmhandroid.ui.resourceIDData.AuthorizationElements;
-import ru.iteco.fmhandroid.ui.testData.AuthorizationPage;
+import ru.iteco.fmhandroid.ui.testData.AuthorizationData;
 
 public class AuthUtils {
     public void titleCheck() {
 
         onView(allOf(withId(AuthorizationElements.ID_TITLE_AUTHORIZATION),
-                hasDescendant(withText(AuthorizationPage.TITLE_AUTHORIZATION))));
+                hasDescendant(withText(AuthorizationData.TITLE_AUTHORIZATION))));
 
     }
 
-    public void loginFieldCheck() {
-
-        onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN),
-                hasDescendant(withText(AuthorizationPage.FIELD_LOGIN))));
-
-    }
+//    public void loginFieldCheck() {
+//
+//        onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN),
+//                hasDescendant(withText(AuthorizationPage.FIELD_LOGIN))));
+//
+//    }
     public void inputValidLogin() {
 
         onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN)));
-        onView(allOf(withHint(AuthorizationPage.FIELD_LOGIN)))
-                .perform(ViewActions.replaceText(AuthorizationPage.VALID_LOGIN))
+                onView(allOf(withHint(AuthorizationData.FIELD_LOGIN)))
+                        .perform(ViewActions.replaceText(AuthorizationData.VALID_LOGIN))
                 .perform(ViewActions.closeSoftKeyboard());
     }
     public void inputValidPassword() {
         onView(allOf(withId(AuthorizationElements.ID_FIELD_PASSWORD)));
-        onView(allOf(withHint(AuthorizationPage.FIELD_PASSWORD)))
-                .perform(ViewActions.replaceText(AuthorizationPage.VALID_PASSWORD))
+        onView(allOf(withHint(AuthorizationData.FIELD_PASSWORD)))
+                .perform(ViewActions.replaceText(AuthorizationData.VALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
     }
     public void inputInvalidLogin() {
-        ViewInteraction valueFieldLogin = onView(
-                allOf(withHint(AuthorizationPage.FIELD_LOGIN)));
-
-        valueFieldLogin.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        ViewInteraction loginInput = onView(withId(AuthorizationElements.ID_FIELD_LOGIN));
-        loginInput.perform(typeText(AuthorizationPage.INVALID_LOGIN), closeSoftKeyboard());
-
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN)));
+        onView(allOf(withHint(AuthorizationData.FIELD_LOGIN)))
+                .perform(ViewActions.replaceText(AuthorizationData.INVALID_LOGIN))
+                .perform(ViewActions.closeSoftKeyboard());
     }
     public void inputInvalidPassword() {
-        ViewInteraction valueFieldLogin = onView(
-                allOf(withHint(AuthorizationPage.FIELD_PASSWORD)));
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_PASSWORD)));
+        onView(allOf(withHint(AuthorizationData.FIELD_PASSWORD)))
+                .perform(ViewActions.replaceText(AuthorizationData.INVALID_PASSWORD))
+                .perform(ViewActions.closeSoftKeyboard());
+    }
 
-        valueFieldLogin.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        ViewInteraction loginInput = onView(withId(AuthorizationElements.ID_FIELD_PASSWORD));
-        loginInput.perform(typeText(AuthorizationPage.INVALID_PASSWORD), closeSoftKeyboard());
-
+    public void inputEmptyLogin() {
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN)));
+        onView(allOf(withHint(AuthorizationData.FIELD_LOGIN)))
+                .perform(ViewActions.replaceText(AuthorizationData.EMPTY_LOGIN))
+                .perform(ViewActions.closeSoftKeyboard());
+    }
+    public void inputEmptyPassword() {
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_PASSWORD)));
+        onView(allOf(withHint(AuthorizationData.FIELD_PASSWORD)))
+                .perform(ViewActions.replaceText(AuthorizationData.EMPTY_PASSWORD))
+                .perform(ViewActions.closeSoftKeyboard());
     }
 
     public void logOut() {
@@ -73,15 +75,14 @@ public class AuthUtils {
         clickLogOut.perform(click());
 
         ViewInteraction buttonLogOut = onView(
-                allOf(withText(AuthorizationPage.BUTTON_LOG_OUT)));
+                allOf(withText(AuthorizationData.BUTTON_LOG_OUT)));
         buttonLogOut.perform(click());
-    }
+        }
 
     public void buttonSignIn() {
 
         ViewInteraction button = onView(
                 allOf(withId(AuthorizationElements.ID_BUTTON_SIGN_IN)));
-        //  (withText(AuthorizationPage.BUTTON_SIGN_IN))));
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
 
