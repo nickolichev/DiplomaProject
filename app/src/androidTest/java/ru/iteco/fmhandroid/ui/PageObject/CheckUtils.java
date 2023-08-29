@@ -10,6 +10,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import android.view.View;
+
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.ViewInteraction;
@@ -33,12 +35,15 @@ import ru.iteco.fmhandroid.ui.testData.NewsData;
 
 public class CheckUtils {
 
+    private CardIdlingResource cardIdlingResource;
+
     @Before
     public void registerIdlingResources() {
+        cardIdlingResource = new CardIdlingResource();
         IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
 
         try {
-//            new AuthUtils().titleCheck();
+            new AuthUtils().titleCheck();
         } catch (NoMatchingViewException e) {
             new AuthUtils().logOut();
         }
@@ -192,14 +197,60 @@ public class CheckUtils {
         title.check(matches(withText(NewsData.TITLE_TEXT_NEWS)));
     }
 
-    // На странице About проверка Title
+    // На странице About все проверки
     public void checkTitleVisibilityAbout() {
-        ViewInteraction title = onView(allOf(withText(AboutData.TITLE_VERSION_TEXT),
+        onView(allOf(withText(AboutData.TITLE_VERSION_TEXT),
                 withParent(withParent(withId(AboutElements.ID_TITLE_VERSION))),
                 isDisplayed()));
-//        title.check(matches(withText(AboutData.TITLE_VERSION_TEXT)));
     }
 
+    public void checkVersionValueVisibility() {
+        onView(allOf(withText(AboutData.VERSION_VALUE_TEXT),
+                withParent(withParent(withId(AboutElements.ID_VERSION_VALUE))),
+                isDisplayed()));
+    }
+
+    public void checkPrivacyPolicyVisibility() {
+        onView(allOf(withText(AboutData.PRIVACY_POLICY_TEXT),
+                withParent(withParent(withId(AboutElements.ID_PRIVACY_POLICY))),
+                isDisplayed()));
+    }
+
+    public void checkTermsOfUseVisibility() {
+        onView(allOf(withText(AboutData.TERMS_OF_USE_TEXT),
+                withParent(withParent(withId(AboutElements.ID_TERMS_OF_USE))),
+                isDisplayed()));
+    }
+
+    // Проверки статуса в открытой краточке CLAIM
+    public void checkOpenStatusInCard() {
+        new DataHelper().waitAsynchOperation1000();
+        onView(allOf(withId(ClaimElements.ID_LIST_CARD), withText(ClaimData.OPEN_STATUS_TEXT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()));
+    }
+
+    public void checkInProgressStatusInCard() {
+        new DataHelper().waitAsynchOperation1000();
+        onView(allOf(withId(ClaimElements.ID_LIST_CARD), withText(ClaimData.IN_PROGRESS_STATUS_TEXT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()));
+    }
+
+    public void checkExecutedStatus() {
+        new DataHelper().waitAsynchOperation1000();
+        onView(allOf(withId(ClaimElements.ID_STATUS), withText(ClaimData.EXECUTED_STATUS_TEXT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()));
+    }
+
+    public void checkCanceledStatus() {
+        new DataHelper().waitAsynchOperation1000();
+        onView(allOf(withId(ClaimElements.ID_STATUS), withText(ClaimData.CANCELED_STATUS_TEXT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()));
+    }
 }
+
 
 

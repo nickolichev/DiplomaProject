@@ -77,6 +77,9 @@ public class AuthUtils {
         ViewInteraction buttonLogOut = onView(
                 allOf(withText(AuthorizationData.BUTTON_LOG_OUT)));
         buttonLogOut.perform(click());
+//        cardIdlingResource.setIdle(false);
+//        cardIdlingResource.setIdle(true);
+//        cardIdlingResource.waitUntilIdle();
         }
 
     public void buttonSignIn() {

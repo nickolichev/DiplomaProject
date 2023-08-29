@@ -3,24 +3,24 @@
 3    package="ru.iteco.fmhandroid.test" >
 4
 5    <uses-sdk
-5-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:5:5-74
+5-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:5:5-74
 6        android:minSdkVersion="21"
-6-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:5:15-41
+6-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:5:15-41
 7        android:targetSdkVersion="32" />
-7-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:5:42-71
+7-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:5:42-71
 8
 9    <instrumentation
-9-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:11:5-15:69
+9-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:11:5-15:69
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:11:22-76
+10-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:11:22-76
 11        android:functionalTest="false"
-11-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:14:22-52
+11-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:13:22-53
+12-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:13:22-53
 13        android:label="Tests for ru.iteco.fmhandroid"
-13-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:15:22-67
+13-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:15:22-67
 14        android:targetPackage="ru.iteco.fmhandroid" />
-14-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:12:22-65
+14-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:12:22-65
 15
 16    <queries>
 16-->[androidx.test:runner:1.5.2] /Users/andreynickolichev/.gradle/caches/transforms-3/b8eda235f829455b09baf39adcf3bdc5/transformed/runner-1.5.2/AndroidManifest.xml:24:5-28:15
@@ -40,10 +40,10 @@
 22-->[androidx.test:core:1.5.0] /Users/andreynickolichev/.gradle/caches/transforms-3/87b6bcbab5e3521b28cd172d8e34d503/transformed/jetified-core-1.5.0/AndroidManifest.xml:24:22-69
 23
 24    <application android:debuggable="true" >
-24-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:7:5-9:19
+24-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:7:5-9:19
 25        <uses-library android:name="android.test.runner" />
-25-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:8:9-60
-25-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest11485303963758542337.xml:8:23-57
+25-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:8:9-60
+25-->/Users/DiplomaProject/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest5598766643954974223.xml:8:23-57
 26
 27        <activity
 27-->[androidx.test:core:1.5.0] /Users/andreynickolichev/.gradle/caches/transforms-3/87b6bcbab5e3521b28cd172d8e34d503/transformed/jetified-core-1.5.0/AndroidManifest.xml:27:9-34:20

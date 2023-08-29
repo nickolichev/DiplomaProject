@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.AuthUtils;
+import ru.iteco.fmhandroid.ui.PageObject.CardIdlingResource;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils;
 import ru.iteco.fmhandroid.ui.PageObject.DataHelper;
 import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
@@ -22,6 +23,7 @@ import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
 @LargeTest
     @RunWith(AndroidJUnit4.class)
     public class NavigationTests {
+    CardIdlingResource cardIdlingResource = new CardIdlingResource();
 
         @Rule
         public ActivityTestRule<AppActivity> mActivityScenarioRule =
@@ -36,16 +38,17 @@ import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
             } catch (NoMatchingViewException e) {
                 new AuthUtils().logOut();
             }
+            new DataHelper().authorizationUtility();
         }
 
         @After
         public void unregisterIdlingResources() {
             IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+            new DataHelper().logOutUtility();
         }
 
         @Test
         public void navigationTest() {
-            new DataHelper().authorizationUtility();
             new CheckUtils().checkIconVisibilityMenu();
             new MenuUtils().buttonMenu();
             new CheckUtils().checkLineVisibilityNews();
@@ -60,7 +63,6 @@ import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
             new MenuUtils().buttonAbout();
             new CheckUtils().checkTitleVisibilityAbout();
             new DataHelper().buttonBackAboutUtility();
-            new DataHelper().logOutUtility();
         }
     }
 

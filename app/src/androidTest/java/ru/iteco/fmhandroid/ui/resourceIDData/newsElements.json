@@ -1,8 +1,0 @@
-{
-    "buttonSort": "R.id.sort_news_material_button",
-    "textSort": "Sort news list button",
-    "buttonActive": "R.id.filter_news_active_material_check_box",
-    "buttonNotActive": "R.id.filter_news_inactive_material_check_box",
-    "textActive": "Active",
-    "textNotActive": "Not active"
-}

@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.testData;
 public class NewsData {
     public static final String TITLE_TEXT_NEWS = "News";
+    public static final String TEXT_REFRESH_BUTTON = "Refresh";
 
 
     // тестовые данные для создания новости

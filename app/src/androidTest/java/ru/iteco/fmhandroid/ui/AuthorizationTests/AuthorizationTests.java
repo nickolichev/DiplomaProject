@@ -15,12 +15,13 @@ import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.AuthUtils;
+import ru.iteco.fmhandroid.ui.PageObject.CardIdlingResource;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AuthorizationTests {
-
+    CardIdlingResource cardIdlingResource = new CardIdlingResource();
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
@@ -40,10 +41,9 @@ public class AuthorizationTests {
     public void unregisterIdlingResources() {
         IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
     }
-// Сделано 26.08.23
+
     @Test
     public void validAuthorizationTest() {
-
         new AuthUtils().titleCheck();
         new AuthUtils().inputValidLogin();
         new AuthUtils().inputValidPassword();
@@ -52,7 +52,6 @@ public class AuthorizationTests {
         new AuthUtils().logOut();
     }
 
-    // Сделано 26.08.23
     @Test
     public void invalidAuthorizationTest() {
 
@@ -63,7 +62,6 @@ public class AuthorizationTests {
         new AuthUtils().titleCheck();
     }
 
-    // Сделано 26.08.23
     @Test
     public void emptyAuthorizationTest() {
 

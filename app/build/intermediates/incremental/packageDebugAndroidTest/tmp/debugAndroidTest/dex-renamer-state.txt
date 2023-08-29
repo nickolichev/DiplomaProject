@@ -1,14 +1,14 @@
-#Sun Aug 27 14:42:10 MSK 2023
-path.4=6/classes.dex
-path.3=2/classes.dex
-path.2=14/classes.dex
+#Tue Aug 29 10:08:46 MSK 2023
+path.4=2/classes.dex
+path.3=14/classes.dex
+path.2=13/classes.dex
 path.1=0/classes.dex
-path.6=13/classes.dex
-path.5=9/classes.dex
+path.6=9/classes.dex
+path.5=6/classes.dex
 path.0=classes.dex
-base.4=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/6/classes.dex
-base.3=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/2/classes.dex
-base.2=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/14/classes.dex
+base.4=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/2/classes.dex
+base.3=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/14/classes.dex
+base.2=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/13/classes.dex
 base.1=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
 base.0=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeExtDexDebugAndroidTest/classes.dex
 renamed.3=classes4.dex
@@ -17,6 +17,6 @@ renamed.1=classes2.dex
 renamed.0=classes.dex
 renamed.6=classes7.dex
 renamed.5=classes6.dex
-base.6=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/13/classes.dex
+base.6=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/9/classes.dex
 renamed.4=classes5.dex
-base.5=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/9/classes.dex
+base.5=/Users/DiplomaProject/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/6/classes.dex
