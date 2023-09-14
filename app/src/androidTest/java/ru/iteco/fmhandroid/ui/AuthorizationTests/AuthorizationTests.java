@@ -1,6 +1,5 @@
 package ru.iteco.fmhandroid.ui.AuthorizationTests;
 
-import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -12,34 +11,34 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.AuthUtils;
-import ru.iteco.fmhandroid.ui.PageObject.CardIdlingResource;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AuthorizationTests {
-    CardIdlingResource cardIdlingResource = new CardIdlingResource();
+//    CardIdlingResource cardIdlingResource = new CardIdlingResource();
+    AuthUtils authUtils = new AuthUtils();
+    CheckUtils checkUtils = new CheckUtils();
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void registerIdlingResources() {
-        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+//        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
 
         try {
-            new AuthUtils().titleCheck();
+            authUtils.titleCheck();
         } catch (NoMatchingViewException e) {
-            new AuthUtils().logOut();
+            authUtils.logOut();
         }
     }
 
     @After
     public void unregisterIdlingResources() {
-        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+//        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
     }
 
     @Test
@@ -55,11 +54,11 @@ public class AuthorizationTests {
     @Test
     public void invalidAuthorizationTest() {
 
-        new AuthUtils().titleCheck();
-        new AuthUtils().inputInvalidLogin();
-        new AuthUtils().inputInvalidPassword();
-        new AuthUtils().buttonSignIn();
-        new AuthUtils().titleCheck();
+        authUtils.titleCheck();
+        authUtils.inputInvalidLogin();
+        authUtils.inputInvalidPassword();
+        authUtils.buttonSignIn();
+        authUtils.titleCheck();
     }
 
     @Test

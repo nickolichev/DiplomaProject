@@ -1,6 +1,5 @@
 package ru.iteco.fmhandroid.ui.MenuTests;
 
-import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -12,18 +11,16 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.AuthUtils;
-import ru.iteco.fmhandroid.ui.PageObject.CardIdlingResource;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils;
-import ru.iteco.fmhandroid.ui.PageObject.DataHelper;
 import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
+import ru.iteco.fmhandroid.ui.PageObject.UtilsHelper;
 
 @LargeTest
     @RunWith(AndroidJUnit4.class)
     public class NavigationTests {
-    CardIdlingResource cardIdlingResource = new CardIdlingResource();
+//    CardIdlingResource cardIdlingResource = new CardIdlingResource();
 
         @Rule
         public ActivityTestRule<AppActivity> mActivityScenarioRule =
@@ -31,20 +28,20 @@ import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
 
         @Before
         public void registerIdlingResources() {
-            IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+//            IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
 
             try {
                 new AuthUtils().titleCheck();
             } catch (NoMatchingViewException e) {
                 new AuthUtils().logOut();
             }
-            new DataHelper().authorizationUtility();
+            new AuthUtils().authorizationUtility();
         }
 
         @After
         public void unregisterIdlingResources() {
-            IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
-            new DataHelper().logOutUtility();
+//            IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+            new AuthUtils().logOutUtility();
         }
 
         @Test
@@ -62,7 +59,7 @@ import ru.iteco.fmhandroid.ui.PageObject.MenuUtils;
             new MenuUtils().buttonMenu();
             new MenuUtils().buttonAbout();
             new CheckUtils().checkTitleVisibilityAbout();
-            new DataHelper().buttonBackAboutUtility();
+            new UtilsHelper().buttonBackAboutUtility();
         }
     }
 

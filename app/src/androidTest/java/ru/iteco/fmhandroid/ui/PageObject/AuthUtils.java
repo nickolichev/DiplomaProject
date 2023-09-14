@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.PageObject;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -55,7 +56,6 @@ public class AuthUtils {
                 .perform(ViewActions.replaceText(AuthorizationData.INVALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
     }
-
     public void inputEmptyLogin() {
         onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN)));
         onView(allOf(withHint(AuthorizationData.FIELD_LOGIN)))
@@ -68,7 +68,6 @@ public class AuthUtils {
                 .perform(ViewActions.replaceText(AuthorizationData.EMPTY_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
     }
-
     public void logOut() {
         ViewInteraction clickLogOut = onView(
                 allOf(withId(AuthorizationElements.ID_IMAGE_LOG_OUT)));
@@ -77,9 +76,6 @@ public class AuthUtils {
         ViewInteraction buttonLogOut = onView(
                 allOf(withText(AuthorizationData.BUTTON_LOG_OUT)));
         buttonLogOut.perform(click());
-//        cardIdlingResource.setIdle(false);
-//        cardIdlingResource.setIdle(true);
-//        cardIdlingResource.waitUntilIdle();
         }
 
     public void buttonSignIn() {
@@ -90,4 +86,33 @@ public class AuthUtils {
         button.perform(click());
 
     }
+
+    public void authorizationUtility() {
+
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_LOGIN)));
+        onView(allOf(withHint(AuthorizationData.FIELD_LOGIN)))
+                .perform(ViewActions.replaceText(AuthorizationData.VALID_LOGIN))
+                .perform(ViewActions.closeSoftKeyboard());
+
+        onView(allOf(withId(AuthorizationElements.ID_FIELD_PASSWORD)));
+        onView(allOf(withHint(AuthorizationData.FIELD_PASSWORD)))
+                .perform(ViewActions.replaceText(AuthorizationData.VALID_PASSWORD))
+                .perform(ViewActions.closeSoftKeyboard());
+
+        ViewInteraction button = onView(
+                allOf(withId(AuthorizationElements.ID_BUTTON_SIGN_IN)));
+        button.check(matches(ViewMatchers.isDisplayed()));
+        button.perform(click());
+    }
+
+    public void logOutUtility() {
+        ViewInteraction clickLogOut = onView(
+                allOf(withId(AuthorizationElements.ID_IMAGE_LOG_OUT)));
+        clickLogOut.perform(click());
+
+        ViewInteraction buttonLogOut = onView(
+                allOf(withText(AuthorizationData.BUTTON_LOG_OUT)));
+        buttonLogOut.perform(click());
+    }
+
 }
