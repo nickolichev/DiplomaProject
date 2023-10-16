@@ -1,0 +1,74 @@
+package ru.iteco.fmhandroid.ui.Menu_Tests;
+
+import androidx.test.espresso.NoMatchingViewException;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.LargeTest;
+import androidx.test.rule.ActivityTestRule;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ProjectIdlingResources;
+import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_About;
+import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Claims;
+import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Main;
+import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Menu;
+import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_News;
+import ru.iteco.fmhandroid.ui.PageObject.Utils_Auth;
+import ru.iteco.fmhandroid.ui.PageObject.Utils_Helper;
+import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
+
+@LargeTest
+    @RunWith(AndroidJUnit4.class)
+    public class Navigation_Tests {
+    ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
+//    CardIdlingResource cardIdlingResource = new CardIdlingResource();
+
+        @Rule
+        public ActivityTestRule<AppActivity> mActivityScenarioRule =
+                new ActivityTestRule<>(AppActivity.class);
+
+        @Before
+        public void registerIdlingResources() {
+//            IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+
+            try {
+                new Utils_Auth().checkTitleOnAuthView();
+            } catch (NoMatchingViewException e) {
+                new Utils_Auth().logOut();
+            }
+            new Utils_Auth().authorizationUtility();
+        }
+
+        @After
+        public void unregisterIdlingResources() {
+//            IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+            new Utils_Auth().logOutUtility();
+        }
+
+        @Test
+        @DisplayName("Навигация в MENU")
+        public void navigationTest() {
+            new CheckUtils_Main().checkIconMenu_Visibility();
+            new Utils_Menu().buttonMenu();
+            new CheckUtils_Menu().checkLineVisibilityNews();
+            new CheckUtils_Menu().checkLineVisibilityClaims();
+            new CheckUtils_Menu().checkLineVisibilityAbout();
+            new Utils_Menu().buttonClaims();
+            new CheckUtils_Claims().checkTitleClaims_Visibility();
+            new Utils_Menu().buttonMenu();
+            new Utils_Menu().buttonNews();
+            new CheckUtils_News().checkTitleNews_Visibility();
+            new Utils_Menu().buttonMenu();
+            new Utils_Menu().buttonAbout();
+            new CheckUtils_About().checkTitleAbout_Visibility();
+            new Utils_Helper().buttonBackAboutUtility();
+        }
+    }
+
+
