@@ -8,7 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_News;
 import ru.iteco.fmhandroid.ui.PageObject.Summary_Methods_News;
@@ -21,15 +20,11 @@ public class NegativeNews_Tests {
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
-    //    public ActivityTestRule<AppActivity> mActivityRule = new ActivityTestRule<>(AppActivity.class);
-    ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
 
     @Before
     public void startUp() {
 
         new Utils_Helper().timerWaitingAsyncOperation3000();
-//        projectIdlingResources.setBusy();
-//        projectIdlingResources.setIdle();
         new Utils_Auth().authorizationUtility();
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Menu().buttonMenu();
@@ -38,50 +33,113 @@ public class NegativeNews_Tests {
 
     }
 
-//        new UtilsHelper().timerWaitingAsyncOperation2000();
-//        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
-//
-//        try {
-//            authUtils.titleCheck();
-//        } catch (NoMatchingViewException e) {
-//            authUtils.logOut();
-//        }
-//        authUtils.authorizationUtility();
-//        menuUtils.buttonMenu();
-//        menuUtils.buttonClaims();
-//        checkUtils.checkTitleVisibilityClaims();
-//    }
-
     @After
     public void logOut() {
-//      utilsHelper.beginAsyncOperation();
         new Utils_Helper().timerWaitingAsyncOperation1000();
         new Utils_Auth().logOutUtility();
-//        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
-//      utilsHelper.endAsyncOperation();
-
     }
 
-    // работает 14.10.23
+    // работает 05.11.23
     @Test
-    @DisplayName("Negative test. Test-case # 17 / Проверить функционал \"Создание карточки в категории \"Новый год\"")
+    @DisplayName("Negative test. Test-case # 17 / Проверить функционал \"Создание карточки в пользовательской категории \"Новый год\"")
     public void creatingNewsInCategoryCustomTest() {
         new Utils_News().clickEdit_News();
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();  // проверка всех элементов на исходном экране
-        new Utils_News().inputCustomCategory_CreateNews();                          // вставить тестовые данные для поля Category
-        new Utils_News().inputTitleCreateNews_Custom(); ;                           // вставить тестовые данные для поля Title в Category "Новый год"
-        new Utils_News().inputPublicationDateCreateNews();                          // вставить валидные данные Publication Date
-        new Utils_News().inputTimeCreateNews();                                     // вставить валидные данные Time
-        new Utils_News().inputDescriptionCreateNews_Custom();                       // вставить валидные данные Description
-        new Utils_News().clickButtonSaveCreateNews();                               // клик по кнопке SAVE
-        new CheckUtils_News().checkTitleCreatingNews_Visibility();                  // проверка Title экрана Creating News (News не создана)
+        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Utils_News().inputCustomCategory_CreateNews();
+        new Utils_News().inputTitleCreateNews_Custom(); ;
+        new Utils_News().inputPublicationDateCreateNews();
+        new Utils_News().inputTimeCreateNews();
+        new Utils_News().inputDescriptionCreateNews_Custom();
+        new Utils_News().clickButtonSaveCreateNews();
         new Utils_Helper().backSystemButton();
-        new CheckUtils_News().checkTitleControlPanel_Visibility();
+        new CheckUtils_News().checkTitleCardNews_Custom_NotVisibility();
     }
 
+    // работает 07.11.23
+    @Test
+    @DisplayName("Negative test. Test-case # 26 / Проверить создание News с незаполненными полями формы Creating News")
+    public void creatingNewsWithEmptyFieldsTest() {
+        new Utils_News().clickEdit_News();
+        new Utils_News().clickButtonAdd_News();
+        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        // оставляем пустым поле Category
+        new Utils_News().inputTitleCreateNews_Advertisement(); ;
+        new Utils_News().inputPublicationDateCreateNews();
+        new Utils_News().inputTimeCreateNews();
+        new Utils_News().inputDescriptionCreateNews_Advertisement();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkIconEmptyFieldCategory_CreatingNews_Visibility();
+        new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDate_Visibility();
+        new CheckUtils_News().checkFieldTime_Visibility();
+        // оставляем пустым поле Title
+        new Utils_News().inputAdvertisementCategory_CreateNews();
+        new Utils_News().clearTitleField_CreateNews();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDate_Visibility();
+        new CheckUtils_News().checkFieldTime_Visibility();
+        new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        // оставляем пустым поле Publication date
+        new Utils_News().inputTitleCreateNews_Advertisement();
+        new Utils_News().clearPublicationDateField_CreateNews();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkFieldTime_Visibility();
+        new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
+        // оставляем пустым поле Time
+        new Utils_News().inputPublicationDateCreateNews();
+        new Utils_News().clearTimeField_CreateNews();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDate_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
+        // оставляем пустым поле Description
+        new Utils_News().inputTimeCreateNews();
+        new Utils_News().clearDescriptionField_CreateNews();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDate_Visibility();
+        new CheckUtils_News().checkFieldTime_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new Utils_News().clickButtonCancelCreateNews();
+        new Utils_News().clickOkButtonModalViewCreateNews();
+    }
 
-    // со всеми пустыми полями
-
-    // с не валидными данными
+    // работает 07.11.23
+    @Test
+    @DisplayName("Negative test. / Bug / Test-case # 27 / Проверить создание News с невалидными тестовыми данными в полях Title, Description формы Creating News")
+    public void creatingNewsInvalid_Title_Description_Test() {
+        new Utils_News().clickEdit_News();
+        new Utils_News().clickButtonAdd_News();
+        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Utils_News().inputAdvertisementCategory_CreateNews();
+        new Utils_News().inputInvalidTitleCreateNews();
+        new Utils_News().inputPublicationDateCreateNews();
+        new Utils_News().inputTimeCreateNews();
+        new Utils_News().inputInvalidDescriptionCreateNews();
+        new Utils_News().clickButtonSaveCreateNews();
+        new CheckUtils_News().checkTitleControlPanel_Visibility();
+        new Utils_News().clickButtonFilter_ControlPanel();
+        new CheckUtils_News().checkTitleFilterControlPanel_Visibility();
+        new Summary_Methods_News().inputAllFieldsInFilterNews_Invalid_Title_Description();
+        new CheckUtils_News().checkInvalidTitle_Visibility();
+        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
+        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
+        new Utils_News().clickExpendCard_News();
+        new CheckUtils_News().checkInvalidDescription_Visibility();
+        new Utils_News().clickButtonDelete_News();
+        new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
+        new Utils_News().clickOklModalDelete();
+        new CheckUtils_News().checkInvalidTitle_NotVisibility();
+        new CheckUtils_News().checkInvalidDescription_NotVisibility();
+    }
 }

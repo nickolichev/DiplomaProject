@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Claims;
-import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Main;
 import ru.iteco.fmhandroid.ui.PageObject.Summary_Methods_Claims;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Auth;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Claims;
@@ -23,57 +22,82 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class NegativeClaims_Tests {
-//    CardIdlingResource cardIdlingResource = new CardIdlingResource();
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
-
     @Before
-    public void registerIdlingResources() {
-
-//        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+    public void startUp() {
         new Utils_Helper().timerWaitingAsyncOperation3000();
-//        try {
-//            new Utils_Auth().checkTitleOnAuthView();
-//            new Utils_Helper().timerWaitingAsyncOperation20000();
-//        } catch (NoMatchingViewException e) {
-//            new Utils_Auth().logOut();
-//        }
         new Utils_Auth().authorizationUtility();
+        new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Menu().buttonMenu();
         new Utils_Menu().buttonClaims();
         new CheckUtils_Claims().checkTitleClaims_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation3000();
+
     }
 
     @After
-    public void unregisterIdlingResources() {
-//        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+    public void logOut() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
         new Utils_Auth().logOutUtility();
     }
 
+    // работает 22.10.23
     @Test
-    @DisplayName("Negative test. test-case # 14 / Попытка создать Claim с незаполненными полями Title, Executor, Date, Time, Description")
+    @DisplayName("Negative test. test-case # 13 / Попытка создать Claim с незаполненными полями Title, Date, Time, Description")
     public void  creatingClaimWithEmptyFieldsTest() {
         new Utils_Claims().clickCreateClaim();
-        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility(); // проверяем исходную страницу с полями
-        // удалить методы, как избыточные
-//        new Utils_Claims().inputEmptyInTitleNewClaim();
-//        new Utils_Claims().inputEmptyInExecutorNewClaim();
-//        new Utils_Claims().inputEmptyTestDataDate();
-//        new Utils_Claims().inputEmptyTestDataTime();
-//        new Utils_Claims().inputEmptyInDescriptionNewClaim();
+        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
+        // оставляем пустым поле Title
+        new Utils_Claims().inputExecutorNewClaim();
+        new Utils_Claims().inputValidDate();
+        new Utils_Claims().inputValidTime();
+        new Utils_Claims().inputTestDataInDescription_7();
         new Utils_Claims().clickButtonSaveNewClaim();
-        new CheckUtils_Claims().checkModalViewWarningText_Visibility();    // проверяем текст модального окна WARNING
-        new Utils_Claims().clickButtonOkInModalViewWarning();              // клик в модальном окне по кнопке OK
-        new Summary_Methods_Claims().checkAllFieldsEmpty_Visibility();     // проверяем, что иконки-предупреждения есть в пустых полях
-        new Utils_Claims().clickButtonCancelNewClaim();                    // клик по кнопке CANCEL на экране CREATING CLAIMS
-        new CheckUtils_Claims().checkModalViewQuestionText_Visibility();   // проверяем текст модального окна QUESTION
-        new Utils_Claims().clickButtonCancelInModalViewQuestion();         // клик по кнопке CANCEL в модальном окне QUESTION
-        new Summary_Methods_Claims().checkAllFieldsEmpty_Visibility();     // проверяем, что иконки-предупреждения есть в пустых полях
-        new Utils_Claims().clickButtonCancelNewClaim();                    // клик по кнопке CANCEL на экране CREATING CLAIMS
-        new Utils_Claims().clickButtonOkInModalViewQuestion();             // клик по кнопке OK в модальном окне QUESTION
-        new CheckUtils_Main().checkIconClaims_Visibility();                // проверяем Title на экране CLAIMS
+        new CheckUtils_Claims().checkModalViewWarningText_Visibility();
+        new CheckUtils_Claims().checkModalViewWarningButtonOk_Visibility();
+        new Utils_Claims().clickButtonOkInModalViewWarning();
+        new CheckUtils_Claims().checkIconEmptyField_Visibility();
+        new CheckUtils_Claims().checkTestDataExecutor_Visibility();
+        new CheckUtils_Claims().checkTestDataDate_Visibility();
+        new CheckUtils_Claims().checkTestDataTime_Visibility();
+        new CheckUtils_Claims().checkTestDataDescription_Visibility();
+        // оставляем пустым поле Date
+        new Utils_Claims().inputTitleNewClaim_7();
+        new Utils_Claims().clearDateField_CreateNews();
+        new Utils_Claims().clickButtonSaveNewClaim();
+        new Utils_Claims().clickButtonOkInModalViewWarning();
+        new CheckUtils_Claims().checkTestDataTitle_Visibility();
+        new CheckUtils_Claims().checkTestDataExecutor_Visibility();
+        new CheckUtils_Claims().checkIconEmptyField_Visibility();
+        new CheckUtils_Claims().checkTestDataTime_Visibility();
+        new CheckUtils_Claims().checkTestDataDescription_Visibility();
+        // оставляем пустым поле Time
+        new Utils_Claims().inputValidDate();
+        new Utils_Claims().clearTimeField_CreateNews();
+        new Utils_Claims().clickButtonSaveNewClaim();
+        new Utils_Claims().clickButtonOkInModalViewWarning();
+        new CheckUtils_Claims().checkTestDataTitle_Visibility();
+        new CheckUtils_Claims().checkTestDataExecutor_Visibility();
+        new CheckUtils_Claims().checkTestDataDate_Visibility();
+        new CheckUtils_Claims().checkIconEmptyField_Visibility();
+        new CheckUtils_Claims().checkTestDataDescription_Visibility();
+        // оставляем пустым поле Description
+        new Utils_Claims().inputValidTime();
+        new Utils_Claims().clearDescriptionField_CreateNews();
+        new Utils_Claims().clickButtonSaveNewClaim();
+        new Utils_Claims().clickButtonOkInModalViewWarning();
+        new CheckUtils_Claims().checkTestDataTitle_Visibility();
+        new CheckUtils_Claims().checkTestDataExecutor_Visibility();
+        new CheckUtils_Claims().checkTestDataDate_Visibility();
+        new CheckUtils_Claims().checkTestDataTime_Visibility();
+        new CheckUtils_Claims().checkIconEmptyField_Visibility();
+        // заполняем пустое поле Description
+        new Utils_Claims().inputTestDataInDescription_7();
+        // отменяем создание Claim
+        new Utils_Claims().clickButtonCancelNewClaim();
+        new Utils_Claims().clickInModalViewButtonOk();
+        new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 
     @Test
@@ -90,9 +114,9 @@ public class NegativeClaims_Tests {
         // больше 50 знаков
         new Utils_Claims().clickCreateClaim();
         new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-        new Utils_Claims().inputEmptyInTitleNewClaim();
-        new Utils_Claims().inputEmptyInExecutorNewClaim();
-        new Utils_Claims().inputEmptyInDescriptionNewClaim();
+//        new Utils_Claims().inputEmptyInTitleNewClaim();
+//        new Utils_Claims().inputEmptyInExecutorNewClaim();
+//        new Utils_Claims().inputEmptyInDescriptionNewClaim();
         // дописать методы
 
     }
@@ -102,9 +126,9 @@ public class NegativeClaims_Tests {
     public void  creatingClaimWithInvalidExecutorTest() {
         new Utils_Claims().clickCreateClaim();
         new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-        new Utils_Claims().inputEmptyInTitleNewClaim();
-        new Utils_Claims().inputEmptyInExecutorNewClaim();
-        new Utils_Claims().inputEmptyInDescriptionNewClaim();
+//        new Utils_Claims().inputEmptyInTitleNewClaim();
+//        new Utils_Claims().inputEmptyInExecutorNewClaim();
+//        new Utils_Claims().inputEmptyInDescriptionNewClaim();
         // дописать методы
 
     }

@@ -8,7 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_News;
 import ru.iteco.fmhandroid.ui.PageObject.Summary_Methods_News;
@@ -23,48 +22,24 @@ public class PositiveNews_Tests {
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
-    //    public ActivityTestRule<AppActivity> mActivityRule = new ActivityTestRule<>(AppActivity.class);
-    ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
 
     @Before
     public void startUp() {
-
         new Utils_Helper().timerWaitingAsyncOperation3000();
-//        projectIdlingResources.setBusy();
-//        projectIdlingResources.setIdle();
         new Utils_Auth().authorizationUtility();
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Menu().buttonMenu();
         new Utils_Menu().buttonNews();
         new CheckUtils_News().checkTitleNews_Visibility();
-
     }
-
-//        new UtilsHelper().timerWaitingAsyncOperation2000();
-//        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
-//
-//        try {
-//            authUtils.titleCheck();
-//        } catch (NoMatchingViewException e) {
-//            authUtils.logOut();
-//        }
-//        authUtils.authorizationUtility();
-//        menuUtils.buttonMenu();
-//        menuUtils.buttonClaims();
-//        checkUtils.checkTitleVisibilityClaims();
-//    }
 
     @After
     public void logOut() {
-//      utilsHelper.beginAsyncOperation();
         new Utils_Helper().timerWaitingAsyncOperation1000();
         new Utils_Auth().logOutUtility();
-//        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
-//      utilsHelper.endAsyncOperation();
-
     }
 
-    // работает 12.10.23 + 14.10.23
+    // работает 04.11.23
     @Test
     @DisplayName("Positive test. Test-case # 16 / Отмененный процесс создания News")
     public void  cancellationProcessCreatingNewsTest() {
@@ -80,15 +55,13 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonCancelCreateNews();
         new Summary_Methods_News().checkAllElements_ModalView_CreatingNews_Visibility();
         new Utils_News().clickCancelButtonModalViewCreateNews();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_test_case_16_Visibility();
+        new Summary_Methods_News().checkAllElementsAfterFilling_ViewCreatingNews_Visibility();
         new Utils_News().clickButtonCancelCreateNews();
         new Utils_News().clickOkButtonModalViewCreateNews();
         new CheckUtils_News().checkTitleControlPanel_Visibility();
-
     }
 
-
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 18 / Проверить функционал Создание + редактирование + удаление карточки в категории \"Объявление\"")
     public void newsInCategoryAdvertisementTest() {
@@ -121,10 +94,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Advertisement_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 19 Проверить функционал Создание + редактирование + удаление карточки в категории \"День рождения\"")
     public void newsInCategoryBirthdayTest() {
@@ -157,10 +131,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Birthday_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 20 Проверить функционал Создание + редактирование + удаление карточки в категории \"Зарплата\"")
     public void newsInCategorySalaryTest() {
@@ -193,10 +168,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Salary_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 21 Проверить функционал Создание + редактирование + удаление карточки в категории \"Профсоюз\"")
     public void newsInCategoryTradeUnionTest() {
@@ -229,10 +205,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_TradeUnion_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 22 Проверить функционал Создание + редактирование + удаление карточки в категории \"Праздник\"")
     public void newsInCategoryHolidayTest() {
@@ -265,10 +242,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Holiday_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 23 Проверить функционал Создание + редактирование + удаление карточки в категории \"Массаж\"")
     public void newsInCategoryMassageTest() {
@@ -301,10 +279,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Massage_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 24 Проверить функционал Создание + редактирование + удаление карточки в категории \"Благодарность\"")
     public void newsInCategoryGratitudeTest() {
@@ -337,10 +316,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Gratitude_NotVisibility();
     }
 
-    // работает 15.10.23
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 25 Проверить функционал Создание + редактирование + удаление карточки в категории \"Нужна помощь\"")
     public void newsInCategoryHelpTest() {
@@ -373,9 +353,11 @@ public class PositiveNews_Tests {
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
         new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
         new CheckUtils_News().checkTitleCardNews_Help_NotVisibility();
     }
 
+    // работает 05.11.23
     @Test
     @DisplayName("Positive test. Test-case # 26 / на экране NEWS проверить функционал Filter news")
     public void filterNewsTest() {
@@ -393,6 +375,15 @@ public class PositiveNews_Tests {
         new Utils_News().clickFilter_News();
         new Summary_Methods_News().inputAllFieldsInFilterNews();
         new CheckUtils_News().checkTitleCardNews_Advertisement_Visibility();
+        new Utils_News().clickEdit_News();
+        new Utils_News().clickFilter_News();
+        new Summary_Methods_News().inputAllFieldsInFilterNews();
+        // удаляем созданную News
+        new Utils_News().clickButtonDelete_News();
+        new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();
+        new Utils_News().clickOklModalDelete();
+        // проверяем, что удаленная News отсутствует на экране
+        new CheckUtils_News().checkTitleCardNews_Advertisement_NotVisibility();
     }
 }
 

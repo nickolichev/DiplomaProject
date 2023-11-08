@@ -27,6 +27,9 @@ public class Elements_Claim {
     public static final int ID_EXECUTOR_CARD = R.id.executor_name_label_text_view;     // text
     public static final int ID_EXECUTOR_VALUE_CARD = R.id.executor_name_text_view;     // value
     public static final int ID_PLAN_DATE_CARD = R.id.plane_date_label_text_view;       // text
+    public static final int ID_PLAN_DATE_IN_CARD = R.id.plane_date_text_view;               // значение Date в раскрытой карточке
+    public static final int ID_PLAN_TIME_IN_CARD = R.id.plan_time_text_view;                // значение Time в раскрытой карточке
+
     public static final int ID_PLAN_DATE_VALUE_DATE_CARD = R.id.create_data_text_view; // value
     public static final int ID_PLAN_DATE_VALUE_TIME_CARD = R.id.create_time_text_view; // value                           // value
     public static final int ID_STATUS_CARD = R.id.status_label_text_view;               // for all statuses
@@ -53,7 +56,7 @@ public class Elements_Claim {
     public static final int ID_BUTTON_CLOSE = R.id.close_image_button;                          // icon Для всех статусов
 
 
-    // Comment создание/редактирование/проверка
+    // экран Create + Edit Comment создание/редактирование/проверка
     public static final int ID_CONTAINER_COMMENT_CARD = R.id.claim_comments_list_recycler_view;        // контейнер комментария
     public static final int ID_ADD_COMMENT_CARD = R.id.comments_material_card_view;               // text Add comment
     public static final int ID_ADD_COMMENT_BUTTON_CARD = R.id.add_comment_image_button;           // icon

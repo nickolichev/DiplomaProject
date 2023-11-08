@@ -36,6 +36,7 @@ public class Data_Claim {
 
     // Comment / List comments
     public static final String ADD_COMMENT_TEXT_CARD = "Add comment";
+    public static final String FIELD_COMMENT = "Comment";
     public static final String ADD_COMMENT_BUTTON_TEXT_CARD = "button add comment";
     public static final String EDIT_COMMENT_BUTTON_TEXT_CARD = "button edit comment";
 
@@ -61,30 +62,34 @@ public class Data_Claim {
     // и проверить корректность их создания/редактирования
     // полный цикл в тестах (создание+редактирование) гарантирует выполнение всех операций без риска
     // внесения изменений в тестируемые карточки другими пользователями приложения
-    public static final String INPUT_TITLE_1 = "#1 Новая претензия без исполнителя, статус Open/50"; //тест-кейс 7
-    public static final String INPUT_TITLE_2 = "#2 Новая претензия в статусе In Progress / 50 знак"; //тест-кейс 8
-    public static final String INPUT_TITLE_3 = "#3 Editing claim status Open - In Progress+Comment"; //тест-кейс 9
-    public static final String INPUT_TITLE_4 = "#4 Editing claim status Open - In Progress";         //тест-кейс 10
-    public static final String INPUT_TITLE_5 = "#5 Смена статуса In progress - Open через ThrowOff"; //тест-кейс 11
-    public static final String INPUT_TITLE_6 = "#6 Смена статуса Open -Cancelled через Cancel";      //тест-кейс 12
-    public static final String INPUT_TITLE_7 = "#7 Смена InProgress на Executed через \"to execute\"";//тест-кейс 13
+    public static final String INPUT_TITLE_7 = "Новая претензия без исполнителя + статус Open / 50"; //тест-кейс 7
+    public static final String INPUT_TITLE_8 = "newClaim Open + перевод в In Progress"; //тест-кейс 8
+    public static final String INPUT_TITLE_9 = "Create claim status In Progress+try customExecutor"; //тест-кейс 9
 
 
-    public static final String INPUT_DESCRIPTION_1 = "Testing the functionality Creating a new claim!!!!"; //тест-кейс 7
-    public static final String INPUT_DESCRIPTION_2 = "Testing the functionality Creating a new claim In Progress"; //тест-кейс 8
-    public static final String INPUT_DESCRIPTION_3 = "Description for test-case #9";                               //тест-кейс 9
+    public static final String INPUT_TITLE_10 = "#4 Editing claim status Open - In Progress";         //тест-кейс 10
+    public static final String INPUT_TITLE_11 = "#5 Смена статуса In progress - Open через ThrowOff"; //тест-кейс 11
+    public static final String INPUT_TITLE_12 = "#6 Смена статуса Open -Cancelled через Cancel";      //тест-кейс 12
+    public static final String INPUT_TITLE_13 = "#7 Смена InProgress на Executed через \"to execute\"";//тест-кейс 13
 
-    public static final String INPUT_DESCRIPTION_4 = "Смена статуса Open на In Progress через назначение Executor"; //тест-кейс 10
-    public static final String INPUT_DESCRIPTION_5 = "Редактирование статуса In Progress на Open через button change"; //тест-кейс 11
-    public static final String INPUT_DESCRIPTION_6 = "Редактирование статуса Open на Cancelled через button change"; //тест-кейс 12
-    public static final String INPUT_DESCRIPTION_7 = "Редактирование статуса In Progress на Executed через button change"; //тест-кейс 13
 
-    public static final String COMMENT_CONTENT_CARD_3 = "Переводим в статус \"In progress\"";          //тест-кейс 9
-    public static final String COMMENT_CONTENT_EDIT_CARD_3 = "Переводим в статус \"In progress\" + Редактирование"; //тест-кейс 9
-    public static final String COMMENT_CONTENT_CARD_4 = "Успешно переведена в статус \"In progress\""; //тест-кейс 9
-    public static final String COMMENT_CONTENT_CARD_5 = "Тест на статус \"Throw oof\"";                //тест-кейс 11
-    public static final String COMMENT_CONTENT_CARD_6 = "Тест на статус \"Cancelled\"";                //тест-кейс 12
-    public static final String COMMENT_CONTENT_CARD_7 = "Тест на статус \"Executed\"";                 //тест-кейс 13
+    public static final String INPUT_DESCRIPTION_7 = "Testing the functionality Creating a new claim!!!!"; //тест-кейс 7
+    public static final String INPUT_DESCRIPTION_8 = "Testing functionality \"From Open status to In Progress status\""; //тест-кейс 8
+    public static final String INPUT_DESCRIPTION_9 = "Description for test-case #9";                               //тест-кейс 9
+
+
+
+    public static final String INPUT_DESCRIPTION_10 = "Смена статуса Open на In Progress через назначение Executor"; //тест-кейс 10
+    public static final String INPUT_DESCRIPTION_11 = "Редактирование статуса In Progress на Open через button change"; //тест-кейс 11
+    public static final String INPUT_DESCRIPTION_12 = "Редактирование статуса Open на Cancelled через button change"; //тест-кейс 12
+    public static final String INPUT_DESCRIPTION_13 = "Редактирование статуса In Progress на Executed через button change"; //тест-кейс 13
+
+    public static final String COMMENT_CONTENT_CARD_7 = "Переводим в статус \"In progress\"";          //тест-кейс 7
+    public static final String COMMENT_CONTENT_EDIT_CARD_7 = "Успешно переведена в статус \"In progress\" (через take to work)"; //тест-кейс 7
+//    public static final String COMMENT_CONTENT_CARD_10 = "Успешно переведена в статус \"In progress\""; //тест-кейс 9
+    public static final String COMMENT_CONTENT_CARD_11 = "Тест на статус \"Throw oof\"";                //тест-кейс 11
+    public static final String COMMENT_CONTENT_CARD_12 = "Тест на статус \"Cancelled\"";                //тест-кейс 12
+    public static final String COMMENT_CONTENT_CARD_13 = "Тест на статус \"Executed\"";                 //тест-кейс 13
     //
     public static final String INPUT_EXECUTOR_TEXT = "Ivanov Ivan Ivanovich";
 
@@ -97,8 +102,8 @@ public class Data_Claim {
     public static final String OK_MODAL_VIEW_TEXT = "OK";
     public static final String CANCEL_CREATING_CLAIMS = "Cancel"; //Text + description
     public static final String SAVE_CREATING_CLAIMS = "Save";     //Text + description
-    public static final String INPUT_DATE = "14.09.2023";
-    public static final String INPUT_TIME = "14:35";
+    public static final String INPUT_DATE = "12.10.2023";
+    public static final String INPUT_TIME = "01:35";
 
 
     // Editing Claim
@@ -109,13 +114,13 @@ public class Data_Claim {
 
     // TOPIC для поиска и проверок созданных/редактированных Claim
     // привязываем к значениям TITLE для исключения ошибок
-    public static final String TOPIC_1 = getInputTitle_1();  // test-case #7
-    public static final String TOPIC_2 = getInputTitle_2();  // test-case #8
-    public static final String TOPIC_3 = getInputTitle_3(); // "#3 Editing claim status Open - In Progress+Comment";  // не находит через геттер
-    public static final String TOPIC_4 = getInputTitle_4();
-    public static final String TOPIC_5 = getInputTitle_5();
-    public static final String TOPIC_6 = getInputTitle_6();
-    public static final String TOPIC_7 = getInputTitle_7();
+    public static final String TOPIC_7 = getInputTitle_7();  // test-case #7
+    public static final String TOPIC_8 = getInputTitle_8();  // test-case #8
+    public static final String TOPIC_9 = getInputTitle_9(); // "#3 Editing claim status Open - In Progress+Comment";  // не находит через геттер
+    public static final String TOPIC_10 = getInputTitle_10();
+    public static final String TOPIC_11 = getInputTitle_11();
+    public static final String TOPIC_12 = getInputTitle_12();
+    public static final String TOPIC_13 = getInputTitle_13();
 
 
 
@@ -161,32 +166,32 @@ public class Data_Claim {
 
 
     // геттеры для TOPIC
-    public static String getInputTitle_1() {
-        return INPUT_TITLE_1;
-    }
-
-    public static String getInputTitle_2() {
-        return INPUT_TITLE_2;
-    }
-
-    public static String getInputTitle_3() {
-        return INPUT_TITLE_3;
-    }
-
-    public static String getInputTitle_4() {
-        return INPUT_TITLE_4;
-    }
-
-    public static String getInputTitle_5() {
-        return INPUT_TITLE_5;
-    }
-
-    public static String getInputTitle_6() {
-        return INPUT_TITLE_6;
-    }
-
     public static String getInputTitle_7() {
         return INPUT_TITLE_7;
+    }
+
+    public static String getInputTitle_8() {
+        return INPUT_TITLE_8;
+    }
+
+    public static String getInputTitle_9() {
+        return INPUT_TITLE_9;
+    }
+
+    public static String getInputTitle_10() {
+        return INPUT_TITLE_10;
+    }
+
+    public static String getInputTitle_11() {
+        return INPUT_TITLE_11;
+    }
+
+    public static String getInputTitle_12() {
+        return INPUT_TITLE_12;
+    }
+
+    public static String getInputTitle_13() {
+        return INPUT_TITLE_13;
     }
 
 // геттеры для DATE и TIME

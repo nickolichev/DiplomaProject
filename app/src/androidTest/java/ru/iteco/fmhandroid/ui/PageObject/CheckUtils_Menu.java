@@ -3,38 +3,40 @@ package ru.iteco.fmhandroid.ui.PageObject;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 
-import androidx.test.espresso.ViewInteraction;
-
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elelements_Menu;
 import ru.iteco.fmhandroid.ui.testData.Data_Menu;
 
 public class CheckUtils_Menu {
 
     // MENU LIST
-    // Утилиты проверок, что в списке отображаются все строки меню
+    @DisplayName("экран Main / окно Menu / Проверка отображения в Menu строки News")
     public void checkLineVisibilityNews() {
-        ViewInteraction news = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.NEWS_TEXT),
-                        withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()));
-        news.check(matches(withText(Data_Menu.NEWS_TEXT)));
+        onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.NEWS_TEXT),
+                withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
+                        isDisplayed()))
+                        .check(matches(isDisplayed()))
+                        .check(matches(withText(Data_Menu.NEWS_TEXT)));
     }
-
+    @DisplayName("экран Main / окно Menu / Проверка отображения в Menu строки Claims")
     public void checkLineVisibilityClaims() {
-        ViewInteraction claims = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.CLAIMS_TEXT),
-                        withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()));
-        claims.check(matches(withText(Data_Menu.CLAIMS_TEXT)));
+        onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.CLAIMS_TEXT),
+                withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
+                        isDisplayed()))
+                        .check(matches(isDisplayed()))
+                        .check(matches(withText(Data_Menu.CLAIMS_TEXT)));
     }
-
+    @DisplayName("экран Main / окно Menu / Проверка отображения в Menu строки About")
     public void checkLineVisibilityAbout() {
-        ViewInteraction about = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.ABOUT_TEXT),
-                        withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()));
-        about.check(matches(withText(Data_Menu.ABOUT_TEXT)));
+        onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.ABOUT_TEXT),
+                withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
+                        isDisplayed()))
+                        .check(matches(isDisplayed()))
+                        .check(matches(withText(Data_Menu.ABOUT_TEXT)));
     }
 }

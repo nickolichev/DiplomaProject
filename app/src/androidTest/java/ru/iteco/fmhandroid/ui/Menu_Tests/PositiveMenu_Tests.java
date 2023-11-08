@@ -1,6 +1,5 @@
 package ru.iteco.fmhandroid.ui.Menu_Tests;
 
-import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
@@ -19,13 +18,14 @@ import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Claims;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Main;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_Menu;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_News;
+import ru.iteco.fmhandroid.ui.PageObject.Utils_About;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Auth;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Helper;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
 
 @LargeTest
     @RunWith(AndroidJUnit4.class)
-    public class Navigation_Tests {
+    public class PositiveMenu_Tests {
     ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
 //    CardIdlingResource cardIdlingResource = new CardIdlingResource();
 
@@ -33,27 +33,23 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
         public ActivityTestRule<AppActivity> mActivityScenarioRule =
                 new ActivityTestRule<>(AppActivity.class);
 
-        @Before
-        public void registerIdlingResources() {
-//            IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+    @Before
+    public void startUp() {
+        new Utils_Helper().timerWaitingAsyncOperation3000();
+        new Utils_Auth().authorizationUtility();
+        new Utils_Helper().timerWaitingAsyncOperation3000();
+    }
 
-            try {
-                new Utils_Auth().checkTitleOnAuthView();
-            } catch (NoMatchingViewException e) {
-                new Utils_Auth().logOut();
-            }
-            new Utils_Auth().authorizationUtility();
-        }
+    @After
+    public void logOut() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
+        new Utils_Auth().logOutUtility();
+    }
 
-        @After
-        public void unregisterIdlingResources() {
-//            IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
-            new Utils_Auth().logOutUtility();
-        }
-
-        @Test
-        @DisplayName("Навигация в MENU")
-        public void navigationTest() {
+    // работает 05.11.23
+    @Test
+        @DisplayName("Positive test. Test-case # 4 / Навигация в MENU")
+        public void navigationMenuTest() {
             new CheckUtils_Main().checkIconMenu_Visibility();
             new Utils_Menu().buttonMenu();
             new CheckUtils_Menu().checkLineVisibilityNews();
@@ -67,7 +63,7 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
             new Utils_Menu().buttonMenu();
             new Utils_Menu().buttonAbout();
             new CheckUtils_About().checkTitleAbout_Visibility();
-            new Utils_Helper().buttonBackAboutUtility();
+            new Utils_About().buttonBackAboutUtility();
         }
     }
 

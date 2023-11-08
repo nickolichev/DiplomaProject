@@ -2,14 +2,17 @@ package ru.iteco.fmhandroid.ui.PageObject;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
@@ -27,14 +30,11 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.IsInstanceOf;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_News;
 import ru.iteco.fmhandroid.ui.testData.Data_News;
 
 public class Utils_News {
-
-    ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
 
     @DisplayName("экран NEWS / нераскрытые карточки / клик по кнопке SORT")
     public void clickSort_News() {
@@ -45,7 +45,6 @@ public class Utils_News {
         sort.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         sort.perform(click());
     }
-
     @DisplayName("экран NEWS / нераскрытые карточки / клик по кнопке FILTER")
     public void clickFilter_News() {
         ViewInteraction button = onView(
@@ -53,7 +52,6 @@ public class Utils_News {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
-
     @DisplayName("экран NEWS / нераскрытые карточки / клик по кнопке EDIT")
     public void clickEdit_News() {
         ViewInteraction button = onView(
@@ -70,7 +68,6 @@ public class Utils_News {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
-
 
     // набор методов ввода тестовых данных CATEGORY
     @DisplayName("экран FILTER NEWS / ввод в CATEGORY невалидных тестовых данных EMPTY")
@@ -90,58 +87,59 @@ public class Utils_News {
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Объявление\"")
     public void inputCategoryAdvertisement_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT));
-//                .perform(ViewActions.closeSoftKeyboard());
+                .perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT))
+                .perform(ViewActions.closeSoftKeyboard());
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"День рождения\"")
     public void inputCategoryBirthday_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_BIRTHDAY))
                 .perform(ViewActions.closeSoftKeyboard());
-    }
+        new Utils_Helper().timerWaitingAsyncOperation500();
 
+    }
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Зарплата\"")
     public void inputCategorySalary_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_SALARY))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Профсоюз\"")
     public void inputCategoryTradeUnion_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_TRADE_UNION))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Праздник\"")
     public void inputCategoryHoliday_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_HOLIDAY))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Массаж\"")
     public void inputCategoryMassage_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_MASSAGE))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Благодарность\"")
     public void inputCategoryGratitude_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_GRATITUDE))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Нужна помощь\"")
     public void inputCategoryHelp_FilterNews() {
         onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
                 .perform(replaceText(Data_News.CATEGORY_HELP))
                 .perform(ViewActions.closeSoftKeyboard());
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     // набор методов ввода тестовых данных DATE_START и DATE_END для фильтрации NEWS
@@ -150,38 +148,41 @@ public class Utils_News {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_START_TEST_DATA));
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных")
     public void inputDateEnd_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_END_TEST_DATA));
     }
-
     @DisplayName("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE END тестовых данных")
     public void inputDateEnd() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
     }
-
     @DisplayName("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE START тестовых данных")
     public void inputDateStart() {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
     }
-
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных ПОСЛЕ Editing")
     public void inputDateStart_AfterEditing_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных ПОСЛЕ Editing")
     public void inputDateEnd_AfterEditing_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
-
+    @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE START НЕвалидных тестовых данных")
+    public void inputInvalidDateStart_FilterNews() {
+        onView(allOf(withId(Elements_News.ID_DATE_START)))
+                .perform(replaceText(Data_News.DATE_INVALID));
+    }
+    @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END НЕвалидных тестовых данных")
+    public void inputInvalidDateEnd_FilterNews() {
+        onView(allOf(withId(Elements_News.ID_DATE_END)))
+                .perform(replaceText(Data_News.DATE_INVALID));
+    }
     @DisplayName("Control Panel / экран FILTER NEWS / клик по кнопке FILTER")
     public void clickButtonFilter_FilterNews() {
         ViewInteraction button = onView(
@@ -191,7 +192,6 @@ public class Utils_News {
         button.perform(click());
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     @DisplayName("Control Panel / экран FILTER NEWS / клик по кнопке CANCEL")
     public void clickButtonCancel_FilterNews() {
         ViewInteraction button = onView(
@@ -200,9 +200,6 @@ public class Utils_News {
                         isDisplayed()));
         button.perform(click());
     }
-
-
-
     @DisplayName("экран Control panel / клик по кнопке SORT")
     public void clickButtonSort_ControlPanel() {
         ViewInteraction sort = onView(
@@ -215,7 +212,6 @@ public class Utils_News {
                         isDisplayed()));
         sort.perform(click());
     }
-
     @DisplayName("экран Control panel / клик по иконке FILTER")
     public void clickButtonFilter_ControlPanel() {
         ViewInteraction filter = onView(
@@ -228,7 +224,6 @@ public class Utils_News {
                         isDisplayed()));
         filter.perform(click());
     }
-
     @DisplayName("экран Control panel / клик по иконке CREATING NEWS")
     public void clickButtonAdd_News() {
         ViewInteraction add = onView(
@@ -237,34 +232,36 @@ public class Utils_News {
                         isDisplayed()));
         add.perform(click());
     }
-
-
-
-
     @DisplayName("экран Control panel / в НЕраскрытой карточке клик по иконке DELETE")
     public void clickButtonDelete_News() {
-        ViewInteraction delete = onView(
-                allOf(withId(Elements_News.ID_BUTTON_DELETE), withContentDescription(Data_News.BUTTON_DELETE),
+
+        ViewInteraction appCompatImageView = onView(
+                allOf(withId(R.id.delete_news_item_image_view), withContentDescription("News delete button"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.news_item_material_card_view),
                                         0),
                                 14),
                         isDisplayed()));
-        delete.perform(click());
-        new Utils_Helper().timerWaitingAsyncOperation1000();
+        appCompatImageView.perform(click());
+//        onView(allOf(withId(Elements_News.ID_BUTTON_DELETE), withContentDescription(Data_News.BUTTON_DELETE),
+//                childAtPosition(
+//                        childAtPosition(
+//                                withId(R.id.news_item_material_card_view),
+//                                0),
+//                        14),
+//                isDisplayed()))
+//                .perform(click());
     }
-
     @DisplayName("экран Control panel / List / в НЕраскрытой карточке клик по кнопке Expend")
     public void clickExpendCard_News() {
-        ViewInteraction expend = onView(
-                allOf(withId(Elements_News.ID_LIST_NEWS),     // также для ID кнопки Expend
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)));                 // клик в первой карточке списка /
-        expend.perform(actionOnItemAtPosition(0, click()));
+        onView(allOf(withId(Elements_News.ID_LIST_NEWS),     // также для ID кнопки Expend
+                childAtPosition(
+                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                        0)))                 // клик в первой карточке списка /
+                .perform(actionOnItemAtPosition(0, click()));
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
-
     // модальное окно-предупреждение DELETE
     @DisplayName("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке CANCEL")
     public void clickCancelModalDelete() {
@@ -277,7 +274,6 @@ public class Utils_News {
                                 2)));
         cancel.perform(scrollTo(), click());
     }
-
     @DisplayName("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке OK")
     public void clickOklModalDelete() {
         ViewInteraction ok = onView(
@@ -290,7 +286,6 @@ public class Utils_News {
         new Utils_Helper().timerWaitingAsyncOperation1000();
         ok.perform(scrollTo(), click());
     }
-
     @DisplayName("экран Control panel / List / в НЕраскрытой карточке клик по иконке EDIT")
     public void clickButtonEditNews() {
         ViewInteraction edit = onView(
@@ -503,6 +498,15 @@ public class Utils_News {
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
+    @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"новый год\" в поле Category")
+    public void inputCustomCategory_CreateNews_Bug() {
+        ViewInteraction editText = onView(
+                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+                        isDisplayed()));
+        editText.perform(replaceText("новый год"));
+        new Utils_Helper().timerWaitingAsyncOperation500();
+    }
+
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Объявление\" в поле Category")
     public void inputAdvertisementCategory_CreateNews() {
         ViewInteraction editText = onView(
@@ -567,6 +571,11 @@ public class Utils_News {
         editText.perform(replaceText(Data_News.CATEGORY_HELP));
     }
 
+    @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Category ")
+    public void clearCategoryField_CreateNews() {
+        onView(withId(Elements_News.ID_CREATING_CATEGORY_TEXT))
+                .perform(clearText());
+    }
 
 
     // набор методов input для создания Title
@@ -585,6 +594,11 @@ public class Utils_News {
                 .perform(replaceText(Data_News.TITLE_CARD_ADVERTISEMENT));
     }
 
+    @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  TITLE ")
+    public void clearTitleField_CreateNews() {
+        onView(withId(Elements_News.ID_TITLE_INPUT))
+                .perform(clearText());
+    }
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"День рождения\"")
     public void inputTitleCreateNews_Birthday() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
@@ -698,6 +712,12 @@ public class Utils_News {
                 .perform(replaceText(Data_News.DESCRIPTION_HELP));
     }
 
+    @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Description ")
+    public void clearDescriptionField_CreateNews() {
+        onView(withId(Elements_News.ID_DESCRIPTION_INPUT))
+                .perform(clearText());
+    }
+
 
     // набор методов input для создания НЕвалидных Description
     // проверить ID_DESCRIPTION_INPUT так как взят с экрана EDITING
@@ -715,9 +735,15 @@ public class Utils_News {
 
     @DisplayName("экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE")
     public void inputPublicationDateCreateNews() {
-        onView(allOf(withId(Elements_News.ID_CREATING_PUBLICATION_DATE)))
+        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(Data_News.INPUT_PUBLICATION_DATE_CREATING));
         new Utils_Helper().timerWaitingAsyncOperation500();
+    }
+
+    @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Publication date")
+    public void clearPublicationDateField_CreateNews() {
+        onView(withId(Elements_News.ID_CREATING_DATE))
+                .perform(clearText());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить валидные тестовые данные в TIME")
@@ -725,6 +751,12 @@ public class Utils_News {
         onView(allOf(withId(Elements_News.ID_CREATING_TIME)))
                 .perform(replaceText(Data_News.INPUT_TIME_CREATING));
         new Utils_Helper().timerWaitingAsyncOperation500();
+    }
+
+    @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Time")
+    public void clearTimeField_CreateNews() {
+        onView(withId(Elements_News.ID_CREATING_TIME))
+                .perform(clearText());
     }
 
     // использовать ДО отладки метода поиска/скроллинга
@@ -736,12 +768,16 @@ public class Utils_News {
 
     @DisplayName("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в PUBLICATION DATE")
     public void inputInvalidPublicationDateCreateNews() {
-        onView(allOf(withId(Elements_News.ID_CREATING_PUBLICATION_DATE)))
+        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
+                .perform(clearText());
+        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(Data_News.INPUT_INVALID_PUBLICATION_DATE_CREATING));
     }
 
     @DisplayName("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в TIME")
     public void inputInvalidTimeCreateNews() {
+        onView(allOf(withId(Elements_News.ID_TIME_INPUT)))
+                .perform(clearText());
         onView(allOf(withId(Elements_News.ID_TIME_INPUT)))
                 .perform(replaceText(Data_News.INPUT_INVALID_TIME_CREATING));
     }
@@ -760,13 +796,14 @@ public class Utils_News {
 
     @DisplayName("тест-кейс #26 / экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE / текущая дата")
     public void inputCurrentDateCreateNews() {
-        onView(allOf(withId(Elements_News.ID_CREATING_PUBLICATION_DATE)))
+        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @DisplayName("экран CREATING NEWS/ клик по кнопке SAVE")
     public void clickButtonSaveCreateNews() {
+        new Utils_Helper().timerWaitingAsyncOperation3000();
         onView(allOf(withId(Elements_News.ID_CREATING_SAVE),
                 withText(Data_News.SAVE_CREATING_TEXT),
                 withContentDescription(Data_News.SAVE_CREATING_DESCRIPTION),

@@ -28,7 +28,7 @@ public class Data_News {
     public static final String TIME_CREATED = "10:50";
 
     // использовать в CREATE в negative tests
-    public static final String DATE_INVALID = "01.01.2022";
+    public static final String DATE_INVALID = "10.10.2023";
     public static final String TIME_INVALID = "24:60";
 
     public static final String DATE_EMPTY = "";
@@ -115,8 +115,6 @@ public class Data_News {
 
 
 
-
-
     // экран Control panel FILTER
     public static final String STATUS_ACTIVE_CONTROL_FILTER = "Active";         //чек боксы на экране FILTER Control Panel
     public static final String STATUS_NOT_ACTIVE_CONTROL_FILTER = "Not active"; // чек боксы на экране FILTER Control Panel
@@ -141,8 +139,6 @@ public class Data_News {
     public static final String DESCRIPTION_MASSAGE = "Каб.407";
     public static final String DESCRIPTION_GRATITUDE = "В августе девочки и мальчики из шк. №9  провели генеральную уборку во всех комнатах хосписа";
     public static final String DESCRIPTION_HELP = "Информация у администратора";
-
-
 
 
 
@@ -171,7 +167,7 @@ public class Data_News {
     // набор тестовых данных для редактирования TITLE во всех категориях
     // набор тестовых данных для проверок после редактирования TITLE во всех категориях
     // попробовать написать метод добавления к тексту = "Редактирование", а не полной замены текста
-    public static final String TITLE_EDIT_ADVERTISEMENT = "Редактирование В Пн-Вт ожидаются перебои с доступом в интеренет через Wi-Fi";
+    public static final String TITLE_EDIT_ADVERTISEMENT = "Редактирование В Пн-Вт ожидаются перебои с доступом в интеренет Wi-Fi";
     public static final String TITLE_EDIT_BIRTHDAY = "Редактирование Мария Петровна приглашает всех на день рождения в Ср 16 августа";
     public static final String TITLE_EDIT_SALARY = "Редактирование Срочно предоставить в бухгалтерию отчеты!";
     public static final String TITLE_EDIT_TRADE_UNION = "Редактирование Собрание членов профсоюза состоится 16 августа в 18.00";
@@ -217,22 +213,18 @@ public class Data_News {
     public static final String TEXT_EMPTY_NEWS = "There is nothing here yet…";
 
     public static String getInputValidDate() {
-
         return Data_News.DATE_CREATED;
     }
 
     public static String getInputValidTime() {
-
         return Data_News.TIME_CREATED;
     }
 
     public static String getInputInvalidDate() {
-
         return Data_News.DATE_INVALID;
     }
 
     public static String getInputInvalidTime() {
-
         return Data_News.TIME_INVALID;
     }
 

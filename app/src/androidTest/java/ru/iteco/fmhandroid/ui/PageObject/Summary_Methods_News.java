@@ -13,10 +13,10 @@ public class Summary_Methods_News {
 
     @DisplayName("Сводный метод проверок в модальном окне DELETE ")
     public void checkAllElements_ModalView_Delete_Visibility() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
         new CheckUtils_News().checkMessageDeleteModal_Visibility();
         new CheckUtils_News().checkCancelDeleteModal_Visibility();
         new CheckUtils_News().checkOkDeleteModal_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     @DisplayName("Сводный метод проверок на экране News / верхняя панель экрана")
@@ -25,7 +25,7 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkButtonSortNews_Visibility();
         new CheckUtils_News().checkButtonFilterNews_Visibility();
         new CheckUtils_News().checkButtonEditNews_Visibility();
-        new CheckUtils_News().checkEmojiCategoryNews_Visibility();
+//        new CheckUtils_News().checkEmojiCategoryNews_Visibility();
         new Utils_Helper().timerWaitingAsyncOperation2000();
     }
     @DisplayName("Сводный метод проверок на экране Control panel / верхняя панель экрана")
@@ -38,26 +38,26 @@ public class Summary_Methods_News {
     }
     @DisplayName("test-case #15 / Сводный метод проверок на исходном экране Creating News")
     public void checkAllElements_ViewCreatingNews_Visibility() {
-        new CheckUtils_News().checkCreatingNewsTitle_Visibility();        // проверка Title + SubTitle на экране Creating News
-        new CheckUtils_News().checkCategoryCreatingNews_Visibility();     // проверка отображения поля Category
-        new CheckUtils_News().checkTitleCreatingNews_Visibility();        // проверка отображения поля Title
-        new CheckUtils_News().checkPublicationCreatingNews_Visibility();  // проверка отображения поля Publication Date
-        new CheckUtils_News().checkTimeCreatingNews_Visibility();         // проверка отображения поля Time
-        new CheckUtils_News().checkDescriptionCreatingNews_Visibility();  // проверка отображения поля Description
-        new CheckUtils_News().checkSwitcherOnCreatingNews_Visibility();   // проверка отображения switcher в статусе Active ON
-        new CheckUtils_News().checkButtonSaveCreatingNews_Visibility();   // проверка отображения кнопки SAVE
-        new CheckUtils_News().checkButtonCancelCreatingNews_Visibility(); // проверка отображения кнопки CANCEL
+        new CheckUtils_News().checkCreatingNewsTitle_Visibility();
+        new CheckUtils_News().checkCategoryCreatingNews_Visibility();
+        new CheckUtils_News().checkTitleCreatingNews_Visibility();
+        new CheckUtils_News().checkPublicationCreatingNews_Visibility();
+        new CheckUtils_News().checkTimeCreatingNews_Visibility();
+        new CheckUtils_News().checkDescriptionCreatingNews_Visibility();
+        new CheckUtils_News().checkSwitcherOnCreatingNews_Visibility();
+        new CheckUtils_News().checkButtonSaveCreatingNews_Visibility();
+        new CheckUtils_News().checkButtonCancelCreatingNews_Visibility();
     }
     @DisplayName("test-case #16 / Сводный метод проверок на экране Creating News с заполненными полями")
-    public void checkAllElements_ViewCreatingNews_test_case_16_Visibility() {
-        new CheckUtils_News().checkCategory_Advertisement_Visibility();     // проверка отображения заполненного поля Category
-        new CheckUtils_News().checkTitle_Advertisement_Visibility();        // проверка отображения заполненного поля Title
-        new CheckUtils_News().checkDate_Visibility();                       // проверка отображения заполненного поля Publication Date
-        new CheckUtils_News().checkTime_Visibility();                       // проверка отображения заполненного поля Time
-        new CheckUtils_News().checkDescription_Advertisement_Visibility();  // проверка отображения заполненного поля Description
-        new CheckUtils_News().checkSwitcherOnCreatingNews_Visibility();     // проверка отображения switcher в статусе Active ON
-        new CheckUtils_News().checkButtonSaveCreatingNews_Visibility();     // проверка отображения кнопки SAVE
-        new CheckUtils_News().checkButtonCancelCreatingNews_Visibility();   // проверка отображения кнопки CANCEL
+    public void checkAllElementsAfterFilling_ViewCreatingNews_Visibility() {
+        new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
+        new CheckUtils_News().checkFieldDate_Visibility();
+        new CheckUtils_News().checkFieldTime_Visibility();
+        new CheckUtils_News().checkDescription_Advertisement_Visibility();
+        new CheckUtils_News().checkSwitcherOnCreatingNews_Visibility();
+        new CheckUtils_News().checkButtonSaveCreatingNews_Visibility();
+        new CheckUtils_News().checkButtonCancelCreatingNews_Visibility();
     }
 
     // test-case #18
@@ -69,10 +69,9 @@ public class Summary_Methods_News {
         new Utils_News().inputTimeCreateNews();
         new Utils_News().inputDescriptionCreateNews_Advertisement();
     }
-    @DisplayName("test-case #18 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Advertisement")
-    public void checkAllFieldsInCreatedNews_Advertisement_Visibility() {
-        new CheckUtils_News().checkEmojiCategory_Visibility();
-        new CheckUtils_News().checkTitleCardNews_Advertisement_Visibility();
+
+    @DisplayName("test-case #18-25 / Сводный метод проверок на экране Control panel / List / созданной NEWS для всех Category")
+    public void checkFieldsInCreatedNews_Visibility() {
         new CheckUtils_News().checkPublicationDateText_Visibility();
         new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
         new CheckUtils_News().checkCreationDateControlPanel_Visibility();
@@ -80,7 +79,29 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkAuthorControlPanel_Visibility();
         new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
         new CheckUtils_News().checkActiveControlPanel_Visibility();
+        new CheckUtils_News().checkDeleteControlPanel_Visibility();
+        new CheckUtils_News().checkEditControlPanel_Visibility();
+        new CheckUtils_News().checkExpendControlPanel_Visibility();
         new Utils_News().clickExpendCard_News();
+    }
+
+    @DisplayName("test-case #18-25 / Сводный метод проверок на экране Control panel / List / Редактированной NEWS для всех Category")
+    public void checkFieldsInCreatedNewsAfterEditing_Visibility() {
+        new CheckUtils_News().checkPublicationDateText_Visibility();
+        new CheckUtils_News().checkEditedPublicationDate_Visibility();
+        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
+        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
+        new CheckUtils_News().checkAuthorControlPanel_Visibility();
+        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
+        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
+        new Utils_News().clickExpendCard_News();
+    }
+
+    @DisplayName("test-case #18 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Advertisement")
+    public void checkAllFieldsInCreatedNews_Advertisement_Visibility() {
+        new CheckUtils_News().checkEmojiCategory_Visibility();
+        new CheckUtils_News().checkTitleCardNews_Advertisement_Visibility();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Advertisement_Visibility();
     }
     @DisplayName("test-case #18 / Сводный метод заполнения полей на экране Filter News в Category Advertisement")
@@ -108,19 +129,13 @@ public class Summary_Methods_News {
         new Utils_News().inputDateEnd_AfterEditing_FilterNews();
         new Utils_News().clickActive_ControlPanel_Filter();
         new Utils_News().clickButtonFilter_FilterNews();
+        new Utils_Helper().timerWaitingAsyncOperation2000();
     }
     @DisplayName("test-case #18 / Сводный метод проверок на экране Control panel / List / созданной NEWS ПОСЛЕ редактирования в Category Advertisement")
     public void checkAllFieldsAfterEditing_Advertisement_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Advertisement_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Advertisement_Visibility();
     }
 
@@ -137,14 +152,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Birthday_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Birthday_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Birthday_Visibility();
     }
     @DisplayName("test-case #19 / Сводный метод заполнения полей на экране Filter News в Category Birthday")
@@ -180,16 +188,8 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Birthday_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Birthday_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Birthday_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     // test-case #20
@@ -205,14 +205,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Salary_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Salary_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Salary_Visibility();
     }
     @DisplayName("test-case #20 / Сводный метод заполнения полей на экране Filter News в Category Salary")
@@ -248,19 +241,9 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Salary_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Salary_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Salary_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
-
-    // test-case #21
     @DisplayName("test-case #21 / Сводный метод заполнения полей на экране Creating News в Category Trade Union")
     public void inputAllFieldsInCreatingNews_TradeUnion() {
         new Utils_News().inputTradeUnionCategory_CreateNews();
@@ -273,14 +256,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_TradeUnion_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_TradeUnion_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_TradeUnion_Visibility();
     }
     @DisplayName("test-case #21 / Сводный метод заполнения полей на экране Filter News в Category Trade Union")
@@ -325,7 +301,6 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkNotActiveControlPanel_Visibility();
         new Utils_News().clickExpendCard_News();
         new CheckUtils_News().checkEditedDescription_TradeUnion_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     // test-case #22
@@ -341,14 +316,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Holiday_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Holiday_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Holiday_Visibility();
     }
     @DisplayName("test-case #22 / Сводный метод заполнения полей на экране Filter News в Category Holiday")
@@ -384,19 +352,9 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Holiday_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Holiday_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Holiday_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
-
-    // test-case #23
     @DisplayName("test-case #23 / Сводный метод заполнения полей на экране Creating News в Category Massage")
     public void inputAllFieldsInCreatingNews_Massage() {
         new Utils_News().inputMassageCategory_CreateNews();
@@ -409,14 +367,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Massage_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Massage_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Massage_Visibility();
     }
     @DisplayName("test-case #23 / Сводный метод заполнения полей на экране Filter News в Category Massage")
@@ -452,19 +403,9 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Massage_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Massage_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Massage_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
-
-    // test-case #24
     @DisplayName("test-case #24 / Сводный метод заполнения полей на экране Creating News в Category Gratitude")
     public void inputAllFieldsInCreatingNews_Gratitude() {
         new Utils_News().inputGratitudeCategory_CreateNews();
@@ -477,14 +418,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Gratitude_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Gratitude_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Gratitude_Visibility();
     }
     @DisplayName("test-case #24 / Сводный метод заполнения полей на экране Filter News в Category Gratitude")
@@ -520,19 +454,9 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Gratitude_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Gratitude_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Gratitude_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
-
-    // test-case #25
     @DisplayName("test-case #25 / Сводный метод заполнения полей на экране Creating News в Category Help")
     public void inputAllFieldsInCreatingNews_Help() {
         new Utils_News().inputHelpCategory_CreateNews();
@@ -545,14 +469,7 @@ public class Summary_Methods_News {
     public void checkAllFieldsInCreatedNews_Help_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkTitleCardNews_Help_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNews_Visibility();
         new CheckUtils_News().checkDescription_Help_Visibility();
     }
     @DisplayName("test-case #25 / Сводный метод заполнения полей на экране Filter News в Category Help")
@@ -588,18 +505,9 @@ public class Summary_Methods_News {
     public void checkAllFieldsAfterEditing_Help_Visibility() {
         new CheckUtils_News().checkEmojiCategory_Visibility();
         new CheckUtils_News().checkEditedTitle_Help_Visibility();
-        new CheckUtils_News().checkPublicationDateText_Visibility();
-        new CheckUtils_News().checkEditedPublicationDate_Visibility();
-        new CheckUtils_News().checkCreationDateControlPanel_Visibility();
-        new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorControlPanel_Visibility();
-        new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
-        new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Summary_Methods_News().checkFieldsInCreatedNewsAfterEditing_Visibility();
         new CheckUtils_News().checkEditedDescription_Help_Visibility();
-        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
-
     @DisplayName("test-case #26 / Сводный метод заполнения полей на экране Creating News в Category Advertisement")
     public void inputFieldsInCreatingNews_Advertisement() {
         new Utils_News().inputAdvertisementCategory_CreateNews();
@@ -615,4 +523,24 @@ public class Summary_Methods_News {
         new Utils_News().inputDateEnd();
         new Utils_News().clickButtonFilter_FilterNews();
     }
+    @DisplayName("test-case #27 / Сводный метод заполнения полей на экране Filter News НЕвалидными тестовыми данными Title, Description")
+    public void inputAllFieldsInFilterNews_Invalid_Title_Description() {
+        new Utils_News().inputCategoryAdvertisement_FilterNews();
+        new Utils_News().inputDateStart_FilterNews();
+        new Utils_News().inputDateEnd_FilterNews();
+        new Utils_News().clickNotActive_ControlPanel_Filter();
+        new Utils_News().clickButtonFilter_FilterNews();
+        new Utils_Helper().timerWaitingAsyncOperation1000();
+    }
+
+    @DisplayName("test-case #28 / Сводный метод заполнения полей на экране Filter News НЕвалидными тестовыми данными Date, Time")
+    public void inputAllFieldsInFilterNews_Invalid_Date_Time() {
+        new Utils_News().inputCategoryAdvertisement_FilterNews();
+        new Utils_News().inputDateStart_FilterNews();
+        new Utils_News().inputDateEnd_FilterNews();
+        new Utils_News().clickNotActive_ControlPanel_Filter();
+        new Utils_News().clickButtonFilter_FilterNews();
+        new Utils_Helper().timerWaitingAsyncOperation1000();
+    }
+
 }

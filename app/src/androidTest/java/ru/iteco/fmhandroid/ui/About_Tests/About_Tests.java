@@ -1,7 +1,5 @@
 package ru.iteco.fmhandroid.ui.About_Tests;
 
-import androidx.test.espresso.IdlingRegistry;
-import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
@@ -13,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.PageObject.CheckUtils_About;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_About;
@@ -30,25 +27,22 @@ public class About_Tests {
             new ActivityTestRule<>(AppActivity.class);
 
     @Before
-    public void registerIdlingResources() {
-        IdlingRegistry.getInstance().register(ProjectIdlingResources.idlingResource);
+    public void startUp() {
 
-        try {
-            new Utils_Auth().checkTitleOnAuthView();
-        } catch (NoMatchingViewException e) {
-            new Utils_Auth().logOut();
-        }
+        new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Auth().authorizationUtility();
+        new Utils_Helper().timerWaitingAsyncOperation3000();
     }
 
     @After
-    public void unregisterIdlingResources() {
-        IdlingRegistry.getInstance().unregister(ProjectIdlingResources.idlingResource);
+    public void logOut() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
         new Utils_Auth().logOutUtility();
     }
 
+    // работает 05.11.2023
     @Test
-    @DisplayName("Тестирование отображения элементов и функциональности на экране About")
+    @DisplayName("Positive test. Test-case # 28 / Тестирование отображения элементов и функциональности на экране About")
     public void viewAboutTest() {
         new Utils_Menu().buttonMenu();
         new Utils_Menu().buttonAbout();
@@ -60,7 +54,7 @@ public class About_Tests {
         new Utils_About().returnFromBrowserToApp();
         new Utils_About().clickTermsOfUse();
         new Utils_About().returnFromBrowserToApp();
-        new Utils_Helper().buttonBackAboutUtility();
+        new Utils_About().buttonBackAboutUtility();
     }
 }
 

@@ -7,6 +7,8 @@ import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasData;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.allOf;
 
 import android.content.Intent;
 
@@ -17,11 +19,13 @@ import androidx.test.uiautomator.UiDevice;
 
 import org.hamcrest.core.AllOf;
 
+import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_About;
 
 
 public class Utils_About {
 
+    @DisplayName("экран About / переход по гиперссылке на страницу Privacy Policy")
     public void clickPrivacyPolicy() {
         ViewInteraction url = onView(
                 AllOf.allOf(withId(Elements_About.ID_PRIVACY_POLICY_VALUE)));
@@ -33,6 +37,7 @@ public class Utils_About {
         Intents.release();
     }
 
+    @DisplayName("экран About / переход по гиперссылке на страницу Terms Of Use")
     public void clickTermsOfUse() {
         ViewInteraction url = onView(
                 AllOf.allOf(withId(Elements_About.ID_TERMS_OF_USE_VALUE)));
@@ -44,9 +49,17 @@ public class Utils_About {
         Intents.release();
     }
 
+    @DisplayName("страница браузера / возврат в приложение")
     public void returnFromBrowserToApp() {
         UiDevice app;
         app = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         app.pressBack();
+    }
+
+    @DisplayName("экран About / клик по кнопке Back")
+    public void buttonBackAboutUtility() {
+        ViewInteraction clickLogOut = onView(
+                allOf(withId(Elements_About.ID_BUTTON_BACK)));
+        clickLogOut.perform(click());
     }
 }

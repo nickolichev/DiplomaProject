@@ -56,7 +56,7 @@ public class Elements_News {
     public static final int ID_CREATING_SUB_TITLE = R.id.custom_app_bar_sub_title_text_view;    // TITLE_NEWS = "News";
     public static final int ID_CREATING_CATEGORY_TEXT = R.id.news_item_category_text_auto_complete_text_view; // CATEGORY_TEXT = "Category";
     public static final int ID_CREATING_TITLE_TEXT = R.id.news_item_title_text_input_edit_text; // TITLE_TEXT = "Title";
-    public static final int ID_CREATING_PUBLICATION_DATE = R.id.news_item_publish_date_text_input_edit_text; // PUBLICATION_DATE_TEXT = "Publication date";
+    public static final int ID_CREATING_DATE = R.id.news_item_publish_date_text_input_edit_text; // PUBLICATION_DATE_TEXT = "Publication date";
     public static final int ID_CREATING_TIME = R.id.news_item_publish_time_text_input_edit_text; // TIME_CREATING = "Time";
     public static final int ID_CREATING_DESCRIPTION = R.id.news_item_description_text_input_edit_text; // DESCRIPTION_CREATING = "Description";
     public static final int ID_CREATING_SWITCH = R.id.switcher; // SWITCH_ON_CREATING = "Active ON"; / SWITCH_OFF_CREATING = "Not active OFF";
@@ -97,7 +97,7 @@ public class Elements_News {
     // использовать
     // public static final int ID_CATEGORY_FOR_ALL = R.id.news_item_category_text_auto_complete_text_view; // CATEGORY_FOR_ALL = "Category"
 
-    public static final int ID_DATE_INPUT = R.id.news_item_publish_date_text_input_edit_text;  // DATE_CREATED = "15.11.2023" / DATE_EMPTY = "" / DATE_EDITED = "10.12.2023"
+    public static final int ID_DATE_INPUT = R.id.news_item_publish_date_text_input_edit_text;  // DATE_CREATED = "28.11.2023" / DATE_EMPTY = "" / DATE_EDITED = "10.12.2023"
     public static final int ID_TIME_INPUT = R.id.news_item_publish_time_text_input_edit_text;  // TIME_CREATED = "10:50" / TIME_EMPTY = "" / TIME_EDITED = "12:30"
 
     public static final int ID_TITLE_INPUT = R.id.news_item_title_text_input_edit_text; //
