@@ -41,14 +41,12 @@ public class Elements_Claim {
     public static final int ID_AUTHOR_VALUE_CARD = R.id.author_name_text_view;            // value
 
     public static final int ID_CREATED_DESCRIPTION_CARD = R.id.create_data_label_text_view;           // text
-//    public static final int ID_CREATED_DATE_VALUE_CARD = R.id.create_data_text_view;                // value не проверяем
+    public static final int ID_CREATED_DATE_VALUE_CARD = R.id.create_data_text_view;
+    public static final int ID_COMMENTATOR_VALUE_CARD = R.id.commentator_name_text_view;
 //    public static final int ID_CREATED_TIME_VALUE_CARD = R.id.create_time_text_view;                // value не проверяем
 
     public static final int ID_COMMENT_VALUE_CARD = R.id.comment_description_text_view;    // value
     public static final int ID_COMMENT_BUTTON_EDIT = R.id.edit_comment_image_button;       // icon
-
-    public static final int ID_COMMENTATOR_VALUE_CARD = R.id.commentator_name_text_view;
-
     public static final int ID_COMMENT_DATE_VALUE_CARD = R.id.comment_date_text_view;
     public static final int ID_COMMENT_TIME_VALUE_CARD = R.id.comment_time_text_view;
 
@@ -56,7 +54,7 @@ public class Elements_Claim {
     public static final int ID_BUTTON_CLOSE = R.id.close_image_button;                          // icon Для всех статусов
 
 
-    // экран Create + Edit Comment создание/редактирование/проверка
+    // экран Create создание/редактирование/проверка
     public static final int ID_CONTAINER_COMMENT_CARD = R.id.claim_comments_list_recycler_view;        // контейнер комментария
     public static final int ID_ADD_COMMENT_CARD = R.id.comments_material_card_view;               // text Add comment
     public static final int ID_ADD_COMMENT_BUTTON_CARD = R.id.add_comment_image_button;           // icon
@@ -64,8 +62,6 @@ public class Elements_Claim {
     public static final int ID_CONTENT_COMMENT = R.id.comment_description_text_view;              // поле comment c текстом
     public static final int ID_ICON_EDIT_COMMENT = R.id.edit_comment_image_button;                // кнопка редактировать comment
     public static final int ID_INPUT_COMMENT = R.id.comment_text_input_layout;                    // ввод текста comment
-    public static final int ID_CANCEL_COMMENT = R.id.cancel_button;                               // кнопка CANCEL в окне Comment
-    public static final int ID_SAVE_COMMENT = R.id.save_button;                                   // кнопка SAVE в окне Comment
 
     public static final int ID_INPUT_EDIT_COMMENT = R.id.description_edit_text;                   // поле с редактируемым Comment
     public static final int ID_INPUT_EDIT_COMMENT_PARENT = R.id.description_edit_text;            // родитель поля с редактируемым Comment
@@ -77,7 +73,10 @@ public class Elements_Claim {
     public static final int ID_CHANGE_TO_EXECUTE_CARD = android.R.id.title;                           // icon
     public static final int ID_CHANGE_TAKE_TO_WORK_CARD = android.R.id.title;                         // icon
     public static final int ID_CHANGE_CANCEL_CARD = android.R.id.title;                               // icon
-
+    public static final int ID_MODAL_VIEW_COMMENT = R.id.editText;
+    public static final int ID_MODAL_VIEW_CANCEL = android.R.id.button2;
+    public static final int ID_MODAL_VIEW_OK = android.R.id.button1;
+    public static final int ID_MODAL_VIEW_INPUT_COMMENT = R.id.editText;
 
     // модальное окно FILTER
     public static final int ID_FILTERS_BUTTON = R.id.filters_material_button;
@@ -94,12 +93,18 @@ public class Elements_Claim {
 
     // окно Creating Claim
     public static final int ID_TITLE_APP_BAR = R.id.custom_app_bar_title_text_view;
+    public static final int ID_SUB_TITLE_APP_BAR = R.id.custom_app_bar_sub_title_text_view;
+    public static final int ID_PARENT_FIELD_TITLE =  R.id.title_text_input_layout;
+    public static final int ID_PARENT_FIELD_EXECUTOR =  R.id.executor_drop_menu_text_input_layout;
+    public static final int ID_PARENT_FIELD_DATE =  R.id.date_in_plan_text_input_layout;
+    public static final int ID_PARENT_FIELD_TIME =  R.id.time_in_plan_text_input_layout;
+    public static final int ID_PARENT_FIELD_DESCRIPTION =  R.id.description_text_input_layout;
     public static final int ID_FIELD_TITLE = R.id.title_edit_text;
     public static final int ID_FIELD_DATE = R.id.date_in_plan_text_input_edit_text;
     public static final int ID_FIELD_TIME = R.id.time_in_plan_text_input_edit_text;
     public static final int ID_CANCEL_MODAL_VIEW = android.R.id.button2;
     public static final int ID_OK_MODAL_VIEW = android.R.id.button1;
-    public static final int ID_CANCEL_CREATING_Claims = R.id.cancel_button;
+    public static final int ID_CANCEL_CREATING_CLAIMS = R.id.cancel_button;
     public static final int ID_FIELD_DESCRIPTION = R.id.description_edit_text;
     public static final int ID_SAVE_CREATING_Claims = R.id.save_button;
     public static final int ID_FIELD_EXECUTOR = R.id.executor_drop_menu_auto_complete_text_view;
@@ -114,6 +119,13 @@ public class Elements_Claim {
 
     // Editing Claim
     public static final int ID_EDIT_CARD_BUTTON_CARD = R.id.edit_processing_image_button;       // icon Для всех статусов
+    public static final int ID_TITLE_EDITING = R.id.custom_app_bar_title_text_view;
+    public static final int ID_SUB_TITLE_CLAIMS = R.id.custom_app_bar_sub_title_text_view;
+    public static final int ID_DROPDOWN_EXECUTOR = com.google.android.material.R.id.text_input_end_icon;
+    public static final int ID_COUNTER = com.google.android.material.R.id.textinput_counter;
 
+    // Editing Comment
+    public static final int ID_SAVE_EDITING_COMMENT = R.id.save_button;
+    public static final int ID_CANCEL_EDITING_COMMENT = R.id.cancel_button;
 
 }

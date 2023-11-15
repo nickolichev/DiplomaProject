@@ -40,7 +40,7 @@ public class About_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 05.11.2023
+    // работает 14.11.2023
     @Test
     @DisplayName("Positive test. Test-case # 28 / Тестирование отображения элементов и функциональности на экране About")
     public void viewAboutTest() {

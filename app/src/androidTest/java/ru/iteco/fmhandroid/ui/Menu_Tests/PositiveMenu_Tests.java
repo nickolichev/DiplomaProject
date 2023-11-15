@@ -24,14 +24,14 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Helper;
 import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
 
 @LargeTest
-    @RunWith(AndroidJUnit4.class)
-    public class PositiveMenu_Tests {
+@RunWith(AndroidJUnit4.class)
+public class PositiveMenu_Tests {
     ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
 //    CardIdlingResource cardIdlingResource = new CardIdlingResource();
 
-        @Rule
-        public ActivityTestRule<AppActivity> mActivityScenarioRule =
-                new ActivityTestRule<>(AppActivity.class);
+    @Rule
+    public ActivityTestRule<AppActivity> mActivityScenarioRule =
+            new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void startUp() {
@@ -46,25 +46,25 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 05.11.23
+    // работает 14.11.23
     @Test
-        @DisplayName("Positive test. Test-case # 4 / Навигация в MENU")
-        public void navigationMenuTest() {
-            new CheckUtils_Main().checkIconMenu_Visibility();
-            new Utils_Menu().buttonMenu();
-            new CheckUtils_Menu().checkLineVisibilityNews();
-            new CheckUtils_Menu().checkLineVisibilityClaims();
-            new CheckUtils_Menu().checkLineVisibilityAbout();
-            new Utils_Menu().buttonClaims();
-            new CheckUtils_Claims().checkTitleClaims_Visibility();
-            new Utils_Menu().buttonMenu();
-            new Utils_Menu().buttonNews();
-            new CheckUtils_News().checkTitleNews_Visibility();
-            new Utils_Menu().buttonMenu();
-            new Utils_Menu().buttonAbout();
-            new CheckUtils_About().checkTitleAbout_Visibility();
-            new Utils_About().buttonBackAboutUtility();
-        }
+    @DisplayName("Positive test. Test-case # 4 / Навигация в MENU")
+    public void navigationMenuTest() {
+        new CheckUtils_Main().checkIconMenu_Visibility();
+        new Utils_Menu().buttonMenu();
+        new CheckUtils_Menu().checkLineVisibilityNews();
+        new CheckUtils_Menu().checkLineVisibilityClaims();
+        new CheckUtils_Menu().checkLineVisibilityAbout();
+        new Utils_Menu().buttonClaims();
+        new CheckUtils_Claims().checkTitleClaims_Visibility();
+        new Utils_Menu().buttonMenu();
+        new Utils_Menu().buttonNews();
+        new CheckUtils_News().checkTitleNews_Visibility();
+        new Utils_Menu().buttonMenu();
+        new Utils_Menu().buttonAbout();
+        new CheckUtils_About().checkTitleAbout_Visibility();
+        new Utils_About().buttonBackAboutUtility();
     }
+}
 
 

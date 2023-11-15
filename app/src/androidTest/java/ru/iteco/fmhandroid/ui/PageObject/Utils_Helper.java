@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.PageObject;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.swipeUp;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
@@ -10,7 +11,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
@@ -20,8 +20,12 @@ import android.view.ViewParent;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.IdlingResource;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.PerformException;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -32,6 +36,14 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ProjectIdlingResources;
@@ -77,12 +89,13 @@ public class Utils_Helper {
     }
 
     public static int getPositionOfItemInView(Matcher<View> matcher) {
-    // Ищем элемент внутри RecyclerView, соответствующий заданному Matcher
-    onData(matcher).inAdapterView(withId(R.id.claim_list_recycler_view)).atPosition(0).check(matches(isDisplayed()));
+        // Ищем элемент внутри RecyclerView, соответствующий заданному Matcher
+        onData(matcher).inAdapterView(withId(R.id.claim_list_recycler_view)).atPosition(0).check(matches(isDisplayed()));
 
-    // Возвращаем позицию элемента
-    return 0; // Здесь пока просто возвращается 0, нужно дополнить код для получения позиции
-}
+        // Возвращаем позицию элемента
+        return 0; // Здесь пока просто возвращается 0, нужно дополнить код для получения позиции
+    }
+
     public static Matcher<View> atPosition(final int position, final Matcher<View> itemMatcher) {
         return new BoundedMatcher<View, RecyclerView>(RecyclerView.class) {
             @Override
@@ -213,9 +226,47 @@ public class Utils_Helper {
             idlingResource.decrement();
         }
     }
+
     @DisplayName("вспомогательный метод для взаимодействия с view при открытом модальном окне")
     public void backSystemButton() {
         Espresso.pressBack();
+    }
+
+    @DisplayName("метод обхода BUG в test-case #7 / При создании Claim вставляем дату, но при проверке созданной Claim видим Time +1 час")
+        public static String addOneHour(String inputTime) {
+        DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+            // Преобразование строки в LocalTime
+            LocalTime time = LocalTime.parse(inputTime, TIME_FORMATTER);
+
+            // Увеличение времени на 1 час
+            LocalTime newTime = time.plusHours(2);
+
+            // Форматирование нового времени в строку
+            return newTime.format(TIME_FORMATTER);
+        }
+
+    @DisplayName("метод обхода BUG в test-case #7 / При создании Comment / генерируется дата -1 день к дате создания Claim, хотя Comment создается в эту же дату")
+    public static String subtractOneDay(String inputDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+
+        try {
+            // Преобразование строки в Date
+            Date date = dateFormat.parse(inputDate);
+
+            // Уменьшение даты на 1 день
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+            // Получение новой даты
+            Date newDate = calendar.getTime();
+
+            // Форматирование новой даты в строку
+            return dateFormat.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace(); // Обработка или логирование исключения
+            return null; // или другой подходящий результат в случае ошибки
+        }
     }
 
     public static boolean isItemAtPositionVisible(int position) {
@@ -285,7 +336,7 @@ public class Utils_Helper {
                 // new UtilsHelper().beginAsyncOperation();
                 // Делаем скроллинг только если не последняя попытка
                 Espresso.onView(allOf(
-                        withId(Elements_Claim.ID_LIST_CARDS),
+                                withId(Elements_Claim.ID_LIST_CARDS),
                                 isDisplayed()))
                         .perform(RecyclerViewActions.scrollToPosition(attempt));
             } else {
@@ -297,109 +348,61 @@ public class Utils_Helper {
         return found;
     }
 
-//    @DisplayName("скроллинг листа CLAIMS")
-//    public static int findListItemByText(String topicText) {
-//        int maxScrollAttempts = 400; // Максимальное количество попыток скроллинга
-//
-//        Matcher<View> topicTextMatcher = allOf(
-//                withId(Elements_Claim.ID_TOPIC_TEXT_LIST),
-//                withText(topicText),
-//                isDisplayed());
-//        int pos;
-//        System.out.println("start scrolling");
-//        pos = findListItemAmongVisible(topicText);
-//        if (pos != -1) {
-//            return pos;
-//        }
-//        for (pos = 0; pos <= maxScrollAttempts; pos++) {
-//            onView(allOf(
-//                    withId(Elements_Claim.ID_LIST_CARDS),
-//                    isDisplayed()))
-//                    .perform(RecyclerViewActions.scrollToPosition(pos));
-//            try {
-//                System.out.println("on position " + pos);
-//                onView(withIndex(topicTextMatcher, 0))
-//                        .check(matches(isDisplayed()));
-//                System.out.println("Found position " + pos+", break");
-//                break; // Элемент найден, выходим из цикла
-//            } catch (NoMatchingViewException ex) {
-//                // Элемент не найден, продолжаем скроллинг
-//            }
-//        }
-
-//        if (pos > maxScrollAttempts) {
-//            System.out.println("Did not find position");
-//            return -1;
-//        }
-//        System.out.println("Exiting with found position " + pos);
-//        return pos;
-//    }
-
-//    private static int findListItemAmongVisible(String topicText) {
-//        Matcher<View> topicTextMatcher = allOf(
-//                withId(Elements_Claim.ID_TOPIC_TEXT_LIST),
-//                withText(topicText),
-//                isDisplayed());
-//        // Iterate through the cards
-//        System.out.println("findListItemAmongVisible - start");
-//        for (int i = 0; i < 7; i++) {
-//            // Find the card view with the same id and index i
-//            try {
-//                System.out.println("on position " + i);
-//                onView(childCardAtPositionWithTopicTextUnderParent(
-//                        withId(R.id.claim_list_recycler_view),
-//                        i,
-//                        topicText))
-//                        .check(matches(isDisplayed()));
-////                onView(childCardAtPositionWithTopicText(topicTextMatcher, i))
-////                        .check(matches(isDisplayed()));
-//                System.out.println("Found position " + i+", break");
-//                break; // Элемент найден, выходим из цикла
-//            } catch (NoMatchingViewException ex) {
-//                // Элемент не найден, продолжаем скроллинг
-//                System.out.println("NoMatchingViewException " + ex.toString());
-//            } catch (Exception ex) {
-//                System.out.println("Exception found! " + ex.toString());
-//                return -1;
-//            }
-//        }
-//        return -1;
-//    }
-
-    private static int getParentLevel() {
-        String topicText = "Fake Title iteration #2";
+    public static boolean tryClickOnListItemByTextWithoutScrolling(String topicText)  {
         try {
-            onView(allOf(withId(R.id.description_material_text_view),
-                    withText(topicText),
-                    withParent(withParent(withParent(withId(R.id.claim_list_recycler_view))))
-            ))
-                    .check(matches(isDisplayed()));
-            return 3;
-        } catch (Exception ex) {
-        }
+            Matcher<View> topicTextMatcher = ViewMatchers.hasDescendant(
+                    ViewMatchers.withText(topicText)
+            );
 
-        try {
-            onView(allOf(withId(R.id.description_material_text_view),
-                    withText(topicText),
-                    withParent(withParent(withParent(withParent(withId(R.id.claim_list_recycler_view)))))
-            ))
-                    .check(matches(isDisplayed()));
-            return 4;
-        } catch (Exception ex) {
-        }
+            System.out.println("tryClickOnListItemByTextWithoutScrolling - start: " + topicText);
 
-        try {
-            onView(allOf(withId(R.id.description_material_text_view),
-                    withText(topicText),
-                    withParent(withParent(withParent(withParent(withParent(withId(R.id.claim_list_recycler_view))))))
-            ))
-                    .check(matches(isDisplayed()));
-            return 5;
-        } catch (Exception ex) {
-        }
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(RecyclerViewActions.actionOnItem(topicTextMatcher, click()));
 
-        return -1;
+            System.out.println("tryClickOnListItemByTextWithoutScrolling - clicked!");
+            return true;
+        } catch (NoMatchingViewException ex) {
+            System.out.println("tryClickOnListItemByTextWithoutScrolling - didn't find");
+            System.out.println("exc:" + ex.toString());
+            return false;
+        }
     }
+
+    @DisplayName("скроллинг листа CLAIMS")
+    public static int findListItemByText(String topicText) {
+        int maxScrollAttempts = 400; // Максимальное количество попыток скроллинга
+
+        Matcher<View> topicTextMatcher = allOf(
+                withId(Elements_Claim.ID_TOPIC_TEXT_LIST),
+                withText(topicText),
+                isDisplayed());
+        int pos;
+        System.out.println("start scrolling");
+        for (pos = 0; pos <= maxScrollAttempts; pos++) {
+            onView(allOf(
+                    withId(Elements_Claim.ID_LIST_CARDS),
+                    isDisplayed()))
+                    .perform(RecyclerViewActions.scrollToPosition(pos));
+            try {
+                System.out.println("on position " + pos);
+                onView(withIndex(topicTextMatcher, 0))
+                        .check(matches(isDisplayed()));
+                System.out.println("Found position " + pos+", break");
+                break; // Элемент найден, выходим из цикла
+            } catch (NoMatchingViewException ex) {
+                // Элемент не найден, продолжаем скроллинг
+            }
+        }
+
+        if (pos > maxScrollAttempts) {
+            System.out.println("Did not find position");
+            return -1;
+        }
+        System.out.println("Exiting with found position " + pos);
+        return pos;
+    }
+
+
 
     // скроллинг списка Comment в раскрытой карточке
     @DisplayName("скроллинг списка Comment в раскрытой карточке CLAIM")
@@ -450,6 +453,7 @@ public class Utils_Helper {
                 // Добавление описания родительского матчера в описание
                 parentMatcher.describeTo(description);
             }
+
             // Метод matchesSafely проверяет, соответствует ли элемент view критериям поиска
             @Override
             public boolean matchesSafely(View view) {
@@ -463,96 +467,24 @@ public class Utils_Helper {
         };
     }
 
-//    @DisplayName("создание Hamcrest матчера, который ищет дочерний элемент внутри родительского элемента на указанной позиции")
-//    public static org.hamcrest.Matcher<View> childCardAtPositionWithTopicTextUnderParent(
-//            final Matcher<View> parentMatcher,
-//            final int position,
-//            final String topicText) {
-//        // Создание нового TypeSafeMatcher для работы с элементами пользовательского интерфейса
-//        return new TypeSafeMatcher<View>() {
-//            // Метод describeTo используется для описания ожидаемого поведения матчера
-//            @Override
-//            public void describeTo(Description description) {
-//                description.appendText("Child with topic at position " + position + " in parent ");
-//                // Добавление описания родительского матчера в описание
-//                parentMatcher.describeTo(description);
-//            }
-//            // Метод matchesSafely проверяет, соответствует ли элемент view критериям поиска
-//            @Override
-//            public boolean matchesSafely(View view) {
-//
-//                if (!parentMatcher.matches(view)) {
-//                    return false;
-//                }
-//                System.out.println("matchesSafely - start");
-//                View container2 = ((ViewGroup) view).getChildAt(position);
-//
-//                try {
-////                    onView(allOf(
-////                            withId(R.id.description_material_text_view),
-////                            withText(topicText),
-////                            withParent(withParent(withId(R.id.claim_list_recycler_view)))
-////                    ))
-////                            .check(matches(isDisplayed()));
-//                    ViewInteraction child = onView(allOf(
-//                            withId(R.id.description_material_text_view),
-//                            withText(topicText)));
-//                    child.check(matches(isDescendantOfA(parentMatcher)));
-//                    return true;
-//                } catch (NoMatchingViewException ex) {
-//                    return false;
-//                }
-//            }
-//        };
-//    }
-
-    @DisplayName("создание Hamcrest матчера, который ищет дочерний элемент внутри родительского элемента на указанной позиции")
-    public static Matcher<View> childCardAtPositionWithTopicText(
+    static Matcher<View> childAtPositionCalendar(
             final Matcher<View> parentMatcher, final int position) {
-        // Создание нового TypeSafeMatcher для работы с элементами пользовательского интерфейса
+
         return new TypeSafeMatcher<View>() {
-            // Метод describeTo используется для описания ожидаемого поведения матчера
             @Override
             public void describeTo(Description description) {
-                description.appendText("Child with topic at position " + position + " in parent ");
-                // Добавление описания родительского матчера в описание
+                description.appendText("Child at position " + position + " in parent ");
                 parentMatcher.describeTo(description);
             }
-            // Метод matchesSafely проверяет, соответствует ли элемент view критериям поиска
+
             @Override
             public boolean matchesSafely(View view) {
-
-                if (!parentMatcher.matches(view)) {
-                    return false;
-                }
-                System.out.println("matchesSafely - start");
-                System.out.println("matchesSafely - matches. " + view.getId());
-                // Получение родительского элемента view
-                ViewParent parentLevel2 = view.getParent().getParent(); // card
-                ViewParent parentLevel3 = parentLevel2.getParent(); //recycler
-
-                if (parentLevel2 instanceof View) {
-                    System.out.println("matchesSafely - parentlevel2_id: " + ((View)parentLevel2).getId());
-                }
-                if (parentLevel3 instanceof View) {
-                    System.out.println("matchesSafely - parentlevel3_id: " + ((View)parentLevel3).getId());
-                }
-
-                if (parentLevel3 instanceof ViewGroup) {
-                    System.out.println("parentLevel3 instanceof ViewGroup:");
-                }
-
-
-                // Проверка, что родитель - это ViewGroup и он соответствует критериям parentMatcher
-                return parentLevel3 instanceof ViewGroup
-                    // Проверка, что элемент view находится на указанной позиции внутри ViewGroup
-                    && parentLevel2.equals(
-                        ((ViewGroup) parentLevel3).getChildAt(position)
-                );
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
     }
-
     public static Matcher<View> withIndex(
             final Matcher<View> parentMatcher, final int index) {
         // Создание нового TypeSafeMatcher для работы с элементами пользовательского интерфейса
@@ -567,6 +499,7 @@ public class Utils_Helper {
                 // Добавление описания родительского матчера в описание
                 parentMatcher.describeTo(description);
             }
+
             // Метод matchesSafely проверяет, соответствует ли элемент view критериям поиска
             @Override
             public boolean matchesSafely(View view) {
@@ -588,6 +521,62 @@ public class Utils_Helper {
         }
     }
 
+    @DisplayName("Под WaitFor, который не является стандартным методом Espresso")
+    public static ViewAction waitFor(final Matcher<View> viewMatcher, final long millis) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return ViewMatchers.isAssignableFrom(View.class);
+            }
+
+            @Override
+            public String getDescription() {
+                return "Wait for " + millis + " milliseconds.";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                final IdlingResource idlingResource = new ViewIdlingResource(viewMatcher, view);
+                try {
+                    IdlingRegistry.getInstance().register(idlingResource);
+                    uiController.loopMainThreadForAtLeast(millis);
+                } finally {
+                    IdlingRegistry.getInstance().unregister(idlingResource);
+                }
+            }
+        };
+    }
+
+    @DisplayName("Под public static ViewAction waitFor")
+    private static class ViewIdlingResource implements IdlingResource {
+        private final Matcher<View> viewMatcher;
+        private final View view;
+        private ResourceCallback resourceCallback;
+
+        ViewIdlingResource(Matcher<View> viewMatcher, View view) {
+            this.viewMatcher = viewMatcher;
+            this.view = view;
+        }
+
+        @Override
+        public String getName() {
+            return "ViewIdlingResource";
+        }
+
+        @Override
+        public boolean isIdleNow() {
+            boolean idle = viewMatcher.matches(view);
+            if (idle && resourceCallback != null) {
+                resourceCallback.onTransitionToIdle();
+            }
+            return idle;
+        }
+
+        @Override
+        public void registerIdleTransitionCallback(ResourceCallback resourceCallback) {
+            this.resourceCallback = resourceCallback;
+        }
+    }
 
     @DisplayName("определяется Hamcrest матчер, который проверяет, является ли элемент потомком родительского элемента, соответствующего переданному parentMatcher")
     public static Matcher<View> isDescendantOfA(final Matcher<View> parentMatcher) {

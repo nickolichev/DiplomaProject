@@ -14,6 +14,8 @@ import android.view.View;
 import org.hamcrest.core.IsInstanceOf;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.resourceIDData.Elements_About;
+import ru.iteco.fmhandroid.ui.testData.Data_About;
 
 public class CheckUtils_About {
 
@@ -27,6 +29,7 @@ public class CheckUtils_About {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_About.TITLE_VERSION_TEXT)));
     }
+
     @DisplayName("экран About / проверяем отображение Version")
     public void checkVersionValueVisibility() {
         onView(allOf(withId(Elements_About.ID_VERSION_VALUE), withText(Data_About.VERSION_VALUE_TEXT),
@@ -35,6 +38,7 @@ public class CheckUtils_About {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_About.VERSION_VALUE_TEXT)));
     }
+
     @DisplayName("экран About / проверяем отображение текста и ссылки Privacy Policy")
     public void checkPrivacyPolicyVisibility() {
         onView(allOf(withId(Elements_About.ID_PRIVACY_POLICY), withText(Data_About.PRIVACY_POLICY_TEXT),
@@ -48,6 +52,7 @@ public class CheckUtils_About {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_About.PRIVACY_POLICY_VALUE_TEXT)));
     }
+
     @DisplayName("экран About / проверяем отображение текста и ссылки Terms Of Use")
     public void checkTermsOfUseVisibility() {
         onView(allOf(withId(Elements_About.ID_TERMS_OF_USE), withText(Data_About.TERMS_OF_USE_TEXT),

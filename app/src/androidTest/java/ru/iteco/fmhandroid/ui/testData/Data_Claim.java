@@ -10,6 +10,10 @@ public class Data_Claim {
     public static final String EXECUTOR_TEXT = "Executor";
     public static final String EXECUTOR_VALUE_EMPTY = ""; //для статуса OPEN
     public static final String PLAN_DATE_TEXT = "Plan date";
+    public static final String DATE_TEXT = "Date";
+    public static final String TIME_TEXT = "Time";
+    public static final String DESCRIPTION_TEXT = "Description";
+
     public static final String PLAN_DATE_VALUE_DATE = getInputValidDate();
     public static final String PLAN_DATE_VALUE_TIME = getInputValidTime();
     public static final String INV_PLAN_DATE_DATE = getInputInvalidDate();
@@ -39,6 +43,7 @@ public class Data_Claim {
     public static final String FIELD_COMMENT = "Comment";
     public static final String ADD_COMMENT_BUTTON_TEXT_CARD = "button add comment";
     public static final String EDIT_COMMENT_BUTTON_TEXT_CARD = "button edit comment";
+    public static final String AUTHOR_COMMENT = "Ivanov Ivan Ivanovich";
 
     public static final String BUTTON_CANCEL_COMMENT = "CANCEL";               // текст кнопки в создать/редактировать Comment
     public static final String BUTTON_CANCEL_COMMENT_DESCRIPTION = "Cancel";   // description кнопки в создать/редактировать Comment
@@ -53,7 +58,13 @@ public class Data_Claim {
     public static final String CANCELLED_STATUS_TEXT = "Cancelled";     // для чек-бокса
     public static final String CANCELED_STATUS_TEXT = "Canceled";       // для карточки
 
-
+    // модальное окно Comment (при смене статуса)
+    public static final String COMMENT_TEXT_MODAL_VIEW = "Comment";
+    public static final String CANCEL_TEXT_MODAL_VIEW = "CANCEL";
+    public static final String CANCEL_CLICK_MODAL_VIEW = "Cancel";
+    public static final String OK_TEXT_MODAL_VIEW = "OK";
+    public static final String COMMENT_OPEN_INPUT_MODAL_VIEW = "Смена статуса Claim на Open";
+    public static final String COMMENT_EXECUTED_INPUT_MODAL_VIEW = "Смена статуса Claim на Executed";
 
     // VALID Создание новой Claim  / тестовые данные VALID
     // Для соблюдения независмости тестов требуются отдельные методы с полным циклом создания/редактирования
@@ -64,6 +75,7 @@ public class Data_Claim {
     // внесения изменений в тестируемые карточки другими пользователями приложения
     public static final String INPUT_TITLE_7 = "Новая претензия без исполнителя + статус Open / 50"; //тест-кейс 7
     public static final String INPUT_TITLE_8 = "newClaim Open + перевод в In Progress"; //тест-кейс 8
+    public static final String INPUT_EDITING_TITLE_8 = "newClaimOpen + перевод в In Progress+EditingClaims"; //тест-кейс 8
     public static final String INPUT_TITLE_9 = "Create claim status In Progress+try customExecutor"; //тест-кейс 9
 
 
@@ -71,14 +83,10 @@ public class Data_Claim {
     public static final String INPUT_TITLE_11 = "#5 Смена статуса In progress - Open через ThrowOff"; //тест-кейс 11
     public static final String INPUT_TITLE_12 = "#6 Смена статуса Open -Cancelled через Cancel";      //тест-кейс 12
     public static final String INPUT_TITLE_13 = "#7 Смена InProgress на Executed через \"to execute\"";//тест-кейс 13
-
-
     public static final String INPUT_DESCRIPTION_7 = "Testing the functionality Creating a new claim!!!!"; //тест-кейс 7
     public static final String INPUT_DESCRIPTION_8 = "Testing functionality \"From Open status to In Progress status\""; //тест-кейс 8
+    public static final String INPUT_EDITING_DESCRIPTION_8 = "Editing Claims \"From Open status to In Progress status\""; //тест-кейс 8
     public static final String INPUT_DESCRIPTION_9 = "Description for test-case #9";                               //тест-кейс 9
-
-
-
     public static final String INPUT_DESCRIPTION_10 = "Смена статуса Open на In Progress через назначение Executor"; //тест-кейс 10
     public static final String INPUT_DESCRIPTION_11 = "Редактирование статуса In Progress на Open через button change"; //тест-кейс 11
     public static final String INPUT_DESCRIPTION_12 = "Редактирование статуса Open на Cancelled через button change"; //тест-кейс 12
@@ -103,12 +111,25 @@ public class Data_Claim {
     public static final String CANCEL_CREATING_CLAIMS = "Cancel"; //Text + description
     public static final String SAVE_CREATING_CLAIMS = "Save";     //Text + description
     public static final String INPUT_DATE = "12.10.2023";
-    public static final String INPUT_TIME = "01:35";
+    public static final String INPUT_TIME = "02:35";
 
 
     // Editing Claim
+    public static final String TITLE_EDITING = "Editing";
+    public static final String SUB_TITLE_CLAIMS = "Claims";
+    public static final String PLACEHOLDER_EXECUTOR = "Executor";
+    public static final String DROPDOWN_EXECUTOR = "Show dropdown menu";
+
     public static final String EDIT_CARD_BUTTON_TEXT_CARD = "button settings";
 //    public static final String BUTTON_EDIT_COMMENT_TEXT_CARD = "button edit comment";
+    public static final String MAX_ALLOWED_CHARACTERS = "50";
+
+    // Editing Comment
+    public static final String SAVE_EDIT_COMMENT = "SAVE";
+    public static final String SAVE_EDIT_COMMENT_DESCRIPTION = "Save";
+    public static final String CANCEL_EDIT_COMMENT = "CANCEL";
+    public static final String CANCEL_EDIT_COMMENT_DESCRIPTION = "Cancel";
+
 
 
 
@@ -125,7 +146,7 @@ public class Data_Claim {
 
 
     // INVALID Создание новой Claim  / тестовые данные
-    public static final String INV_INPUT_TITLE = "ТестЗаголовок Создание новой претензии здесь 51знак";
+    public static final String INV_INPUT_TITLE = "Создание новой претензии в этом Title 51 знак     !";
     public static final String INV_EMPTY_TITLE = "";
     public static final String INV_INPUT_DESCRIPTION = "Attention!!! The test deliberately uses an invalid date";
     public static final String INV_EMPTY_DESCRIPTION = "";
@@ -142,8 +163,11 @@ public class Data_Claim {
 
 
     // FAKE Создание новой Claim  / тестовые данные для ввода
-    public static final String FAKE_TITLE = "Fake Title iteration #2";
-    public static final String FAKE_DESCRIPTION = "Fake Description iteration #4";
+    public static final String FAKE_TITLE = "Fake Title iteration #8";
+    public static final String FAKE_TITLE_8 = "#07 Fake Title iteration";
+    public static final String FAKE_EDITING_TITLE_8 = "#06 Fake Title iteration Editing Claims";
+    public static final String FAKE_TITLE_9_10 = "#11 Fake Title iteration Editing Claims";
+    public static final String FAKE_EDITING_DESCRIPTION_8 = "Fake Description iteration #3";
     public static final String FAKE_DATE = "02.01.1980";
     public static final String FAKE_TIME = "04:30";
 
@@ -153,11 +177,8 @@ public class Data_Claim {
     public static final String CREATED_TEXT = "Created";
     public static final String DATE_VALUE_CREATED_TEXT = "14.09.2023";
     public static final String TIME_VALUE_CREATED_TEXT = "14:35";
-
-
-
-    public static final String ICON_EDIT_COMMENT_TEXT = "button edit comment"; // withContentDescription
-    public static final String BUTTON_CLOSE = "button close";               // закрыть карточку
+    public static final String ICON_EDIT_COMMENT_TEXT = "button edit comment";
+    public static final String BUTTON_CLOSE = "button close";
 
     // модальное окно FILTERS
     public static final String FILTER_DESCRIPTION = "Filter claim list menu button";

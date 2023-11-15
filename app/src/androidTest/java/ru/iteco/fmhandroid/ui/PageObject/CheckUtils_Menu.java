@@ -19,24 +19,26 @@ public class CheckUtils_Menu {
     public void checkLineVisibilityNews() {
         onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.NEWS_TEXT),
                 withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()))
-                        .check(matches(isDisplayed()))
-                        .check(matches(withText(Data_Menu.NEWS_TEXT)));
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Menu.NEWS_TEXT)));
     }
+
     @DisplayName("экран Main / окно Menu / Проверка отображения в Menu строки Claims")
     public void checkLineVisibilityClaims() {
         onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.CLAIMS_TEXT),
                 withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()))
-                        .check(matches(isDisplayed()))
-                        .check(matches(withText(Data_Menu.CLAIMS_TEXT)));
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Menu.CLAIMS_TEXT)));
     }
+
     @DisplayName("экран Main / окно Menu / Проверка отображения в Menu строки About")
     public void checkLineVisibilityAbout() {
         onView(allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.ABOUT_TEXT),
                 withParent(withParent(withId(Elelements_Menu.ID_PARENT_TITLE))),
-                        isDisplayed()))
-                        .check(matches(isDisplayed()))
-                        .check(matches(withText(Data_Menu.ABOUT_TEXT)));
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Menu.ABOUT_TEXT)));
     }
 }

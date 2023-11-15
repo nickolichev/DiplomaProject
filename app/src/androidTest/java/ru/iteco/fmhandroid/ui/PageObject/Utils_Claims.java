@@ -9,6 +9,8 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
@@ -19,11 +21,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static ru.iteco.fmhandroid.ui.PageObject.Utils_Helper.childAtPosition;
 
 import android.view.View;
+import android.widget.EditText;
 
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
@@ -44,7 +50,7 @@ import ru.iteco.fmhandroid.ui.testData.Data_Claim;
 // Define an IdlingResource
 
 public class Utils_Claims {
-
+    private int characterCount = 0;
     @DisplayName("экран CLAIMS / клик по иконке FILTER / открытие модального окна FILTERING /")
     public void clickIconFilter_View_Claims() {
         ViewInteraction button = onView(
@@ -54,6 +60,7 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
+
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по check-box Open/")
     public void clickCheckBox_Open() {
         ViewInteraction button = onView(
@@ -62,6 +69,7 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(scrollTo(), click());
     }
+
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по check-box InProgress/")
     public void clickCheckBox_InProgress() {
         ViewInteraction button = onView(
@@ -70,6 +78,7 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(scrollTo(), click());
     }
+
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по check-box Executed/")
     public void clickCheckBox_Executed() {
         ViewInteraction button = onView(
@@ -78,6 +87,7 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(scrollTo(), click());
     }
+
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по check-box Cancelled/")
     public void clickCheckBox_Cancelled() {
         ViewInteraction button = onView(
@@ -86,13 +96,13 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(scrollTo(), click());
     }
+
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по кнопке OK/")
     public void clickButton_Ok() {
-        ViewInteraction button = onView(
-                Matchers.allOf(withId(Elements_Claim.ID_OK_BUTTON),
-                        withText(Data_Claim.OK_BUTTON_TEXT)));
-
-        button.perform(scrollTo(), click());
+        onView(Matchers.allOf(withId(Elements_Claim.ID_OK_BUTTON),
+                        withText(Data_Claim.OK_BUTTON_TEXT)))
+                .perform(scrollTo(), click());
+        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     @DisplayName("экран CLAIMS / модальное окно FILTERING / клик по кнопке Cancel/")
@@ -103,19 +113,23 @@ public class Utils_Claims {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(scrollTo(), click());
     }
+
     @DisplayName("экран CLAIMS / 1-я нераскрытая карточка CLAIM в списке/ клик по кнопке Expend/")
     public void clickExpendClaim() {
-        new Utils_Helper().timerWaitingAsyncOperation3000();
-        onView(allOf(isDisplayed(), withId(Elements_Claim.ID_LIST_CARDS)))
+        new Utils_Helper().timerWaitingAsyncOperation1000();
+        onView(allOf(isDisplayed(),
+                withId(Elements_Claim.ID_LIST_CARDS)))
                 .perform(actionOnItemAtPosition(0, click()));
-
+        new Utils_Helper().timerWaitingAsyncOperation2000();
     }
+
     @DisplayName("экран CLAIMS / раскрытая карточка CLAIM / клик по кнопке Close/")
     public void clickCloseClaim() {
-        ViewInteraction button = onView(
-                Matchers.allOf(withId(Elements_Claim.ID_BUTTON_CLOSE),
-                        withContentDescription(Data_Claim.BUTTON_CLOSE)));
-        button.perform(scrollTo(), click());
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(Matchers.allOf(withId(Elements_Claim.ID_BUTTON_CLOSE),
+                withContentDescription(Data_Claim.BUTTON_CLOSE)))
+                .perform(click());
+        new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     public void clickLastVisibleItem() {
@@ -128,11 +142,10 @@ public class Utils_Claims {
     // Creating Claim
     @DisplayName("экран Claims / клик по кнопке ADD New Claim")
     public void clickCreateClaim() {
-        ViewInteraction button = onView(
-                Matchers.allOf(withId(Elements_Claim.ID_ADD_NEW_CLAIM),
-                        withContentDescription(Data_Claim.ADD_NEW_CLAIM_TEXT)));
-        button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-        button.perform(click());
+        onView(allOf(withId(Elements_Claim.ID_ADD_NEW_CLAIM),
+                withContentDescription(Data_Claim.ADD_NEW_CLAIM_TEXT)))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+                .perform(click());
     }
 
     // набор методов для заполнения валидными TITLE для каждого отдельного test-case
@@ -140,17 +153,32 @@ public class Utils_Claims {
     @DisplayName("test-case #7 / экран CREATING CLAIM / заполнение поля TITLE")
     public void inputTitleNewClaim_7() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
-                .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE));
+                .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_7));
+    }
+
+
+    @DisplayName("test-case #11 / экран CREATING CLAIM / заполнение поля TITLE НЕвалидными данными 51 знак")
+    public void inputInvalidTitleNewClaim() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+                .perform(ViewActions.replaceText(Data_Claim.INV_INPUT_TITLE));
+        // Обновляем счетчик после ввода текста
+        int characterCount = updateCharacterCount();
+//        onView(withId(Elements_Claim.ID_COUNTER))
+//                .check(matches(withText(String.valueOf(testData.length()))));
+        new Utils_Helper().timerWaitingAsyncOperation500();
+//        int characterCount = testData.length();
+        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
     }
     @DisplayName("test-case #8 / экран CREATING CLAIM / заполнение поля TITLE")
     public void inputTitleNewClaim_8() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
-                .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_8));
+                .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE_8));
     }
-    @DisplayName("test-case #9 / экран CREATING CLAIM / заполнение поля TITLE")
-    public void inputTitleNewClaim_9() {
+
+    @DisplayName("test-case #9 + #10 / экран CREATING CLAIM / заполнение поля TITLE")
+    public void inputTitleNewClaim_9_10() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
-                .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_9));
+                .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE_9_10));
     }
 
     @DisplayName("test-case #10 / экран CREATING CLAIM / заполнение поля TITLE")
@@ -176,6 +204,7 @@ public class Utils_Claims {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
                 .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_13));
     }
+
     @DisplayName("test-case #15 / экран CREATING CLAIM / заполнение поля TITLE")
     public void inputTestDataInTitleNewClaim() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
@@ -187,11 +216,25 @@ public class Utils_Claims {
 //                .perform(ViewActions.replaceText(""));
 //    }
 
-    @DisplayName("экран CREATING CLAIM / заполнение валидными тестовыми данными поля EXECUTOR")
-    public void inputExecutorNewClaim() {
-        onView(allOf(withId(Elements_Claim.ID_FIELD_EXECUTOR)))
-                .perform(ViewActions.replaceText(Data_Claim.INPUT_EXECUTOR_TEXT));
-    }
+//    @DisplayName("экран CREATING CLAIM / выбрать из списка EXECUTOR")
+//    public void selectExecutorNewClaim() {
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+//        ViewInteraction checkableImageButton = onView(
+//                allOf(withId(Elements_Claim.ID_DROPDOWN_EXECUTOR),
+//                        withContentDescription(Data_Claim.DROPDOWN_EXECUTOR),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withClassName(is("android.widget.LinearLayout")),
+//                                        1),
+//                                0),
+//                        isDisplayed()));
+//        checkableImageButton.perform(click());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+//        onData(allOf(is(instanceOf(String.class)), is(Data_Claim.INPUT_EXECUTOR_TEXT)))
+//                .inRoot(isPlatformPopup())  // Указывает, что ищем всплывающее окно
+//                .perform(click());
+//
+//    }
 
     @DisplayName("экран CREATING CLAIM / заполнение НЕвалидными тестовыми данными поля EXECUTOR")
     public void inputCustomIExecutorNewClaim() {
@@ -232,18 +275,16 @@ public class Utils_Claims {
 
     @DisplayName("экран CREATING CLAIM / заполнение валидными тестовыми данными поля Time")
     public void inputValidTime() {
-        ViewInteraction time = onView(
-                allOf(withId(Elements_Claim.ID_FIELD_TIME)));
-        time.check(matches(isDisplayed()));
-        time.perform(replaceText(Data_Claim.INPUT_TIME));
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TIME)))
+                .check(matches(isDisplayed()))
+                .perform(replaceText(Data_Claim.INPUT_TIME));
     }
 
     @DisplayName("экран CREATING CLAIM / заполнение НЕвалидными тестовыми данными поля Time")
     public void inputInvalidTestDataTime() {
-        ViewInteraction time = onView(
-                allOf(withId(Elements_Claim.ID_FIELD_TIME)));
-        time.check(matches(isDisplayed()));
-        time.perform(replaceText(Data_Claim.INV_INPUT_TIME));
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TIME)))
+                .check(matches(isDisplayed()))
+                .perform(replaceText(Data_Claim.INV_INPUT_TIME));
     }
 
     // для Negative test
@@ -257,14 +298,13 @@ public class Utils_Claims {
     // для Negative test
     @DisplayName("экран CREATING CLAIM / клик по кнопке OK в модальном окне WARNING")
     public void clickButtonOkInModalViewWarning() {
-        ViewInteraction button = onView(
-                allOf(withId(Elements_Claim.ID_OK_MODAL_VIEWS), withText(Data_Claim.OK_BUTTON_TEXT),
+        onView(allOf(withId(Elements_Claim.ID_OK_MODAL_VIEWS), withText(Data_Claim.OK_BUTTON_TEXT),
+                childAtPosition(
                         childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                3)));
-        button.perform(scrollTo(), click());
+                                withClassName(is("android.widget.ScrollView")),
+                                0),
+                        3)))
+                .perform(scrollTo(), click());
         new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
@@ -383,22 +423,103 @@ public class Utils_Claims {
         onView(allOf(withId(Elements_Claim.ID_SAVE_CREATING_Claims),
                 withText(Data_Claim.SAVE_CREATING_CLAIMS),
                 withContentDescription(Data_Claim.SAVE_CREATING_CLAIMS)))
-                .perform(scrollTo(), click());
-        new Utils_Helper().timerWaitingAsyncOperation1000();
+                .perform(click());
+        new Utils_Helper().timerWaitingAsyncOperation3000();
     }
 
     @DisplayName("Тап по кнопке CANCEL / Отменить сохранение new Claim")
     public void clickButtonCancelNewClaim() {
-        ViewInteraction cancel = onView(
-                allOf(withId(Elements_Claim.ID_CANCEL_CREATING_Claims),
-                        withText(Data_Claim.CANCEL_CREATING_CLAIMS),
-                        withContentDescription(Data_Claim.CANCEL_CREATING_CLAIMS)));
-        cancel.perform(scrollTo(), click());
+        onView(allOf(withId(Elements_Claim.ID_CANCEL_CREATING_CLAIMS),
+                withText(Data_Claim.CANCEL_CREATING_CLAIMS),
+                withContentDescription(Data_Claim.CANCEL_CREATING_CLAIMS)))
+                .perform(click());
     }
 
 
     // Редактирование Claim
     // добавить комментарий к Claim
+
+    @DisplayName("экран CREATING + EDITING CLAIM / выбрать из списка EXECUTOR")
+    public void selectExecutorClaim() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(allOf(withId(Elements_Claim.ID_DROPDOWN_EXECUTOR),
+                withContentDescription(Data_Claim.DROPDOWN_EXECUTOR),
+                childAtPosition(
+                        childAtPosition(
+                                withClassName(is("android.widget.LinearLayout")),
+                                1),
+                        0),
+                isDisplayed()))
+                .perform(click());
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onData(allOf(is(instanceOf(String.class)), is(Data_Claim.INPUT_EXECUTOR_TEXT)))
+                .inRoot(isPlatformPopup())  // Указывает, что ищем всплывающее окно
+                .perform(click());
+    }
+
+    @DisplayName("test-case #8 / экран EDITING CLAIM / очистить TITLE")
+    public void clearTitleClaim_8() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+                .perform(clearText());
+    }
+
+    public int updateCharacterCount() {
+        // Получаем текст из поля
+        onView(withId(Elements_Claim.ID_FIELD_TITLE))
+                .check(matches(isDisplayed()))
+                .check(matches(isAssignableFrom(EditText.class)))
+                .perform(new ViewAction() {
+                    @Override
+                    public Matcher<View> getConstraints() {
+                        return isAssignableFrom(EditText.class);
+                    }
+
+                    @Override
+                    public String getDescription() {
+                        return "getting text from EditText";
+                    }
+
+                    @Override
+                    public void perform(UiController uiController, View view) {
+                        EditText editText = (EditText) view;
+                        characterCount = editText.getText().length();
+                    }
+                })
+                .toString();
+        return characterCount;
+    }
+//    public int getCharacterCount() {
+//        return characterCount;
+//    }
+
+    @DisplayName("test-case #8 / экран EDITING CLAIM / заполнение поля TITLE отредактированными данными")
+    public void inputTitleEditingClaim_8() {
+        String testData = Data_Claim.FAKE_EDITING_TITLE_8;
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+                .perform(ViewActions.replaceText(testData));
+        // Обновляем счетчик после ввода текста
+       int characterCount = updateCharacterCount();
+//        onView(withId(Elements_Claim.ID_COUNTER))
+//                .check(matches(withText(String.valueOf(testData.length()))));
+        new Utils_Helper().timerWaitingAsyncOperation500();
+//        int characterCount = testData.length();
+        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
+    }
+
+    @DisplayName("test-case #8 / экран EDITING CLAIM / очистить DESCRIPTION")
+    public void clearDescriptionClaim_8() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
+                .perform(clearText());
+    }
+
+    @DisplayName("test-case #8 / экран EDITING CLAIM /заполнение поля DESCRIPTION отредактированными данными")
+    public void inputDescriptionEditingClaim_8() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
+                .perform(ViewActions.replaceText(Data_Claim.INPUT_EDITING_DESCRIPTION_8));
+    }
+
+
+
     @DisplayName("экран Claims / раскрытая карточка / клик по кнопке Add Comment")
     public void clickAddComment() {
 //        onView(Matchers.allOf(withId(Elements_Claim.ID_ADD_COMMENT_BUTTON_CARD),
@@ -493,23 +614,81 @@ public class Utils_Claims {
 
     @DisplayName("экран Create + Edit Comment / клик по кнопке CANCEL")
     public void clickCancelComment() {
-       onView(allOf(withId(R.id.cancel_button), withText("CANCEL"), withContentDescription("Cancel"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
-                        isDisplayed()))
-        .perform(scrollTo(), click());
+        onView(allOf(withId(R.id.cancel_button),
+                withText("CANCEL"),
+                withContentDescription("Cancel"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()))
+                .perform(scrollTo(), click());
     }
 
     @DisplayName("экран Create + Edit Comment / клик по кнопке SAVE")
     public void clickSaveComment() {
-        onView(allOf(withId(R.id.save_button), withText("SAVE"), withContentDescription("Save"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
-                        isDisplayed()))
-        .perform(scrollTo(), click());
+        onView(allOf(withId(R.id.save_button),
+                withText("SAVE"),
+                withContentDescription("Save"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()))
+                .perform(scrollTo(), click());
     }
 
-    // поиск comment_7 внутри Claim
+    @DisplayName("модальное окно Comment / вставить тестовые данные")
+    public void inputComment_Open_ModalView() {
+//        onView(allOf(withId(Elements_Claim.ID_MODAL_VIEW_INPUT_COMMENT),
+//                childAtPosition(
+//                        childAtPosition(
+//                                withClassName(is("com.google.android.material.textfield.TextInputLayout")),
+//                                0),
+//                        0),
+//                isDisplayed()))
+//                .perform(replaceText(Data_Claim.COMMENT_INPUT_MODAL_VIEW));
+
+        onView(allOf(withId(Elements_Claim.ID_MODAL_VIEW_INPUT_COMMENT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                isDisplayed()))
+                .perform(replaceText(Data_Claim.COMMENT_OPEN_INPUT_MODAL_VIEW));
+    }
+
+    @DisplayName("модальное окно Comment / вставить тестовые данные")
+    public void inputComment_Executed_ModalView() {
+        onView(allOf(withId(Elements_Claim.ID_MODAL_VIEW_INPUT_COMMENT),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                isDisplayed()))
+                .perform(replaceText(Data_Claim.COMMENT_EXECUTED_INPUT_MODAL_VIEW));
+    }
+
+    @DisplayName("модальное окно Comment / клик по кнопке CANCEL")
+    public void clickCancel_ModalViewComment() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(allOf(withId(Elements_Claim.ID_CANCEL_MODAL_VIEWS),
+                withText(Data_Claim.CANCEL_CLICK_MODAL_VIEW)))
+//                childAtPosition(
+//                        childAtPosition(
+//                                withId(com.google.android.material.R.id.buttonPanel),
+//                                0),
+//                        2)))
+                .perform(scrollTo(), click());
+    }
+
+    @DisplayName("модальное окно Comment / клик по кнопке OK")
+    public void clickOK_ModalViewComment() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(allOf(withId(Elements_Claim.ID_OK_MODAL_VIEWS),
+                withText(Data_Claim.OK_TEXT_MODAL_VIEW)))
+//                childAtPosition(
+//                        childAtPosition(
+//                                withId(com.google.android.material.R.id.buttonPanel),
+//                                0),
+//                        1)))
+                .perform(scrollTo(), click());
+    }
+
+    //
+    @DisplayName("поиск comment_7 в раскрытой карточке Claim")
     public boolean searchComment_7_ByContent() {
-        Matcher<View> matcher = allOf(withId(Elements_Claim.ID_CONTENT_COMMENT), withText(Data_Claim.COMMENT_CONTENT_CARD_7), isDisplayed());
+        new Utils_Helper().timerWaitingAsyncOperation2000();
+        Matcher<View> matcher = allOf(withId(Elements_Claim.ID_CONTENT_COMMENT),
+                withText(Data_Claim.COMMENT_CONTENT_CARD_7), isDisplayed());
         boolean found = Utils_Helper.searchInCommentList(matcher, false);
 
         if (found) {
@@ -520,9 +699,29 @@ public class Utils_Claims {
         }
     }
 
+    // редактировать метод под поиск Comment, если метод searchComment_7_ByContent() не будет работать
+    // редактировать/создать под этот метод Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE))
+    public void searchAndOpenComment_7() {
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE);
+        if (position != -1) {
+            // Открываем карточку на заданной позиции
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE + "is not successful");
+        }
+    }
 
     // поиск редактированного comment_7 внутри Claim
+    @DisplayName("поиск редактированного comment_7 в раскрытой карточке Claim")
     public boolean searchComment_7_EditByContent() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
         Matcher<View> matcher = allOf(withId(Elements_Claim.ID_CONTENT_COMMENT), withText(Data_Claim.COMMENT_CONTENT_EDIT_CARD_7), isDisplayed());
         boolean found = Utils_Helper.searchInCommentList(matcher, false);
 
@@ -535,14 +734,15 @@ public class Utils_Claims {
     }
 
     public void clickIconEditComment() {
-        ViewInteraction save = onView(
-                allOf(withId(Elements_Claim.ID_ICON_EDIT_COMMENT), withText(Data_Claim.ICON_EDIT_COMMENT_TEXT), withContentDescription(Data_Claim.ICON_EDIT_COMMENT_TEXT),
+        onView(allOf(
+                withId(Elements_Claim.ID_ICON_EDIT_COMMENT),
+                withContentDescription(Data_Claim.ICON_EDIT_COMMENT_TEXT),
+                childAtPosition(
                         childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("com.google.android.material.card.MaterialCardView")),
-                                        0),
-                                1)));
-        save.perform(scrollTo(), click());
+                                withId(Elements_Claim.ID_CONTAINER_COMMENT_CARD),
+                                0),
+                        1)))
+                .perform(click());
     }
 
 
@@ -584,56 +784,75 @@ public class Utils_Claims {
         ViewInteraction comment = new CheckUtils_Claims().checkInsideComment_Visibility(commentContent);
         new Utils_Claims().clickEditInComment(comment);
     }
-//    public void searchAndOpenClaimByTopic_7() {
-////        int position = Utils_Helper.findListItemByText(Data_Claim.TOPIC_7);
-////        if (position != -1) {
-////            // Открываем карточку на заданной позиции
-////            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
-////                    .perform(actionOnItemAtPosition(position, click()));
-//            new Utils_Helper().timerWaitingAsyncOperation5000();
-////
-////        } else {
-////            throw new NoSuchElementException("topic search:" + Data_Claim.TOPIC_7 + "is not successful");
-////        }
-//
-//        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE);
-//        if (position != -1) {
-//            // Открываем карточку на заданной позиции
-//            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
-//                    .perform(actionOnItemAtPosition(position, click()));
-//            new Utils_Helper().timerWaitingAsyncOperation5000();
-//
-//        } else {
-//            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE + "is not successful");
-//        }
-//    }
 
-//    public void searchAndOpenClaimByTopic_8() {
-//        new Utils_Helper().timerWaitingAsyncOperation5000();
-//        int position = Utils_Helper.findListItemByText(Data_Claim.TOPIC_8);
-//        if (position != -1) {
-//            // Открываем карточку на заданной позиции
-//            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
-//                    .perform(actionOnItemAtPosition(position, click()));
-//            new Utils_Helper().timerWaitingAsyncOperation5000();
-//
-//        } else {
-//            throw new NoSuchElementException("topic search:" + Data_Claim.TOPIC_8 + "is not successful");
-//        }
-//    }
-    public boolean searchAndOpenClaimByTopic_9() {
-        Matcher<View> matcher = allOf(
-                withId(Elements_Claim.ID_TOPIC_TEXT_LIST),
-                withText(Data_Claim.TOPIC_9),
-                isDisplayed());
-        boolean endScroll = true;
-        boolean found = Utils_Helper.searchInClaimsList(matcher, endScroll);
-        if (found) {
-            onView(matcher).check(matches(isDisplayed()));
-            new Utils_Helper().timerWaitingAsyncOperation3000();
-            return true;
+    public void searchAndOpenClaimByTopic_7() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE);
+        if (position != -1) {
+            // Открываем карточку на заданной позиции
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
         } else {
-            return false;
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE + "is not successful");
+        }
+    }
+
+    @DisplayName("test-case #8 / поиск и открытие карточки в списке Claims")
+    public void searchAndOpenClaimByTopic_8() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE_8)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE_8);
+        if (position != -1) {
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE_8 + "is not successful");
+        }
+    }
+
+    @DisplayName("test-case #8 / поиск и открытие отредактированной карточки в списке Claims")
+    public void searchAndOpenClaimAfterEditing_8() {
+        new Utils_Helper().timerWaitingAsyncOperation1000();
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_EDITING_TITLE_8)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_EDITING_TITLE_8);
+        if (position != -1) {
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_EDITING_TITLE_8 + "is not successful");
+        }
+    }
+
+    @DisplayName("test-case #9 +#10 / поиск и открытие карточки в списке Claims")
+    public void searchAndOpenClaimByTopic_9() {
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE_9_10)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE_9_10);
+        if (position != -1) {
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE_9_10 + "is not successful");
         }
     }
 
@@ -695,34 +914,28 @@ public class Utils_Claims {
 
     @DisplayName("экран Claims / раскрытая карточка / клик по кнопке Edite Claim")
     public void clickEditClaim() {
-        ViewInteraction edit = onView(
-                allOf(withId(Elements_Claim.ID_EDIT_CARD_BUTTON_CARD),
-                        withContentDescription(Data_Claim.EDIT_CARD_BUTTON_TEXT_CARD),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withClassName(is("com.google.android.material.card.MaterialCardView")),
-//                                        0),
-//                                25),
-                        isDisplayed()));
-
-        edit.perform(click());
+        onView(allOf(withId(Elements_Claim.ID_EDIT_CARD_BUTTON_CARD),
+                withContentDescription(Data_Claim.EDIT_CARD_BUTTON_TEXT_CARD),
+                isDisplayed()))
+                .perform(click());
     }
-    @DisplayName("экран Claims / раскрытая карточка / клик по иконке смена статуса в карточке OPEN")
-    public void clickChangeStatusClaim () {
-            ViewInteraction change = onView(
-                    allOf(withId(Elements_Claim.ID_CHANGE_STATUS_ICON_CARD), withContentDescription(Data_Claim.CHANGE_STATUS_TEXT_CARD),
-                            childAtPosition(
-                                    childAtPosition(
-                                            withClassName(is("com.google.android.material.card.MaterialCardView")),
-                                            0),
-                                    24),
-                            isDisplayed()));
-            change.perform(click());
 
-        }
+    @DisplayName("экран Claims / раскрытая карточка / клик по иконке смена статуса в карточке OPEN")
+    public void clickChangeStatusClaim() {
+        ViewInteraction change = onView(
+                allOf(withId(Elements_Claim.ID_CHANGE_STATUS_ICON_CARD), withContentDescription(Data_Claim.CHANGE_STATUS_TEXT_CARD),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("com.google.android.material.card.MaterialCardView")),
+                                        0),
+                                24),
+                        isDisplayed()));
+        change.perform(click());
+
+    }
 
     @DisplayName("экран Claims / раскрытая карточка / клик по строке THROW_OFF в модальном окне Смена статуса в карточке In Progress")
-    public void clickChangeStatusThrowOff () {
+    public void clickChangeStatusThrowOff() {
         ViewInteraction throwOff = onView(
                 allOf(withId(Elements_Claim.ID_CHANGE_THROW_OFF_CARD), withText(Data_Claim.CHANGE_THROW_OFF_TEXT_CARD),
                         withParent(withParent(withId(android.R.id.content))),
@@ -731,7 +944,7 @@ public class Utils_Claims {
     }
 
     @DisplayName("экран Claims / раскрытая карточка / клик по строке EXECUTE в модальном окне Смена статуса в карточке In Progress")
-    public void clickChangeStatusToExecute () {
+    public void clickChangeStatusToExecute() {
         ViewInteraction execute = onView(
                 allOf(withId(Elements_Claim.ID_CHANGE_TO_EXECUTE_CARD), withText(Data_Claim.CHANGE_TO_EXECUTE_TEXT_CARD),
                         withParent(withParent(withId(android.R.id.content))),
@@ -740,7 +953,7 @@ public class Utils_Claims {
     }
 
     @DisplayName("экран Claims / раскрытая карточка / клик по строке TAKE_TO_WORK в модальном окне Смена статуса в карточке Open")
-    public void clickChangeStatusTakeToWork () {
+    public void clickChangeStatusTakeToWork() {
         ViewInteraction take_to_work = onView(
                 allOf(withId(Elements_Claim.ID_CHANGE_TAKE_TO_WORK_CARD), withText(Data_Claim.CHANGE_TAKE_TO_WORK_TEXT_CARD),
                         withParent(withParent(withId(android.R.id.content))),
@@ -749,22 +962,24 @@ public class Utils_Claims {
     }
 
     @DisplayName("экран Claims / раскрытая карточка / клик по строке CANCEL в модальном окне Смена статуса в карточке Open")
-    public void clickChangeStatusCancel () {
+    public void clickChangeStatusCancel() {
         ViewInteraction cancel = onView(
                 allOf(withId(Elements_Claim.ID_CHANGE_CANCEL_CARD), withText(Data_Claim.CHANGE_CANCEL_TEXT_CARD),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         cancel.perform(click());
     }
+
     @DisplayName("экран Creating Claim / модальное окно предупреждения / клик по кнопке CANCEL")
-    public void clickInModalViewButtonCancel () {
+    public void clickInModalViewButtonCancel() {
         ViewInteraction cancel = onView(
                 allOf(withId(Elements_Claim.ID_CANCEL_MODAL_VIEW),
                         withText(Data_Claim.CANCEL_MODAL_VIEW_TEXT)));
         cancel.perform(scrollTo(), click());
     }
+
     @DisplayName("экран Creating Claim / модальное окно предупреждения / клик по кнопке OK")
-    public void clickInModalViewButtonOk () {
+    public void clickInModalViewButtonOk() {
         ViewInteraction ok = onView(
                 allOf(withId(Elements_Claim.ID_OK_MODAL_VIEW),
                         withText(Data_Claim.OK_MODAL_VIEW_TEXT)));

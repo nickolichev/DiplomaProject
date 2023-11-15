@@ -24,7 +24,7 @@ public class PositiveAuth_Tests {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
-    // работает 05.11.23
+    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 1 / Тестирование авторизации с валидными тестовыми данными")
     public void validAuthorizationTest() {
@@ -42,7 +42,7 @@ public class PositiveAuth_Tests {
         new Utils_Auth().logOut();
     }
 
-    // работает 05.11.23
+    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 3 / Тестирование UI на экране Main")
     public void viewMainTest() {

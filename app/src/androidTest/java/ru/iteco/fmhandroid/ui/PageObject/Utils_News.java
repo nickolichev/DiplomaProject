@@ -7,6 +7,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
@@ -15,6 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static ru.iteco.fmhandroid.ui.PageObject.Utils_Helper.childAtPosition;
 
@@ -45,6 +47,7 @@ public class Utils_News {
         sort.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         sort.perform(click());
     }
+
     @DisplayName("экран NEWS / нераскрытые карточки / клик по кнопке FILTER")
     public void clickFilter_News() {
         ViewInteraction button = onView(
@@ -52,6 +55,7 @@ public class Utils_News {
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
+
     @DisplayName("экран NEWS / нераскрытые карточки / клик по кнопке EDIT")
     public void clickEdit_News() {
         ViewInteraction button = onView(
@@ -85,61 +89,123 @@ public class Utils_News {
     }
 
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Объявление\"")
-    public void inputCategoryAdvertisement_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
-    }
-    @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"День рождения\"")
-    public void inputCategoryBirthday_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_BIRTHDAY))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryAdvertisement() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT))
+//                .perform(ViewActions.closeSoftKeyboard());
 
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_ADVERTISEMENT)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
+    @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"День рождения\"")
+    public void selectCategoryBirthday() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_BIRTHDAY))
+//                .perform(ViewActions.closeSoftKeyboard());
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_BIRTHDAY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+    }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Зарплата\"")
-    public void inputCategorySalary_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_SALARY))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategorySalary() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_SALARY))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_SALARY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Профсоюз\"")
-    public void inputCategoryTradeUnion_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_TRADE_UNION))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryTradeUnion() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_TRADE_UNION))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+//
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_TRADE_UNION)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Праздник\"")
-    public void inputCategoryHoliday_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_HOLIDAY))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryHoliday() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_HOLIDAY))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_HOLIDAY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Массаж\"")
-    public void inputCategoryMassage_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_MASSAGE))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryMassage() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_MASSAGE))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_MASSAGE)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Благодарность\"")
-    public void inputCategoryGratitude_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_GRATITUDE))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryGratitude() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_GRATITUDE))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_GRATITUDE)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Нужна помощь\"")
-    public void inputCategoryHelp_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
-                .perform(replaceText(Data_News.CATEGORY_HELP))
-                .perform(ViewActions.closeSoftKeyboard());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void selectCategoryHelp() {
+//        onView(allOf(withId(Elements_News.ID_CATEGORY_FOR_ALL)))
+//                .perform(replaceText(Data_News.CATEGORY_HELP))
+//                .perform(ViewActions.closeSoftKeyboard());
+//        new Utils_Helper().timerWaitingAsyncOperation500();
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_HELP)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     // набор методов ввода тестовых данных DATE_START и DATE_END для фильтрации NEWS
@@ -148,62 +214,75 @@ public class Utils_News {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_START_TEST_DATA));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных")
     public void inputDateEnd_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_END_TEST_DATA));
     }
+
     @DisplayName("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE END тестовых данных")
     public void inputDateEnd() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
     }
+
     @DisplayName("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE START тестовых данных")
     public void inputDateStart() {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных ПОСЛЕ Editing")
     public void inputDateStart_AfterEditing_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных ПОСЛЕ Editing")
     public void inputDateEnd_AfterEditing_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE START НЕвалидных тестовых данных")
     public void inputInvalidDateStart_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_INVALID));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / ввод в DATE END НЕвалидных тестовых данных")
     public void inputInvalidDateEnd_FilterNews() {
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_INVALID));
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / клик по кнопке FILTER")
     public void clickButtonFilter_FilterNews() {
         ViewInteraction button = onView(
-                allOf(withId(Elements_News.ID_BUTTON_FILTER), withText(Data_News.BUTTON_FILTER),
+                allOf(withId(Elements_News.ID_BUTTON_FILTER),
+                        withText(Data_News.BUTTON_FILTER),
                         withParent(withParent(withId(R.id.nav_host_fragment))),
                         isDisplayed()));
         button.perform(click());
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("Control Panel / экран FILTER NEWS / клик по кнопке CANCEL")
     public void clickButtonCancel_FilterNews() {
         ViewInteraction button = onView(
-                allOf(withId(Elements_News.ID_BUTTON_CANCEL), withText(Data_News.BUTTON_CANCEL),
+                allOf(withId(Elements_News.ID_BUTTON_CANCEL),
+                        withText(Data_News.BUTTON_CANCEL),
                         withParent(withParent(withId(R.id.nav_host_fragment))),
                         isDisplayed()));
         button.perform(click());
     }
+
     @DisplayName("экран Control panel / клик по кнопке SORT")
     public void clickButtonSort_ControlPanel() {
         ViewInteraction sort = onView(
-                allOf(withId(Elements_News.ID_BUTTON_SORT), withContentDescription(Data_News.BUTTON_SORT),
+                allOf(withId(Elements_News.ID_BUTTON_SORT),
+                        withContentDescription(Data_News.BUTTON_SORT),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.container_list_news_include),
@@ -212,38 +291,38 @@ public class Utils_News {
                         isDisplayed()));
         sort.perform(click());
     }
+
     @DisplayName("экран Control panel / клик по иконке FILTER")
     public void clickButtonFilter_ControlPanel() {
-        ViewInteraction filter = onView(
-                allOf(withId(Elements_News.ID_ICON_FILTER_NEWS_CONTROL),
+        onView(allOf(withId(Elements_News.ID_ICON_FILTER_NEWS_CONTROL),
+                childAtPosition(
                         childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                2),
-                        isDisplayed()));
-        filter.perform(click());
+                                withClassName(is("android.widget.LinearLayout")),
+                                1),
+                        2),
+                isDisplayed()))
+                .perform(click());
     }
+
     @DisplayName("экран Control panel / клик по иконке CREATING NEWS")
     public void clickButtonAdd_News() {
-        ViewInteraction add = onView(
-                allOf(withId(Elements_News.ID_BUTTON_ADD_NEWS), withContentDescription(Data_News.BUTTON_ADD_NEWS),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        add.perform(click());
+        onView(allOf(withId(Elements_News.ID_BUTTON_ADD_NEWS),
+                withContentDescription(Data_News.BUTTON_ADD_NEWS),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                isDisplayed()))
+                .perform(click());
     }
+
     @DisplayName("экран Control panel / в НЕраскрытой карточке клик по иконке DELETE")
     public void clickButtonDelete_News() {
-
-        ViewInteraction appCompatImageView = onView(
-                allOf(withId(R.id.delete_news_item_image_view), withContentDescription("News delete button"),
+        onView(allOf(withId(R.id.delete_news_item_image_view), withContentDescription("News delete button"),
+                childAtPosition(
                         childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.news_item_material_card_view),
-                                        0),
-                                14),
-                        isDisplayed()));
-        appCompatImageView.perform(click());
+                                withId(R.id.news_item_material_card_view),
+                                0),
+                        14),
+                isDisplayed()))
+                .perform(click());
 //        onView(allOf(withId(Elements_News.ID_BUTTON_DELETE), withContentDescription(Data_News.BUTTON_DELETE),
 //                childAtPosition(
 //                        childAtPosition(
@@ -253,6 +332,7 @@ public class Utils_News {
 //                isDisplayed()))
 //                .perform(click());
     }
+
     @DisplayName("экран Control panel / List / в НЕраскрытой карточке клик по кнопке Expend")
     public void clickExpendCard_News() {
         onView(allOf(withId(Elements_News.ID_LIST_NEWS),     // также для ID кнопки Expend
@@ -262,11 +342,13 @@ public class Utils_News {
                 .perform(actionOnItemAtPosition(0, click()));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     // модальное окно-предупреждение DELETE
     @DisplayName("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке CANCEL")
     public void clickCancelModalDelete() {
         ViewInteraction cancel = onView(
-                allOf(withId(Elements_News.ID_MODAL_CANCEL), withText(Data_News.CANCEL_BUTTON),
+                allOf(withId(Elements_News.ID_MODAL_CANCEL),
+                        withText(Data_News.CANCEL_BUTTON),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
@@ -274,10 +356,12 @@ public class Utils_News {
                                 2)));
         cancel.perform(scrollTo(), click());
     }
+
     @DisplayName("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке OK")
     public void clickOklModalDelete() {
         ViewInteraction ok = onView(
-                allOf(withId(Elements_News.ID_MODAL_OK), withText(Data_News.OK_MODAL),
+                allOf(withId(Elements_News.ID_MODAL_OK),
+                        withText(Data_News.OK_MODAL),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
@@ -286,6 +370,7 @@ public class Utils_News {
         new Utils_Helper().timerWaitingAsyncOperation1000();
         ok.perform(scrollTo(), click());
     }
+
     @DisplayName("экран Control panel / List / в НЕраскрытой карточке клик по иконке EDIT")
     public void clickButtonEditNews() {
         ViewInteraction edit = onView(
@@ -508,67 +593,122 @@ public class Utils_News {
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Объявление\" в поле Category")
-    public void inputAdvertisementCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT));
+    public void selectAdvertisementCategory_CreateNews() {
+//        onView(allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()))
+//                .perform(replaceText(Data_News.CATEGORY_ADVERTISEMENT));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_ADVERTISEMENT)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"День рождения\" в поле Category")
-    public void inputBirthdayCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_BIRTHDAY));
+    public void selectBirthdayCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_BIRTHDAY));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_BIRTHDAY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Зарплата\" в поле Category")
-    public void inputSalaryCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_SALARY));
+    public void selectSalaryCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_SALARY));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_SALARY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Профсоюз\" в поле Category")
-    public void inputTradeUnionCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_TRADE_UNION));
+    public void selectTradeUnionCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_TRADE_UNION));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_TRADE_UNION)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Праздник\" в поле Category")
-    public void inputHolidayCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_HOLIDAY));
+    public void selectHolidayCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_HOLIDAY));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_HOLIDAY)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Массаж\" в поле Category")
-    public void inputMassageCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_MASSAGE));
+    public void selectMassageCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_MASSAGE));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_MASSAGE)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Благодарность\" в поле Category")
-    public void inputGratitudeCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_GRATITUDE));
+    public void selectGratitudeCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_GRATITUDE));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_GRATITUDE)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные \"Нужна помощь\" в поле Category")
-    public void inputHelpCategory_CreateNews() {
-        ViewInteraction editText = onView(
-                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
-                        isDisplayed()));
-        editText.perform(replaceText(Data_News.CATEGORY_HELP));
+    public void selectHelpCategory_CreateNews() {
+//        ViewInteraction editText = onView(
+//                allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
+//                        isDisplayed()));
+//        editText.perform(replaceText(Data_News.CATEGORY_HELP));
+
+        onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
+                isDisplayed()))
+                .perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(Data_News.CATEGORY_HELP)))
+                .inRoot(isPlatformPopup())
+                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Category ")
@@ -599,6 +739,7 @@ public class Utils_News {
         onView(withId(Elements_News.ID_TITLE_INPUT))
                 .perform(clearText());
     }
+
     @DisplayName("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"День рождения\"")
     public void inputTitleCreateNews_Birthday() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
@@ -738,6 +879,57 @@ public class Utils_News {
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(Data_News.INPUT_PUBLICATION_DATE_CREATING));
         new Utils_Helper().timerWaitingAsyncOperation500();
+
+//        onView(allOf(withId(R.id.news_item_publish_date_text_input_edit_text),
+//                childAtPositionCalendar(
+//                        childAtPosition(
+//                                withId(R.id.news_item_create_date_text_input_layout),
+//                                0),
+//                        1),
+//                isDisplayed()))
+//                .perform(click());
+//
+//        onView(allOf(
+//                withText("28"),
+////                withContentDescription("28 November 2023"),
+//                hasParent(allOf(
+//                        isAssignableFrom(androidx.viewpager.widget.ViewPager.class),
+//                        hasParent(isAssignableFrom(android.view.ViewGroup.class))
+//                ))
+//        )).perform(click());
+
+
+//        onView(allOf(withText("28"),
+//                withContentDescription("28 November 2023"),
+//                withParent(allOf(IsInstanceOf.<View>instanceOf(android.view.View.class),
+//                        withParent(IsInstanceOf.<View>instanceOf(androidx.viewpager.widget.ViewPager.class)))),
+//                isDisplayed()))
+////                .inRoot(isPlatformPopup())
+//                .perform(click());
+
+//        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
+//                .perform(click());
+
+//        onData(allOf(is(instanceOf(String.class)), is(Data_News.DATE_CREATED)))
+//                .inRoot(isPlatformPopup())  // Указывает, что ищем всплывающее окно
+//                .perform(click());
+
+//        onView(allOf(withId(R.id.news_item_publish_date_text_input_edit_text), withText(Data_News.DATE_CREATED),
+//                        withParent(withParent(withId(R.id.news_item_create_date_text_input_layout))),
+//                        isDisplayed()))
+//                .perform(click());
+
+//        onData(allOf(is(instanceOf(TextView.class)), is(Data_News.DATE_CREATED)))
+//                .inRoot(isPlatformPopup())  // Указывает, что ищем всплывающее окно
+//                .perform(click());
+
+//        onView(
+//                allOf(
+//                        withId(R.id.news_item_publish_date_text_input_edit_text),
+//                        withText(Data_News.DATE_CREATED),
+//                        withParent(withParent(withId(R.id.news_item_create_date_text_input_layout))),
+//                        isDisplayed()))
+//                .perform(click());
     }
 
     @DisplayName("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Publication date")
@@ -803,14 +995,14 @@ public class Utils_News {
 
     @DisplayName("экран CREATING NEWS/ клик по кнопке SAVE")
     public void clickButtonSaveCreateNews() {
-        new Utils_Helper().timerWaitingAsyncOperation3000();
+        new Utils_Helper().timerWaitingAsyncOperation500();
         onView(allOf(withId(Elements_News.ID_CREATING_SAVE),
                 withText(Data_News.SAVE_CREATING_TEXT),
                 withContentDescription(Data_News.SAVE_CREATING_DESCRIPTION),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
                 isDisplayed()))
                 .perform(click());
-        new Utils_Helper().timerWaitingAsyncOperation1000();
+        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @DisplayName("экран CREATING NEWS/ клик по кнопке CANCEL")
@@ -840,9 +1032,6 @@ public class Utils_News {
                 isDisplayed()))
                 .perform(click());
     }
-
-
-
 
 
     // экран EDITING NEWS
@@ -978,7 +1167,7 @@ public class Utils_News {
 
     @DisplayName("экран EDITING NEWS / клик по  SWITCH статуса / для ON и OFF")
     public void clickSwitch() {
-        ViewInteraction switch_= onView(
+        ViewInteraction switch_ = onView(
                 allOf(withId(Elements_News.ID_SWITCH),
                         withText(Data_News.SWITCH_TEXT),
                         childAtPosition(

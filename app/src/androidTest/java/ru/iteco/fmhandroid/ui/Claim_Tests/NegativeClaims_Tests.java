@@ -25,6 +25,7 @@ public class NegativeClaims_Tests {
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
+
     @Before
     public void startUp() {
         new Utils_Helper().timerWaitingAsyncOperation3000();
@@ -42,14 +43,14 @@ public class NegativeClaims_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 22.10.23
+    // работает 14.11.23
     @Test
     @DisplayName("Negative test. test-case # 13 / Попытка создать Claim с незаполненными полями Title, Date, Time, Description")
-    public void  creatingClaimWithEmptyFieldsTest() {
+    public void creatingClaimWithEmptyFieldsTest() {
         new Utils_Claims().clickCreateClaim();
         new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
         // оставляем пустым поле Title
-        new Utils_Claims().inputExecutorNewClaim();
+        new Utils_Claims().selectExecutorClaim();
         new Utils_Claims().inputValidDate();
         new Utils_Claims().inputValidTime();
         new Utils_Claims().inputTestDataInDescription_7();
@@ -100,36 +101,24 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 
+    // работает 14.11.23
     @Test
-    @DisplayName("Negative test. Попытка создать Claim с невалидными тестовыми данными Date")
-    public void  creatingClaimWithInvalidDateTest() {
-       // дата в прошлом
-        // дописать методы
-
-    }
-
-    @Test
-    @DisplayName("Negative test. Попытка создать Claim с невалидными тестовыми данными Title (>50 знаков)")
-    public void  creatingClaimWithInvalidTitleTest() {
-        // больше 50 знаков
+    @DisplayName("Negative test. test-case # 11 / Попытка создать Claim с невалидными тестовыми данными Title (>50 знаков)")
+    public void creatingClaimWithInvalidTitleTest() {
+        Utils_Claims utilsClaims = new Utils_Claims();
         new Utils_Claims().clickCreateClaim();
         new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-//        new Utils_Claims().inputEmptyInTitleNewClaim();
-//        new Utils_Claims().inputEmptyInExecutorNewClaim();
-//        new Utils_Claims().inputEmptyInDescriptionNewClaim();
-        // дописать методы
-
-    }
-
-    @Test
-    @DisplayName("Negative test. Попытка создать Claim с невалидными тестовыми данными Executor")
-    public void  creatingClaimWithInvalidExecutorTest() {
-        new Utils_Claims().clickCreateClaim();
-        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-//        new Utils_Claims().inputEmptyInTitleNewClaim();
-//        new Utils_Claims().inputEmptyInExecutorNewClaim();
-//        new Utils_Claims().inputEmptyInDescriptionNewClaim();
-        // дописать методы
-
+        // вставляем Title длиной в 51 знак
+        new Utils_Claims().inputInvalidTitleNewClaim();
+        // проверяем, что количество знаков в поле Title осталось = 50
+        int characterCount = utilsClaims.updateCharacterCount();
+        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
+        // проверка Title, который содержит на 1 знак меньше введенного при создании
+        new CheckUtils_Claims().checkTestInvalidDataTitle_Visibility();
+        new Utils_Claims().clickButtonCancelNewClaim();
+        new CheckUtils_Claims().checkModalViewQuestionText_Visibility();
+        new CheckUtils_Claims().checkModalViewQuestionButtonCancel_Visibility();
+        new CheckUtils_Claims().checkModalViewQuestionButtonOk_Visibility();
+        new Utils_Claims().clickInModalViewButtonOk();
     }
 }

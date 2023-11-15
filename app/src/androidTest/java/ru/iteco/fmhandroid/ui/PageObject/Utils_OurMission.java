@@ -34,62 +34,70 @@ public class Utils_OurMission {
                         isDisplayed()));
         icon.perform(click());
     }
+
     @DisplayName("экран Our Mission / 1-я карточка в списке / раскрываем карточку")
     public void expendCard_1() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(0, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(0, click()));
     }
+
     @DisplayName("экран Our Mission / 2-я карточка в списке / раскрываем карточку")
     public void expendCard_2() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(1, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(1, click()));
     }
+
     @DisplayName("экран Our Mission / 3-я карточка в списке / раскрываем карточку")
     public void expendCard_3() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(2, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(2, click()));
     }
+
     @DisplayName("экран Our Mission / 4-я карточка в списке / раскрываем карточку")
     public void expendCard_4() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(3, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(3, click()));
     }
+
     @DisplayName("экран Our Mission / 5-я карточка в списке / раскрываем карточку")
     public void expendCard_5() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(4, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(4, click()));
     }
+
     @DisplayName("экран Our Mission / 6-я карточка в списке / раскрываем карточку")
     public void expendCard_6() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(5, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(5, click()));
     }
+
     @DisplayName("экран Our Mission / 7-я карточка в списке / раскрываем карточку")
     public void expendCard_7() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-        .perform(actionOnItemAtPosition(6, click()));
+                        0)))
+                .perform(actionOnItemAtPosition(6, click()));
     }
+
     @DisplayName("экран Our Mission / 8-я карточка в списке / раскрываем карточку")
     public void expendCard_8() {
         onView(allOf(withId(Elements_OurMission.ID_LIST),

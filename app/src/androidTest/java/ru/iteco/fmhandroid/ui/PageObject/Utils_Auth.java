@@ -22,10 +22,11 @@ public class Utils_Auth {
     @DisplayName("экран AUTHORIZATION / заполнение поля Login валидными тестовыми данными")
     public void inputValidLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
-                onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
-                        .perform(ViewActions.replaceText(Data_Auth.VALID_LOGIN))
+        onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
+                .perform(ViewActions.replaceText(Data_Auth.VALID_LOGIN))
                 .perform(ViewActions.closeSoftKeyboard());
     }
+
     @DisplayName("экран AUTHORIZATION / заполнение поля Password валидными тестовыми данными")
     public void inputValidPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
@@ -33,6 +34,7 @@ public class Utils_Auth {
                 .perform(ViewActions.replaceText(Data_Auth.VALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
     }
+
     @DisplayName("экран AUTHORIZATION / заполнение поля Login НЕвалидными тестовыми данными")
     public void inputInvalidLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
@@ -40,6 +42,7 @@ public class Utils_Auth {
                 .perform(ViewActions.replaceText(Data_Auth.INVALID_LOGIN))
                 .perform(ViewActions.closeSoftKeyboard());
     }
+
     @DisplayName("экран AUTHORIZATION / заполнение поля Password НЕвалидными тестовыми данными")
     public void inputInvalidPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
@@ -47,12 +50,14 @@ public class Utils_Auth {
                 .perform(ViewActions.replaceText(Data_Auth.INVALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
     }
+
     @DisplayName("экран AUTHORIZATION / очистить заполненное поле Login от тестовых данных")
     public void clearFieldLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
                 .perform(clearText());
     }
+
     @DisplayName("экран AUTHORIZATION / очистить заполненное поле Password от тестовых данных")
     public void clearFieldPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
@@ -69,7 +74,7 @@ public class Utils_Auth {
         ViewInteraction buttonLogOut = onView(
                 allOf(withText(Data_Auth.BUTTON_LOG_OUT)));
         buttonLogOut.perform(click());
-        }
+    }
 
     @DisplayName("клик по кнопке авторизации Sign In")
     public void clickButtonSignIn() {
@@ -79,6 +84,7 @@ public class Utils_Auth {
         button.perform(click());
 
     }
+
     @DisplayName("набор утилит для авторизации для Before в тестах")
     public void authorizationUtility() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
@@ -96,6 +102,7 @@ public class Utils_Auth {
         button.check(matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
+
     @DisplayName("набор утилит завершения авторизованной сессии для Before в тестах")
     public void logOutUtility() {
         ViewInteraction clickLogOut = onView(

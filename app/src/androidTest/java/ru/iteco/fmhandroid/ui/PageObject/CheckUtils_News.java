@@ -267,7 +267,7 @@ public class CheckUtils_News {
 
     @DisplayName("экран Control panel / панель экрана / Title экрана")
     public void checkTitleControlPanel_Visibility() {
-//        new Utils_Helper().timerWaitingAsyncOperation1000();
+        new Utils_Helper().timerWaitingAsyncOperation1000();
         onView(allOf(withText(Data_News.CONTROL_PANEL),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
                 isDisplayed()))
@@ -286,8 +286,8 @@ public class CheckUtils_News {
     @DisplayName("экран Control panel / панель экрана / проверяем видимость кнопки SORT")
     public void checkSortControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_BUTTON_SORT),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed())).check(matches(isDisplayed()));
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                isDisplayed())).check(matches(isDisplayed()));
     }
 
     @DisplayName("экран Control panel / панель экрана / проверяем видимость кнопки FILTER")
@@ -315,9 +315,10 @@ public class CheckUtils_News {
                 withContentDescription(Data_News.ICON_CATEGORY_NEWS),
                 withParent(withParent(withId(R.id.news_item_material_card_view))),
                 isDisplayed()))
-                .check(matches(isDisplayed()))
-                .check(matches(withContentDescription(Data_News.ICON_CATEGORY_NEWS)));
+                .check(matches(isDisplayed()));
+//                .check(matches(withContentDescription(Data_News.ICON_CATEGORY_NEWS)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для ADVERTISEMENT")
     public void checkTitleCardNews_Advertisement_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -327,6 +328,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_ADVERTISEMENT)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для BIRTHDAY")
     public void checkTitleCardNews_Birthday_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -336,6 +338,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_BIRTHDAY)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для SALARY")
     public void checkTitleCardNews_Salary_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -345,6 +348,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_SALARY)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для TRADE_UNION")
     public void checkTitleCardNews_TradeUnion_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -354,6 +358,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_TRADE_UNION)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для HOLIDAY")
     public void checkTitleCardNews_Holiday_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -363,6 +368,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_HOLIDAY)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для MASSAGE")
     public void checkTitleCardNews_Massage_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -372,6 +378,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_MASSAGE)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для GRATITUDE")
     public void checkTitleCardNews_Gratitude_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -381,6 +388,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_GRATITUDE)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст Title в карточке NEWS для HELP")
     public void checkTitleCardNews_Help_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -390,6 +398,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_CARD_HELP)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст строки Publication Date")
     public void checkPublicationDateText_Visibility() {
         onView(allOf(withId(Elements_News.ID_PUBLICATION_DATE),
@@ -400,6 +409,7 @@ public class CheckUtils_News {
                 .check(matches(withText(Data_News.PUBLICATION_DATE)));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем значение Publication date")
     public void checkPublicationValueControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_PUBLICATION_DATE_VALUE),
@@ -409,6 +419,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.PUBLICATION_DATE_VALUE)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст строки Creation date")
     public void checkCreationDateControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATION_DATE),
@@ -419,6 +430,7 @@ public class CheckUtils_News {
                 .check(matches(withText(Data_News.CREATION_DATE)));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / генерируем значение Creation date")
     public static String getCurrentDate() {
         long currentTimeMillis = System.currentTimeMillis();
@@ -426,8 +438,8 @@ public class CheckUtils_News {
         Date currentDate = new Date(currentTimeMillis);
         return dateFormat.format(currentDate);
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем значение Creation date")
-    // заменить на текущую дату Попробовать написать метод установки текущей даты
     public void checkCreationDateValueControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATION_DATE_VALUE),
                 withText(getCurrentDate()),
@@ -436,6 +448,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(getCurrentDate())));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем текст строки Author")
     public void checkAuthorControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_AUTHOR),
@@ -446,6 +459,7 @@ public class CheckUtils_News {
                 .check(matches(withText(Data_News.AUTHOR)));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем значение Author")
     public void checkAuthorValueControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_AUTHOR_VALUE),
@@ -488,6 +502,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.STATUS_NOT_ACTIVE)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем отображение кнопки Delete")
     public void checkDeleteControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_BUTTON_DELETE),
@@ -497,6 +512,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withContentDescription(Data_News.BUTTON_DELETE)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем отображение кнопки Edit")
     public void checkEditControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_BUTTON_EDIT),
@@ -506,6 +522,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withContentDescription(Data_News.BUTTON_EDIT)));
     }
+
     @DisplayName("экран Control panel / List/ нераскрытая карточка / проверяем отображение кнопки Expend")
     public void checkExpendControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_BUTTON_EXPEND),
@@ -658,6 +675,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DATE_END)));
     }
+
     @DisplayName("экран Control panel / Filter News / проверка видимости статуса ACTIVE")
     public void checkActiveControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_STATUS_ACTIVE), withText(Data_News.STATUS_ACTIVE),
@@ -675,6 +693,7 @@ public class CheckUtils_News {
 //                .check(matches(isDisplayed()))
 //                .check(matches(withText(Data_News.STATUS_ACTIVE_CONTROL_FILTER)));
     }
+
     @DisplayName("экран Control panel / Filter News / проверка видимости статуса NOT ACTIVE")
     public void checkNotActiveControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_STATUS_NOT_ACTIVE), withText(Data_News.STATUS_NOT_ACTIVE),
@@ -724,17 +743,19 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_NEWS)));
     }
+
     @DisplayName("экран Control panel / Creating News / проверка видимости поля Category для ввода тестовых данных")
-    public void checkCategoryCreatingNews_Visibility() {
+    public void checkFieldCategory_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
                 withHint(Data_News.CATEGORY_TEXT),
-                        withParent(withParent(withId(R.id.news_item_category_text_input_layout))),
-                        isDisplayed()))
+                withParent(withParent(withId(R.id.news_item_category_text_input_layout))),
+                isDisplayed()))
                 .check(matches(isDisplayed()))
                 .check(matches(withHint(Data_News.CATEGORY_TEXT)));
     }
+
     @DisplayName("экран Control panel / Creating News / проверка видимости поля Title для ввода тестовых данных")
-    public void checkTitleCreatingNews_Visibility() {
+    public void checkFieldTitle_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_TITLE_TEXT),
                 withHint(Data_News.TITLE_TEXT),
                 withParent(withParent(withId(R.id.news_item_title_text_input_layout))),
@@ -744,7 +765,7 @@ public class CheckUtils_News {
     }
 
     @DisplayName("экран Control panel / Creating News / проверка видимости поля Publication date для ввода тестовых данных")
-    public void checkPublicationCreatingNews_Visibility() {
+    public void checkFieldPublicationDate_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_DATE),
                 withHint(Data_News.PUBLICATION_DATE_CREATING),
                 withParent(withParent(withId(R.id.news_item_create_date_text_input_layout))),
@@ -752,8 +773,9 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withHint(Data_News.PUBLICATION_DATE_CREATING)));
     }
+
     @DisplayName("экран Control panel / Creating News / проверка видимости поля Time для ввода тестовых данных")
-    public void checkTimeCreatingNews_Visibility() {
+    public void checkFieldPublicationTime_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_TIME),
                 withHint(Data_News.TIME_CREATING),
                 withParent(withParent(withId(R.id.news_item_publish_time_text_input_layout))),
@@ -761,8 +783,9 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withHint(Data_News.TIME_CREATING)));
     }
+
     @DisplayName("экран Control panel / Creating News / проверка видимости поля Description для ввода тестовых данных")
-    public void checkDescriptionCreatingNews_Visibility() {
+    public void checkFieldDescription_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_DESCRIPTION),
                 withHint(Data_News.DESCRIPTION_CREATING),
                 withParent(withParent(withId(R.id.news_item_description_text_input_layout))),
@@ -779,9 +802,11 @@ public class CheckUtils_News {
 //                        isDisplayed()));
 //        switch_.check(matches(isDisplayed()));
 
-        onView(allOf(withId(Elements_News.ID_CREATING_SWITCH), withText(Data_News.SWITCH_ON_CREATING),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
-                        isDisplayed())).check(doesNotExist());
+        onView(allOf(withId(Elements_News.ID_CREATING_SWITCH),
+                withText(Data_News.SWITCH_ON_CREATING),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
+                isDisplayed()))
+                .check(doesNotExist());
 
 //        onView(allOf(withId(Elements_News.ID_CREATING_SWITCH),
 //                withText(Data_News.SWITCH_ON_CREATING),
@@ -800,6 +825,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.SWITCH_OFF_CREATING)));
     }
+
     @DisplayName("экран Control panel / Creating News / проверка видимости кнопки SAVE")
     public void checkButtonSaveCreatingNews_Visibility() {
         onView(allOf(withId(Elements_News.ID_CREATING_SAVE),
@@ -1045,6 +1071,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_ADVERTISEMENT)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION для CATEGORY_BIRTHDAY")
     public void checkDescription_Birthday_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1054,6 +1081,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_BIRTHDAY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION для CATEGORY_SALARY")
     public void checkDescription_Salary_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1148,6 +1176,7 @@ public class CheckUtils_News {
                 .check(matches(withText(Data_News.TITLE_EDIT_ADVERTISEMENT)));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_BIRTHDAY")
     public void checkEditedTitle_Birthday_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1157,6 +1186,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_BIRTHDAY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_SALARY")
     public void checkEditedTitle_Salary_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1166,6 +1196,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_SALARY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_TRADE_UNION")
     public void checkEditedTitle_TradeUnion_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1175,6 +1206,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_TRADE_UNION)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_HOLIDAY")
     public void checkEditedTitle_Holiday_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1184,6 +1216,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_HOLIDAY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_MASSAGE")
     public void checkEditedTitle_Massage_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1193,6 +1226,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_MASSAGE)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_GRATITUDE")
     public void checkEditedTitle_Gratitude_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1202,6 +1236,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.TITLE_EDIT_GRATITUDE)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка TITLE после редактирования для CATEGORY_HELP")
     public void checkEditedTitle_Help_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD),
@@ -1223,6 +1258,7 @@ public class CheckUtils_News {
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_ADVERTISEMENT)));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_BIRTHDAY")
     public void checkEditedDescription_Birthday_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1232,6 +1268,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_BIRTHDAY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_SALARY")
     public void checkEditedDescription_Salary_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1241,6 +1278,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_SALARY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_TRADE_UNION")
     public void checkEditedDescription_TradeUnion_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1250,6 +1288,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_TRADE_UNION)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_HOLIDAY")
     public void checkEditedDescription_Holiday_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1259,6 +1298,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_HOLIDAY)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_MASSAGE")
     public void checkEditedDescription_Massage_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1268,6 +1308,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_MASSAGE)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_GRATITUDE")
     public void checkEditedDescription_Gratitude_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1277,6 +1318,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_GRATITUDE)));
     }
+
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DESCRIPTION после редактирования для CATEGORY_HELP")
     public void checkEditedDescription_Help_Visibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1286,6 +1328,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_EDIT_HELP)));
     }
+
     // проверка ОТРЕДАКТИРОВАННОЙ DATE
     @DisplayName("экран Control panel / экран Editing NEWS / проверка DATE после редактирования")
     public void checkEditedPublicationDate_Visibility() {
@@ -1387,6 +1430,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DESCRIPTION_INVALID)));
     }
+
     @DisplayName("экран Control panel / List /  проверка что News с INVALID DESCRIPTION не отображается")
     public void checkInvalidDescription_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION),
@@ -1404,9 +1448,9 @@ public class CheckUtils_News {
 
     @DisplayName("экран Control panel / List / проверка INVALID DATE")
     public void checkInvalidDate_Visibility() {
-        onView(allOf(withId(Elements_News.ID_DATE_INPUT),
+        onView(allOf(withId(Elements_News.ID_PUBLICATION_DATE_VALUE),
                 withText(Data_News.DATE_INVALID),
-                withParent(withParent(withId(R.id.news_item_create_date_text_input_layout))),
+                withParent(withParent(withId(R.id.news_item_material_card_view))),
                 isDisplayed()))
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.DATE_INVALID)));
@@ -1447,6 +1491,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.MESSAGE_EDIT)));
     }
+
     @DisplayName("экран CREATING NEWS/ EDITING NEWS /проверка отображения кнопки Cancel в модальном окне-предупреждении")
     public void checkButtonCancelModalView_Visibility() {
         onView(allOf(withId(Elements_News.ID_MODAL_CANCEL),
@@ -1456,6 +1501,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.CANCEL_MODAL)));
     }
+
     @DisplayName("экран CREATING NEWS/ EDITING NEWS /проверка отображения кнопки Ok в модальном окне-предупреждении")
     public void checkButtonOkModalView_Visibility() {
         onView(allOf(withId(Elements_News.ID_MODAL_OK),
@@ -1476,6 +1522,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.MESSAGE_DELETE)));
     }
+
     @DisplayName("экран Control panel / List / проверка отображения кнопки CANCEL в модальном окне-предупреждении DELETE")
     public void checkCancelDeleteModal_Visibility() {
         onView(allOf(withId(Elements_News.ID_MODAL_CANCEL),
@@ -1485,6 +1532,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_News.CANCEL_MODAL)));
     }
+
     @DisplayName("экран Control panel / List / проверка отображения кнопки OK в модальном окне-предупреждении DELETE")
     public void checkOkDeleteModal_Visibility() {
         onView(allOf(withId(Elements_News.ID_MODAL_OK),
@@ -1516,6 +1564,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Birthday")
     public void checkTitleCardNews_Birthday_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1523,6 +1572,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Salary")
     public void checkTitleCardNews_Salary_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1530,6 +1580,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для TradeUnion")
     public void checkTitleCardNews_TradeUnion_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1537,6 +1588,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Holiday")
     public void checkTitleCardNews_Holiday_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1544,6 +1596,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Massage")
     public void checkTitleCardNews_Massage_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1551,6 +1604,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Gratitude")
     public void checkTitleCardNews_Gratitude_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),
@@ -1558,6 +1612,7 @@ public class CheckUtils_News {
                 withParent(withParent(withId(R.id.news_item_material_card_view)))))
                 .check(doesNotExist());
     }
+
     @DisplayName("экран NEWS / List / нераскрытая карточка / проверяем отсутствие карточки в списке после удаления / Title для Help")
     public void checkTitleCardNews_Help_NotVisibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_CARD_NEWS),

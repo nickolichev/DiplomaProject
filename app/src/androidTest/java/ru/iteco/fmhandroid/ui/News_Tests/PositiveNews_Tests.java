@@ -39,16 +39,16 @@ public class PositiveNews_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 04.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 16 / Отмененный процесс создания News")
-    public void  cancellationProcessCreatingNewsTest() {
+    public void cancellationProcessCreatingNewsTest() {
         new Utils_News().clickEdit_News();
         new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
         new Utils_News().clickButtonAdd_News();
         new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
-        new Utils_News().inputAdvertisementCategory_CreateNews();
-        new Utils_News().inputTitleCreateNews_Advertisement() ;
+        new Utils_News().selectCategoryAdvertisement();
+        new Utils_News().inputTitleCreateNews_Advertisement();
         new Utils_News().inputPublicationDateCreateNews();
         new Utils_News().inputTimeCreateNews();
         new Utils_News().inputDescriptionCreateNews_Advertisement();
@@ -61,7 +61,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleControlPanel_Visibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 18 / Проверить функционал Создание + редактирование + удаление карточки в категории \"Объявление\"")
     public void newsInCategoryAdvertisementTest() {
@@ -98,7 +98,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Advertisement_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 19 Проверить функционал Создание + редактирование + удаление карточки в категории \"День рождения\"")
     public void newsInCategoryBirthdayTest() {
@@ -135,7 +135,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Birthday_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 20 Проверить функционал Создание + редактирование + удаление карточки в категории \"Зарплата\"")
     public void newsInCategorySalaryTest() {
@@ -172,7 +172,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Salary_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 21 Проверить функционал Создание + редактирование + удаление карточки в категории \"Профсоюз\"")
     public void newsInCategoryTradeUnionTest() {
@@ -209,7 +209,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_TradeUnion_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 22 Проверить функционал Создание + редактирование + удаление карточки в категории \"Праздник\"")
     public void newsInCategoryHolidayTest() {
@@ -246,7 +246,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Holiday_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 23 Проверить функционал Создание + редактирование + удаление карточки в категории \"Массаж\"")
     public void newsInCategoryMassageTest() {
@@ -283,7 +283,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Massage_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 24 Проверить функционал Создание + редактирование + удаление карточки в категории \"Благодарность\"")
     public void newsInCategoryGratitudeTest() {
@@ -320,7 +320,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Gratitude_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 25 Проверить функционал Создание + редактирование + удаление карточки в категории \"Нужна помощь\"")
     public void newsInCategoryHelpTest() {
@@ -357,7 +357,7 @@ public class PositiveNews_Tests {
         new CheckUtils_News().checkTitleCardNews_Help_NotVisibility();
     }
 
-    // работает 05.11.23
+    // работает 13.11.23
     @Test
     @DisplayName("Positive test. Test-case # 26 / на экране NEWS проверить функционал Filter news")
     public void filterNewsTest() {
