@@ -14,12 +14,12 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 
-import io.qameta.allure.kotlin.junit4.DisplayName;
+import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_Auth;
 import ru.iteco.fmhandroid.ui.testData.Data_Auth;
 
 public class Utils_Auth {
-    @DisplayName("экран AUTHORIZATION / заполнение поля Login валидными тестовыми данными")
+    @Step("экран AUTHORIZATION / заполнение поля Login валидными тестовыми данными")
     public void inputValidLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
@@ -27,7 +27,7 @@ public class Utils_Auth {
                 .perform(ViewActions.closeSoftKeyboard());
     }
 
-    @DisplayName("экран AUTHORIZATION / заполнение поля Password валидными тестовыми данными")
+    @Step("экран AUTHORIZATION / заполнение поля Password валидными тестовыми данными")
     public void inputValidPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD)))
@@ -35,7 +35,7 @@ public class Utils_Auth {
                 .perform(ViewActions.closeSoftKeyboard());
     }
 
-    @DisplayName("экран AUTHORIZATION / заполнение поля Login НЕвалидными тестовыми данными")
+    @Step("экран AUTHORIZATION / заполнение поля Login НЕвалидными тестовыми данными")
     public void inputInvalidLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
@@ -43,7 +43,7 @@ public class Utils_Auth {
                 .perform(ViewActions.closeSoftKeyboard());
     }
 
-    @DisplayName("экран AUTHORIZATION / заполнение поля Password НЕвалидными тестовыми данными")
+    @Step("экран AUTHORIZATION / заполнение поля Password НЕвалидными тестовыми данными")
     public void inputInvalidPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD)))
@@ -51,21 +51,21 @@ public class Utils_Auth {
                 .perform(ViewActions.closeSoftKeyboard());
     }
 
-    @DisplayName("экран AUTHORIZATION / очистить заполненное поле Login от тестовых данных")
+    @Step("экран AUTHORIZATION / очистить заполненное поле Login от тестовых данных")
     public void clearFieldLogin() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
                 .perform(clearText());
     }
 
-    @DisplayName("экран AUTHORIZATION / очистить заполненное поле Password от тестовых данных")
+    @Step("экран AUTHORIZATION / очистить заполненное поле Password от тестовых данных")
     public void clearFieldPassword() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD)))
                 .perform(clearText());
     }
 
-    @DisplayName("выход из авторизованной сессии")
+    @Step("выход из авторизованной сессии")
     public void logOut() {
         ViewInteraction clickLogOut = onView(
                 allOf(withId(Elements_Auth.ID_IMAGE_LOG_OUT)));
@@ -76,7 +76,7 @@ public class Utils_Auth {
         buttonLogOut.perform(click());
     }
 
-    @DisplayName("клик по кнопке авторизации Sign In")
+    @Step("клик по кнопке авторизации Sign In")
     public void clickButtonSignIn() {
         ViewInteraction button = onView(
                 allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)));
@@ -85,7 +85,7 @@ public class Utils_Auth {
 
     }
 
-    @DisplayName("набор утилит для авторизации для Before в тестах")
+    @Step("набор утилит для авторизации для Before в тестах")
     public void authorizationUtility() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
@@ -97,20 +97,14 @@ public class Utils_Auth {
                 .perform(ViewActions.replaceText(Data_Auth.VALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
 
-        ViewInteraction button = onView(
-                allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)));
-        button.check(matches(ViewMatchers.isDisplayed()));
-        button.perform(click());
+        onView(allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)))
+                .check(matches(ViewMatchers.isDisplayed()))
+                .perform(click());
     }
 
-    @DisplayName("набор утилит завершения авторизованной сессии для Before в тестах")
+    @Step("набор утилит завершения авторизованной сессии для Before в тестах")
     public void logOutUtility() {
-        ViewInteraction clickLogOut = onView(
-                allOf(withId(Elements_Auth.ID_IMAGE_LOG_OUT)));
-        clickLogOut.perform(click());
-
-        ViewInteraction buttonLogOut = onView(
-                allOf(withText(Data_Auth.BUTTON_LOG_OUT)));
-        buttonLogOut.perform(click());
+        onView(allOf(withId(Elements_Auth.ID_IMAGE_LOG_OUT))).perform(click());
+        onView(allOf(withText(Data_Auth.BUTTON_LOG_OUT))).perform(click());
     }
 }

@@ -31,8 +31,8 @@ public class PositiveClaims_Tests {
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Auth().authorizationUtility();
         new Utils_Helper().timerWaitingAsyncOperation2000();
-        new Utils_Menu().buttonMenu();
-        new Utils_Menu().buttonClaims();
+        new Utils_Menu().clickButtonMenu();
+        new Utils_Menu().clickButtonClaims();
         new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 
@@ -42,7 +42,6 @@ public class PositiveClaims_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 5 / Фильтрация Claims по статусам Open + InProgress + Executed + Cancelled")
     public void filteringClaimsByStatusTest() {
@@ -79,7 +78,6 @@ public class PositiveClaims_Tests {
         new Utils_Helper().backSystemButton();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 15 / Тестирование отмены процесса создания Claim")
     public void cancellationProcessCreatingClaimsTest() {
@@ -101,7 +99,6 @@ public class PositiveClaims_Tests {
         new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 
-    // работает 11.11.23
     @Test
     @DisplayName("Positive test. / BUG / Test-case # 7 / Создание новой претензии со статусом \"Open\" (Испольнитель не определен) + перевод в статус \"IN PROGRESS\" через \"take to work\" + добавление комментария + редактирование комментария.")
     public void createNewClaimInOpenStatus_7_Test() {
@@ -145,7 +142,6 @@ public class PositiveClaims_Tests {
         new Utils_Claims().clickCloseClaim();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 8 / Проверить функционал \"Создание новой претензии\" со статусом \"Open\" (Испольнитель не определен) + Редактирование Claim (с проверкой количества знаков в Title)+ перевод в статус \"IN PROGRESS\" через указание Executor на экране \"Editing claims\".")
     public void createNewClaimOpenStatusAndTransferInProgress_8_Test() {
@@ -185,11 +181,10 @@ public class PositiveClaims_Tests {
         new Utils_Claims().clickCloseClaim();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 9 / Проверить функционал \"Создание новой претензии\" со статусом \"In Progress\" + Смена статуса  \"In progress\" на \"Open\" через \"Throw off + Смена статуса \"Open\" на \"Cancelled\" через \"Cancel")
     public void createNewClaimInProgressStatusAndTransferOpenAndTransferCancelled_9_Test() {
-        new Summary_Methods_Claims().creatingClaimInProgressStatusCustomExecutor();
+        new Summary_Methods_Claims().checkVisibilityInClaimWithInProgressStatus();
         new Utils_Claims().clickIconFilter_View_Claims();
         new Utils_Claims().clickCheckBox_Open();
 //        new Utils_Claims().clickCheckBox_InProgress(); // временно
@@ -221,11 +216,10 @@ public class PositiveClaims_Tests {
         new Utils_Claims().clickCloseClaim();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Positive test. Test-case # 10 / Проверить функционал \"Создание новой претензии\" со статусом \"In Progress\" + Смена статуса  \"In progress\" на \"Open\" через \"Throw off + Смена статуса \"Open\" на \"Cancelled\" через \"Cancel")
     public void createNewClaimInProgressStatusAndTransferExecuted_10_Test() {
-        new Summary_Methods_Claims().creatingClaimInProgressStatusCustomExecutor();
+        new Summary_Methods_Claims().checkVisibilityInClaimWithInProgressStatus();
         new Utils_Claims().clickIconFilter_View_Claims();
         new Utils_Claims().clickCheckBox_Open();
         new Utils_Claims().clickButton_Ok();

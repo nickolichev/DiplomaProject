@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.checkbox.MaterialCheckBox
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.dto.Claim
 import ru.iteco.fmhandroid.viewmodel.ClaimViewModel
@@ -57,7 +56,6 @@ class ClaimListFilteringDialogFragment : DialogFragment() {
             buttonCancel.setOnClickListener {
                 dialog.dismiss()
             }
-            ProjectIdlingResources.decrement()
         }
         return dialog
     }

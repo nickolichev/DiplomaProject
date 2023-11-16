@@ -14,7 +14,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimListAdapter
 import ru.iteco.fmhandroid.databinding.FragmentListClaimBinding
@@ -123,9 +122,7 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
         authorizationMenu.inflate(R.menu.authorization)
 
         binding.containerCustomAppBarIncludeOnFragmentListClaim.authorizationImageButton.setOnClickListener {
-            ProjectIdlingResources.increment()//Кнопка Авторизация. Log Out.
             authorizationMenu.show()
-            ProjectIdlingResources.decrement()
         }
 
         authorizationMenu.setOnMenuItemClickListener {
@@ -148,12 +145,12 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
 
         binding.containerListClaimInclude.claimListRecyclerView.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            //EspressoIdlingResources.increment()//Эксперимент. Задержка полной загрузки.
             viewModel.data.collectLatest { state ->
                 adapter.submitList(state)
 
                 delay(200)
                 binding.containerListClaimInclude.claimListRecyclerView.smoothScrollToPosition(0)
+
                 if (state.isEmpty()) {
                     binding.containerListClaimInclude.emptyClaimListGroup.isVisible = true
                     binding.containerListClaimInclude.claimRetryMaterialButton.setOnClickListener {
@@ -164,15 +161,10 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
                 } else {
                     binding.containerListClaimInclude.emptyClaimListGroup.isVisible = false
                 }
-                ProjectIdlingResources.decrement()//Эксперимент
             }
-
         }
 
-
-
         binding.containerListClaimInclude.filtersMaterialButton.setOnClickListener {
-            ProjectIdlingResources.increment()//Кнопка Фильтр сообщений.
             val dialog = ClaimListFilteringDialogFragment()
             dialog.show(childFragmentManager, "custom")
         }
@@ -186,6 +178,5 @@ class ClaimListFragment : Fragment(R.layout.fragment_list_claim) {
                 authViewModel.loadUserList()
             }
         }
-
     }
 }

@@ -13,32 +13,32 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.resourceIDData.Elelements_Menu;
+import ru.iteco.fmhandroid.ui.resourceIDData.Elements_Menu;
 import ru.iteco.fmhandroid.ui.testData.Data_Menu;
 
 public class Utils_Menu {
 
     @DisplayName("экран MAIN / клик по иконке MENU")
-    public void buttonMenu() {
+    public void clickButtonMenu() {
         ViewInteraction button = onView(
-                allOf(withId(Elelements_Menu.ID_MAIN_MENU)));
+                allOf(withId(Elements_Menu.ID_MAIN_MENU)));
         button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         button.perform(click());
     }
 
     @DisplayName("экран MAIN / клик в раскрытом MENU по строке NEWS")
-    public void buttonNews() {
+    public void clickButtonNews() {
         ViewInteraction button = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.NEWS_TEXT),
+                allOf(withId(Elements_Menu.ID_TITLE_MENU), withText(Data_Menu.NEWS_TEXT),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         button.perform(click());
     }
 
     @DisplayName("экран MAIN / клик в раскрытом MENU по строке CLAIMS")
-    public void buttonClaims() {
+    public void clickButtonClaims() {
         ViewInteraction button = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU),
+                allOf(withId(Elements_Menu.ID_TITLE_MENU),
                         withText(Data_Menu.CLAIMS_TEXT),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
@@ -46,9 +46,9 @@ public class Utils_Menu {
     }
 
     @DisplayName("экран MAIN / клик в раскрытом MENU по строке ABOUT")
-    public void buttonAbout() {
+    public void clickButtonAbout() {
         ViewInteraction button = onView(
-                allOf(withId(Elelements_Menu.ID_TITLE_MENU), withText(Data_Menu.ABOUT_TEXT),
+                allOf(withId(Elements_Menu.ID_TITLE_MENU), withText(Data_Menu.ABOUT_TEXT),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         button.perform(click());

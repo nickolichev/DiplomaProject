@@ -13,14 +13,13 @@ import android.view.View;
 
 import org.hamcrest.core.IsInstanceOf;
 
-import io.qameta.allure.kotlin.junit4.DisplayName;
+import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_Main;
 import ru.iteco.fmhandroid.ui.testData.Data_Main;
 
 public class CheckUtils_Main {
 
-    // экран MAIN PAGE
-    @DisplayName("экран Main / проверяем отображение кнопки Menu")
+    @Step("экран Main / проверяем отображение кнопки Menu")
     public void checkIconMenu_Visibility() {
         onView(allOf(withId(Elements_Main.ID_MAIN_MENU),
                 withContentDescription(Data_Main.DESCRIPTION_MENU),
@@ -32,7 +31,7 @@ public class CheckUtils_Main {
 
     }
 
-    @DisplayName("экран Main / проверяем отображение icon Trade Mark")
+    @Step("экран Main / проверяем отображение icon Trade Mark")
     public void checkIconTradeMark_Visibility() {
         onView(allOf(withId(Elements_Main.ID_TRADE_MARK),
                 withParent(allOf(withId(Elements_Main.ID_CONTAINER_CUSTOM_APP),
@@ -41,25 +40,27 @@ public class CheckUtils_Main {
                 .check(matches(isDisplayed()));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon Our Mission")
+    @Step("экран Main / проверяем отображение icon Our Mission")
     public void checkIconButterFly_Visibility() {
-        onView(allOf(withId(Elements_Main.ID_BUTTERFLY), withContentDescription(Data_Main.DESCRIPTION_MISSION),
+        onView(allOf(withId(Elements_Main.ID_BUTTERFLY),
+                withContentDescription(Data_Main.DESCRIPTION_MISSION),
                 withParent(allOf(withId(Elements_Main.ID_CONTAINER_CUSTOM_APP),
                         withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                 isDisplayed()))
                 .check(matches(isDisplayed()));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon Log out")
+    @Step("экран Main / проверяем отображение icon Log out")
     public void checkIconLogOut_Visibility() {
-        onView(allOf(withId(Elements_Main.ID_AUTHORIZATION), withContentDescription(Data_Main.DESCRIPTION_LOG_OUT),
+        onView(allOf(withId(Elements_Main.ID_AUTHORIZATION),
+                withContentDescription(Data_Main.DESCRIPTION_LOG_OUT),
                 withParent(allOf(withId(Elements_Main.ID_CONTAINER_CUSTOM_APP),
                         withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                 isDisplayed()))
                 .check(matches(isDisplayed()));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon SubTitle News")
+    @Step("экран Main / проверяем отображение icon SubTitle News")
     public void checkIconNews_Visibility() {
         onView(allOf(withText(Data_Main.TEXT_NEWS),
                 withParent(withParent(withId(Elements_Main.ID_CONTAINER_NEWS))),
@@ -67,16 +68,17 @@ public class CheckUtils_Main {
                 .check(matches(withText(Data_Main.TEXT_NEWS)));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon SubTitle All News")
+    @Step("экран Main / проверяем отображение icon SubTitle All News")
     public void checkIconAllNews_Visibility() {
-        onView(allOf(withId(Elements_Main.ID_ALL_NEWS), withText(Data_Main.TEXT_ALL_NEWS),
+        onView(allOf(withId(Elements_Main.ID_ALL_NEWS),
+                withText(Data_Main.TEXT_ALL_NEWS),
                 withParent(allOf(withId(Elements_Main.ID_CONTAINER_NEWS),
                         withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                 isDisplayed()))
                 .check(matches(withText(Data_Main.TEXT_ALL_NEWS)));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon SubTitle Claims")
+    @Step("экран Main / проверяем отображение icon SubTitle Claims")
     public void checkIconClaims_Visibility() {
         onView(allOf(withText(Data_Main.TEXT_CLAIMS),
                 withParent(withParent(withId(Elements_Main.ID_CONTAINER_CLAIMS))),
@@ -84,7 +86,7 @@ public class CheckUtils_Main {
                 .check(matches(withText(Data_Main.TEXT_CLAIMS)));
     }
 
-    @DisplayName("экран Main / проверяем отображение icon SubTitle All Claims")
+    @Step("экран Main / проверяем отображение icon SubTitle All Claims")
     public void checkIconAllClaims_Visibility() {
         onView(allOf(withId(Elements_Main.ID_ALL_CLAIMS),
                 withText(Data_Main.TEXT_ALL_CLAIMS),
@@ -94,15 +96,16 @@ public class CheckUtils_Main {
                 .check(matches(withText(Data_Main.TEXT_ALL_CLAIMS)));
     }
 
-    @DisplayName("экран Main / проверяем отображение button Add New Claim")
+    @Step("экран Main / проверяем отображение button Add New Claim")
     public void checkButtonAddNewClaim_Visibility() {
-        onView(allOf(withId(Elements_Main.ID_BUTTON_ADD_NEW_CLAIM), withContentDescription(Data_Main.TEXT_ADD_NEW_CLAIM),
+        onView(allOf(withId(Elements_Main.ID_BUTTON_ADD_NEW_CLAIM),
+                withContentDescription(Data_Main.TEXT_ADD_NEW_CLAIM),
                 withParent(withParent(withId(Elements_Main.ID_CONTAINER_CLAIMS))),
                 isDisplayed()))
                 .check(matches(isDisplayed()));
     }
 
-    @DisplayName("экран Main / проверяем отображение button expend Claim card")
+    @Step("экран Main / проверяем отображение button expend Claim card")
     public void checkButtonExpendClaim_Visibility() {
         onView(allOf(withId(Elements_Main.ID_BUTTON_EXPEND),
                 withParent(withParent(withId(Elements_Main.ID_CONTAINER_CLAIMS))),
@@ -110,7 +113,7 @@ public class CheckUtils_Main {
                 .check(matches(isDisplayed()));
     }
 
-    @DisplayName("экран Main / проверяем отображение button expend News card")
+    @Step("экран Main / проверяем отображение button expend News card")
     public void checkButtonExpendNews_Visibility() {
         onView(allOf(withId(Elements_Main.ID_BUTTON_EXPEND),
                 withParent(withParent(withId(Elements_Main.ID_CONTAINER_NEWS))),

@@ -21,7 +21,6 @@ public class NegativeAuth_Tests {
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
 
-    // работает 14.11.23
     @Test
     @DisplayName("Negative test. Test-case # 2 / Тестирование авторизации с вводом НЕвалидных тестовых данных + Empty ")
     public void invalidAuthorizationTest() {

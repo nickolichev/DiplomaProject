@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.ClaimCommentListAdapter
 import ru.iteco.fmhandroid.adapter.OnClaimCommentItemClickListener
@@ -48,6 +47,7 @@ class OpenClaimFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         claimCardViewModel.init(claimId)
+
         lifecycleScope.launchWhenResumed {
             claimCardViewModel.openClaimCommentEvent.collect {
                 val action = OpenClaimFragmentDirections
@@ -130,9 +130,7 @@ class OpenClaimFragment : Fragment() {
         authorizationMenu.inflate(R.menu.authorization)
 
         binding.containerCustomAppBarIncludeOnFragmentOpenClaim.authorizationImageButton.setOnClickListener {
-            ProjectIdlingResources.increment()//Кнопка Авторизация. Log Out.
             authorizationMenu.show()
-            ProjectIdlingResources.decrement()
         }
 
         authorizationMenu.setOnMenuItemClickListener {
@@ -204,7 +202,6 @@ class OpenClaimFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun renderingContentOfClaim(fullClaim: FullClaim) {
@@ -218,7 +215,6 @@ class OpenClaimFragment : Fragment() {
         binding.createDataTextView.text = Utils.formatDate(fullClaim.claim.createDate)
         binding.createTimeTextView.text = Utils.formatTime(fullClaim.claim.createDate)
         binding.statusLabelTextView.text = displayingStatusOfClaim(fullClaim.claim.status)
-        ProjectIdlingResources.decrement()//Инкремент ожидания отображения статуса.
 
         statusMenuVisibility(
             fullClaim.claim.status,
@@ -260,19 +256,18 @@ class OpenClaimFragment : Fragment() {
             Claim.Status.OPEN -> {
                 statusProcessingMenu.menu.findItem(R.id.cancel_list_item).isEnabled =
                     claimCardViewModel.currentUser.id == fullClaim.claim.creatorId
-                ProjectIdlingResources.decrement()
             }
             Claim.Status.IN_PROGRESS -> {
                 if (claimCardViewModel.currentUser.id != fullClaim.claim.executorId) {
                     binding.statusProcessingImageButton.setImageResource(R.drawable.ic_status_processing_non_clickable)
                     statusProcessingMenu.menu.clear()
                 }
-                ProjectIdlingResources.decrement()// Инкремент находится в Create Edit Claim Comment, кнопка сохранения.
             }
             Claim.Status.CANCELLED -> {
             }
             else -> returnTransition
         }
+
         binding.closeImageButton.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -282,7 +277,6 @@ class OpenClaimFragment : Fragment() {
         }
 
         binding.addCommentImageButton.setOnClickListener {
-            ProjectIdlingResources.increment()//Кнопка добавить Комментарий.
             val action = OpenClaimFragmentDirections
                 .actionOpenClaimFragmentToCreateEditClaimCommentFragment(
                     argComment = null,
@@ -304,7 +298,6 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.cancel_list_item -> {
-                    ProjectIdlingResources.increment()//Ожидание отображения статуса.
                     claimCardViewModel.changeClaimStatus(
                         fullClaim.claim.id!!,
                         Claim.Status.CANCELLED,
@@ -315,7 +308,6 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.throw_off_list_item -> {
-                    ProjectIdlingResources.increment()//Ввод символов в комментарий.
                     val view = requireActivity().layoutInflater.inflate(
                         R.layout.fragment_dialog_comment_create,
                         null
@@ -326,7 +318,6 @@ class OpenClaimFragment : Fragment() {
                         .setPositiveButton(android.R.string.ok, null)
                         .setNegativeButton(android.R.string.cancel, null)
                         .create()
-                    ProjectIdlingResources.decrement()
 
                     dialog.setOnShowListener {
                         val buttonOk: Button =
@@ -339,7 +330,6 @@ class OpenClaimFragment : Fragment() {
                             if (text.isBlank()) {
                                 showErrorToast(R.string.toast_empty_field)
                             } else {
-                                ProjectIdlingResources.increment()//Ожидание отображения статуса.
                                 claimCardViewModel.changeClaimStatus(
                                     fullClaim.claim.id!!,
                                     Claim.Status.OPEN,
@@ -373,7 +363,6 @@ class OpenClaimFragment : Fragment() {
                 }
 
                 R.id.executes_list_item -> {
-                    ProjectIdlingResources.increment()//Ввод символов в комментарий.
                     val view = requireActivity().layoutInflater.inflate(
                         R.layout.fragment_dialog_comment_create,
                         null
@@ -384,7 +373,6 @@ class OpenClaimFragment : Fragment() {
                         .setPositiveButton(android.R.string.ok, null)
                         .setNegativeButton(android.R.string.cancel, null)
                         .create()
-                    ProjectIdlingResources.decrement()
 
                     dialog.setOnShowListener {
                         val buttonOk: Button =
@@ -432,6 +420,5 @@ class OpenClaimFragment : Fragment() {
                 }
             }
         }
-
     }
 }

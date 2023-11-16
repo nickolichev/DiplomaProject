@@ -16,7 +16,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.adapter.NewsListAdapter
 import ru.iteco.fmhandroid.databinding.FragmentNewsListBinding
@@ -116,7 +115,6 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
                         binding.newsListSwipeRefresh.isRefreshing = false
                     }
                 }
-                ProjectIdlingResources.decrement()//Декремент перехода из раздела MainFragment.
             }
         }
 
@@ -146,7 +144,6 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
         with(binding) {
             containerListNewsInclude.editNewsMaterialButton.setOnClickListener {
                 if (viewModel.currentUser.admin) {
-                    ProjectIdlingResources.increment()//Переход в раздел Control Panel
                     findNavController().navigate(
                         R.id.action_newsListFragment_to_newsControlPanelFragment
                     )
@@ -160,7 +157,6 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
             }
 
             containerListNewsInclude.sortNewsMaterialButton.setOnClickListener {
-                ProjectIdlingResources.increment()//Кнопка сортировки сообщения
                 viewModel.onSortDirectionButtonClicked()
             }
 

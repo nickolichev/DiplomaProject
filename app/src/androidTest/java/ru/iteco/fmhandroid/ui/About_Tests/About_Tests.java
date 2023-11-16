@@ -21,7 +21,6 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class About_Tests {
-    //    CardIdlingResource cardIdlingResource = new CardIdlingResource();
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
@@ -40,12 +39,11 @@ public class About_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 14.11.2023
     @Test
     @DisplayName("Positive test. Test-case # 28 / Тестирование отображения элементов и функциональности на экране About")
     public void viewAboutTest() {
-        new Utils_Menu().buttonMenu();
-        new Utils_Menu().buttonAbout();
+        new Utils_Menu().clickButtonMenu();
+        new Utils_Menu().clickButtonAbout();
         new CheckUtils_About().checkTitleAbout_Visibility();
         new CheckUtils_About().checkVersionValueVisibility();
         new CheckUtils_About().checkPrivacyPolicyVisibility();
@@ -54,7 +52,7 @@ public class About_Tests {
         new Utils_About().returnFromBrowserToApp();
         new Utils_About().clickTermsOfUse();
         new Utils_About().returnFromBrowserToApp();
-        new Utils_About().buttonBackAboutUtility();
+        new Utils_About().clickButtonBackAboutUtility();
     }
 }
 

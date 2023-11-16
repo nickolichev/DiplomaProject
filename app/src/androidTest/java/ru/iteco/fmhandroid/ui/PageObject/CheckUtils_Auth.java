@@ -14,12 +14,12 @@ import android.view.View;
 
 import org.hamcrest.core.IsInstanceOf;
 
-import io.qameta.allure.kotlin.junit4.DisplayName;
+import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_Auth;
 import ru.iteco.fmhandroid.ui.testData.Data_Auth;
 
 public class CheckUtils_Auth {
-    @DisplayName("экран AUTHORIZATION / проверяем отображение Title экрана")
+    @Step("экран AUTHORIZATION / проверяем отображение Title экрана")
     public void checkTitleAuthView_Visibility() {
         onView(allOf(withText(Data_Auth.TITLE_AUTHORIZATION),
                 withParent(withParent(withId(Elements_Auth.ID_TITLE_AUTHORIZATION))),
@@ -28,7 +28,7 @@ public class CheckUtils_Auth {
                 .check(matches(withText(Data_Auth.TITLE_AUTHORIZATION)));
     }
 
-    @DisplayName("экран AUTHORIZATION / проверяем отображение поля ввода Login")
+    @Step("экран AUTHORIZATION / проверяем отображение поля ввода Login")
     public void checkFieldLoginAuthView_Visibility() {
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN),
                 withParent(withParent(withId(Elements_Auth.ID_FIELD_LOGIN))),
@@ -37,7 +37,7 @@ public class CheckUtils_Auth {
                 .check(matches(withHint(Data_Auth.FIELD_LOGIN)));
     }
 
-    @DisplayName("экран AUTHORIZATION / проверяем отображение поля ввода Login")
+    @Step("экран AUTHORIZATION / проверяем отображение поля ввода Login")
     public void checkFieldPasswordAuthView_Visibility() {
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD),
                 withParent(withParent(withId(Elements_Auth.ID_FIELD_PASSWORD))),
@@ -46,7 +46,7 @@ public class CheckUtils_Auth {
                 .check(matches(withHint(Data_Auth.FIELD_PASSWORD)));
     }
 
-    @DisplayName("экран AUTHORIZATION / проверяем отображение кнопки SIGN IN")
+    @Step("экран AUTHORIZATION / проверяем отображение кнопки SIGN IN")
     public void checkButtonSignInAuthView_Visibility() {
         onView(allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN),
                 withText(Data_Auth.BUTTON_SIGN_IN),

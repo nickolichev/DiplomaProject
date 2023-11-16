@@ -1,10 +1,10 @@
 package ru.iteco.fmhandroid.ui.PageObject;
 
-import io.qameta.allure.kotlin.junit4.DisplayName;
+import io.qameta.allure.kotlin.Step;
 
 public class Summary_Methods_Main {
 
-    @DisplayName("Сводный метод проверки отображения всех элементов на экране Main")
+    @Step("Сводный метод проверки отображения всех элементов на экране Main")
     public void checkAllIconsVisibilityOnMainPage() {
         new CheckUtils_Main().checkIconMenu_Visibility();
         new CheckUtils_Main().checkIconTradeMark_Visibility();

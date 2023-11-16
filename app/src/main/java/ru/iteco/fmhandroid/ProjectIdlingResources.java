@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid;
 
 
 import androidx.test.espresso.IdlingRegistry;
+import androidx.test.espresso.IdlingResource;
 import androidx.test.espresso.idling.CountingIdlingResource;
 
 
@@ -62,6 +63,8 @@ import androidx.test.espresso.idling.CountingIdlingResource;
 //    }
 //
 //}
+
+
 
 
 public class ProjectIdlingResources {

@@ -26,9 +26,6 @@ import ru.iteco.fmhandroid.ui.PageObject.Utils_Menu;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class PositiveMenu_Tests {
-    ProjectIdlingResources projectIdlingResources = new ProjectIdlingResources();
-//    CardIdlingResource cardIdlingResource = new CardIdlingResource();
-
     @Rule
     public ActivityTestRule<AppActivity> mActivityScenarioRule =
             new ActivityTestRule<>(AppActivity.class);
@@ -51,19 +48,19 @@ public class PositiveMenu_Tests {
     @DisplayName("Positive test. Test-case # 4 / Навигация в MENU")
     public void navigationMenuTest() {
         new CheckUtils_Main().checkIconMenu_Visibility();
-        new Utils_Menu().buttonMenu();
+        new Utils_Menu().clickButtonMenu();
         new CheckUtils_Menu().checkLineVisibilityNews();
         new CheckUtils_Menu().checkLineVisibilityClaims();
         new CheckUtils_Menu().checkLineVisibilityAbout();
-        new Utils_Menu().buttonClaims();
+        new Utils_Menu().clickButtonClaims();
         new CheckUtils_Claims().checkTitleClaims_Visibility();
-        new Utils_Menu().buttonMenu();
-        new Utils_Menu().buttonNews();
+        new Utils_Menu().clickButtonMenu();
+        new Utils_Menu().clickButtonNews();
         new CheckUtils_News().checkTitleNews_Visibility();
-        new Utils_Menu().buttonMenu();
-        new Utils_Menu().buttonAbout();
+        new Utils_Menu().clickButtonMenu();
+        new Utils_Menu().clickButtonAbout();
         new CheckUtils_About().checkTitleAbout_Visibility();
-        new Utils_About().buttonBackAboutUtility();
+        new Utils_About().clickButtonBackAboutUtility();
     }
 }
 

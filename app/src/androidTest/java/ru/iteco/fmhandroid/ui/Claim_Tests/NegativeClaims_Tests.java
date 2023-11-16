@@ -31,10 +31,9 @@ public class NegativeClaims_Tests {
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Auth().authorizationUtility();
         new Utils_Helper().timerWaitingAsyncOperation3000();
-        new Utils_Menu().buttonMenu();
-        new Utils_Menu().buttonClaims();
+        new Utils_Menu().clickButtonMenu();
+        new Utils_Menu().clickButtonClaims();
         new CheckUtils_Claims().checkTitleClaims_Visibility();
-
     }
 
     @After
@@ -43,7 +42,6 @@ public class NegativeClaims_Tests {
         new Utils_Auth().logOutUtility();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Negative test. test-case # 13 / Попытка создать Claim с незаполненными полями Title, Date, Time, Description")
     public void creatingClaimWithEmptyFieldsTest() {
@@ -101,7 +99,6 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 
-    // работает 14.11.23
     @Test
     @DisplayName("Negative test. test-case # 11 / Попытка создать Claim с невалидными тестовыми данными Title (>50 знаков)")
     public void creatingClaimWithInvalidTitleTest() {

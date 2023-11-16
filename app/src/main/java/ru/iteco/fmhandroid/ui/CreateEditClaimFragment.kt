@@ -17,7 +17,6 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import ru.iteco.fmhandroid.ProjectIdlingResources
 import ru.iteco.fmhandroid.R
 import ru.iteco.fmhandroid.databinding.FragmentCreateEditClaimBinding
 import ru.iteco.fmhandroid.dto.Claim
@@ -236,7 +235,6 @@ class CreateEditClaimFragment : Fragment(R.layout.fragment_create_edit_claim) {
     }
 
     private fun fillClaim() {
-        ProjectIdlingResources.increment()
         with(binding) {
             val fullClaim = args.argClaim
             if (fullClaim != null) {

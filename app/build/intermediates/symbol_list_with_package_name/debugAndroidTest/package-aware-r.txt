@@ -2573,7 +2573,6 @@ id aligned
 id all
 id allStates
 id always
-id androidx_test_espresso_contrib_drawer_layout_tag
 id animateToEnd
 id animateToStart
 id antiClockwise

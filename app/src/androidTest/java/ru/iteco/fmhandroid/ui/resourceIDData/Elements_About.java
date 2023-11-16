@@ -3,9 +3,7 @@ package ru.iteco.fmhandroid.ui.resourceIDData;
 import ru.iteco.fmhandroid.R;
 
 public class Elements_About {
-    public static final int ID_ABOUT = android.R.id.title; // Title About
     public static final int ID_BUTTON_BACK = R.id.about_back_image_button;
-    public static final int ID_PARENT_BUTTON_BACK = R.id.container_custom_app_bar_include_on_fragment_about;
     public static final int ID_TITLE_VERSION = R.id.about_version_title_text_view;
     public static final int ID_VERSION_VALUE = R.id.about_version_value_text_view;
     public static final int ID_PRIVACY_POLICY = R.id.about_privacy_policy_label_text_view;
