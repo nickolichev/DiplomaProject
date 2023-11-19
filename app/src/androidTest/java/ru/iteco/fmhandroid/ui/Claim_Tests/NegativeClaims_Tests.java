@@ -43,6 +43,32 @@ public class NegativeClaims_Tests {
     }
 
     @Test
+    @DisplayName("Negative test. test-case # 12 / Попытка создать Claim в статусе Open с невалидными тестовыми данными Title (>50 знаков)")
+    public void creatingClaimWithInvalidTitleTest() {
+        Utils_Claims utilsClaims = new Utils_Claims();
+        new Utils_Claims().clickCreateClaim();
+        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
+        // вставляем Title длиной в 51 знак
+        new Utils_Claims().inputInvalidTitleNewClaim();
+        // проверяем, что количество знаков в поле Title осталось = 50
+        int characterCount = utilsClaims.updateCharacterCount();
+        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
+        // проверка Title, который содержит на 1 знак меньше введенного при создании (Title "урезан" приложением)
+        new CheckUtils_Claims().checkTruncatedTestDataTitle_Visibility();
+        // заполняем оставшиеся поля формы
+        new Utils_Claims().inputValidDate();
+        new Utils_Claims().inputValidTime();
+        new Utils_Claims().inputDescription_12();
+        new Utils_Claims().clickButtonSaveNewClaim();
+        new Utils_Claims().clickIconFilterOnClaimsView();
+        new Utils_Claims().clickCheckBox_InProgress();
+        new Utils_Claims().clickButton_Ok();
+        // поиск и открытие созданной Claim c "урезанным" до 50 знаков Title
+        new Utils_Claims().searchAndOpenClaimByTopic_12();
+        new Summary_Methods_Claims().checkVisibilityInNewClaimWithOpenStatus_12();
+    }
+
+    @Test
     @DisplayName("Negative test. test-case # 13 / Попытка создать Claim с незаполненными полями Title, Date, Time, Description")
     public void creatingClaimWithEmptyFieldsTest() {
         new Utils_Claims().clickCreateClaim();
@@ -51,7 +77,7 @@ public class NegativeClaims_Tests {
         new Utils_Claims().selectExecutorClaim();
         new Utils_Claims().inputValidDate();
         new Utils_Claims().inputValidTime();
-        new Utils_Claims().inputTestDataInDescription_7();
+        new Utils_Claims().inputDescription_7();
         new Utils_Claims().clickButtonSaveNewClaim();
         new CheckUtils_Claims().checkModalViewWarningText_Visibility();
         new CheckUtils_Claims().checkModalViewWarningButtonOk_Visibility();
@@ -63,7 +89,7 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTestDataDescription_Visibility();
         // оставляем пустым поле Date
         new Utils_Claims().inputTitleNewClaim_7();
-        new Utils_Claims().clearDateField_CreateNews();
+        new Utils_Claims().clearFieldDate();
         new Utils_Claims().clickButtonSaveNewClaim();
         new Utils_Claims().clickButtonOkInModalViewWarning();
         new CheckUtils_Claims().checkTestDataTitle_Visibility();
@@ -73,7 +99,7 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTestDataDescription_Visibility();
         // оставляем пустым поле Time
         new Utils_Claims().inputValidDate();
-        new Utils_Claims().clearTimeField_CreateNews();
+        new Utils_Claims().clearFieldTime();
         new Utils_Claims().clickButtonSaveNewClaim();
         new Utils_Claims().clickButtonOkInModalViewWarning();
         new CheckUtils_Claims().checkTestDataTitle_Visibility();
@@ -83,7 +109,7 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTestDataDescription_Visibility();
         // оставляем пустым поле Description
         new Utils_Claims().inputValidTime();
-        new Utils_Claims().clearDescriptionField_CreateNews();
+        new Utils_Claims().clearFieldDescription();
         new Utils_Claims().clickButtonSaveNewClaim();
         new Utils_Claims().clickButtonOkInModalViewWarning();
         new CheckUtils_Claims().checkTestDataTitle_Visibility();
@@ -92,7 +118,7 @@ public class NegativeClaims_Tests {
         new CheckUtils_Claims().checkTestDataTime_Visibility();
         new CheckUtils_Claims().checkIconEmptyField_Visibility();
         // заполняем пустое поле Description
-        new Utils_Claims().inputTestDataInDescription_7();
+        new Utils_Claims().inputDescription_7();
         // отменяем создание Claim
         new Utils_Claims().clickButtonCancelNewClaim();
         new Utils_Claims().clickInModalViewButtonOk();
@@ -100,22 +126,8 @@ public class NegativeClaims_Tests {
     }
 
     @Test
-    @DisplayName("Negative test. test-case # 11 / Попытка создать Claim с невалидными тестовыми данными Title (>50 знаков)")
-    public void creatingClaimWithInvalidTitleTest() {
-        Utils_Claims utilsClaims = new Utils_Claims();
-        new Utils_Claims().clickCreateClaim();
-        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-        // вставляем Title длиной в 51 знак
-        new Utils_Claims().inputInvalidTitleNewClaim();
-        // проверяем, что количество знаков в поле Title осталось = 50
-        int characterCount = utilsClaims.updateCharacterCount();
-        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
-        // проверка Title, который содержит на 1 знак меньше введенного при создании
-        new CheckUtils_Claims().checkTestInvalidDataTitle_Visibility();
-        new Utils_Claims().clickButtonCancelNewClaim();
-        new CheckUtils_Claims().checkModalViewQuestionText_Visibility();
-        new CheckUtils_Claims().checkModalViewQuestionButtonCancel_Visibility();
-        new CheckUtils_Claims().checkModalViewQuestionButtonOk_Visibility();
-        new Utils_Claims().clickInModalViewButtonOk();
+    @DisplayName("Negative test. test-case # 15 / Попытка создать Claim с кастомным Executor + c НЕвалидными полями Title, Description")
+    public void creatingClaimWithInvalidTestDataTest() {
+
     }
 }

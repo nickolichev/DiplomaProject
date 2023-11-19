@@ -49,18 +49,18 @@ public class PositiveMenu_Tests {
     public void navigationMenuTest() {
         new CheckUtils_Main().checkIconMenu_Visibility();
         new Utils_Menu().clickButtonMenu();
-        new CheckUtils_Menu().checkLineVisibilityNews();
-        new CheckUtils_Menu().checkLineVisibilityClaims();
-        new CheckUtils_Menu().checkLineVisibilityAbout();
+        new CheckUtils_Menu().checkLineNews_Visibility();
+        new CheckUtils_Menu().checkLineClaims_Visibility();
+        new CheckUtils_Menu().checkLineAbout_Visibility();
         new Utils_Menu().clickButtonClaims();
         new CheckUtils_Claims().checkTitleClaims_Visibility();
         new Utils_Menu().clickButtonMenu();
         new Utils_Menu().clickButtonNews();
-        new CheckUtils_News().checkTitleNews_Visibility();
+        new CheckUtils_News().checkTitleNewsView_Visibility();
         new Utils_Menu().clickButtonMenu();
         new Utils_Menu().clickButtonAbout();
         new CheckUtils_About().checkTitleAbout_Visibility();
-        new Utils_About().clickButtonBackAboutUtility();
+        new Utils_About().clickButtonBackAboutView();
     }
 }
 

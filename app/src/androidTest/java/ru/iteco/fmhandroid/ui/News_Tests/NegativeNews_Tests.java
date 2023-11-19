@@ -29,7 +29,7 @@ public class NegativeNews_Tests {
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Menu().clickButtonMenu();
         new Utils_Menu().clickButtonNews();
-        new CheckUtils_News().checkTitleNews_Visibility();
+        new CheckUtils_News().checkTitleNewsView_Visibility();
     }
 
     @After
@@ -43,12 +43,12 @@ public class NegativeNews_Tests {
     public void creatingNewsInCategoryCustomTest() {
         new Utils_News().clickEdit_News();
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
-        new Utils_News().inputCustomCategory_CreateNews();
-        new Utils_News().inputTitleCreateNews_Custom();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Custom();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
+        new Utils_News().inputCustomCategory();
+        new Utils_News().inputTitle_Custom();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Custom();
         new Utils_News().clickButtonSaveCreateNews();
         new Utils_Helper().backSystemButton();
         new CheckUtils_News().checkTitleCardNews_Custom_NotVisibility();
@@ -59,55 +59,55 @@ public class NegativeNews_Tests {
     public void creatingNewsWithEmptyFieldsTest() {
         new Utils_News().clickEdit_News();
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         // оставляем пустым поле Category
-        new Utils_News().inputTitleCreateNews_Advertisement();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Advertisement();
+        new Utils_News().inputTitle_Advertisement();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Advertisement();
         new Utils_News().clickButtonSaveCreateNews();
-        new CheckUtils_News().checkIconEmptyFieldCategory_CreatingNews_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldCategory_Visibility();
         new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
         new CheckUtils_News().checkFieldDate_Visibility();
         new CheckUtils_News().checkFieldTime_Visibility();
         new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
         // оставляем пустым поле Title
         new Utils_News().selectCategoryAdvertisement();
-        new Utils_News().clearTitleField_CreateNews();
+        new Utils_News().clearFieldTitle();
         new Utils_News().clickButtonSaveCreateNews();
         new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
         new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
         new CheckUtils_News().checkFieldDate_Visibility();
         new CheckUtils_News().checkFieldTime_Visibility();
         new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
-        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_Visibility();
         // оставляем пустым поле Publication date
-        new Utils_News().inputTitleCreateNews_Advertisement();
-        new Utils_News().clearPublicationDateField_CreateNews();
+        new Utils_News().inputTitle_Advertisement();
+        new Utils_News().clearFieldPublicationDate();
         new Utils_News().clickButtonSaveCreateNews();
         new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
         new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
-        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_Visibility();
         new CheckUtils_News().checkFieldTime_Visibility();
         new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
         // оставляем пустым поле Time
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().clearTimeField_CreateNews();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().clearFieldTime();
         new Utils_News().clickButtonSaveCreateNews();
         new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
         new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
         new CheckUtils_News().checkFieldDate_Visibility();
-        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_Visibility();
         new CheckUtils_News().checkFieldDescription_Advertisement_Visibility();
         // оставляем пустым поле Description
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().clearDescriptionField_CreateNews();
+        new Utils_News().inputTime();
+        new Utils_News().clearFieldDescription();
         new Utils_News().clickButtonSaveCreateNews();
         new CheckUtils_News().checkFieldCategory_Advertisement_Visibility();
         new CheckUtils_News().checkFieldTitle_Advertisement_Visibility();
         new CheckUtils_News().checkFieldDate_Visibility();
         new CheckUtils_News().checkFieldTime_Visibility();
-        new CheckUtils_News().checkIconEmptyFieldsRemaining_CreatingNews_Visibility();
+        new CheckUtils_News().checkIconEmptyFieldsRemaining_Visibility();
         new Utils_News().clickButtonCancelCreateNews();
         new Utils_News().clickOkButtonModalViewCreateNews();
     }
@@ -117,12 +117,12 @@ public class NegativeNews_Tests {
     public void creatingNewsInvalid_Title_Description_Test() {
         new Utils_News().clickEdit_News();
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Utils_News().selectCategoryAdvertisement();
-        new Utils_News().inputInvalidTitleCreateNews();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputInvalidDescriptionCreateNews();
+        new Utils_News().inputInvalidTitle();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputInvalidDescription();
         new Utils_News().clickButtonSaveCreateNews();
         new CheckUtils_News().checkTitleControlPanel_Visibility();
         new Utils_News().clickButtonFilter_ControlPanel();
@@ -131,7 +131,7 @@ public class NegativeNews_Tests {
         new CheckUtils_News().checkInvalidTitle_Visibility();
         new CheckUtils_News().checkPublicationValueControlPanel_Visibility();
         new CheckUtils_News().checkCreationDateValueControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Utils_News().clickExpendCardNews();
         new CheckUtils_News().checkInvalidDescription_Visibility();
         new Utils_News().clickButtonDelete_News();
         new Summary_Methods_News().checkAllElements_ModalView_Delete_Visibility();

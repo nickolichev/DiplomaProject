@@ -57,7 +57,7 @@ public class Utils_About {
     }
 
     @Step("экран About / клик по кнопке Back")
-    public void clickButtonBackAboutUtility() {
+    public void clickButtonBackAboutView() {
         ViewInteraction clickLogOut = onView(
                 allOf(withId(Elements_About.ID_BUTTON_BACK)));
         clickLogOut.perform(click());

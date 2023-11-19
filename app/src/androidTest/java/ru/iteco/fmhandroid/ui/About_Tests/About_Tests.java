@@ -45,14 +45,14 @@ public class About_Tests {
         new Utils_Menu().clickButtonMenu();
         new Utils_Menu().clickButtonAbout();
         new CheckUtils_About().checkTitleAbout_Visibility();
-        new CheckUtils_About().checkVersionValueVisibility();
-        new CheckUtils_About().checkPrivacyPolicyVisibility();
-        new CheckUtils_About().checkTermsOfUseVisibility();
+        new CheckUtils_About().checkVersionValue_Visibility();
+        new CheckUtils_About().checkPrivacyPolicy_Visibility();
+        new CheckUtils_About().checkTermsOfUse_Visibility();
         new Utils_About().clickPrivacyPolicy();
         new Utils_About().returnFromBrowserToApp();
         new Utils_About().clickTermsOfUse();
         new Utils_About().returnFromBrowserToApp();
-        new Utils_About().clickButtonBackAboutUtility();
+        new Utils_About().clickButtonBackAboutView();
     }
 }
 

@@ -55,11 +55,18 @@ public class Data_Claim {
 
 
     public static final String INPUT_TITLE_7 = "Новая претензия без исполнителя + статус Open / 50"; //тест-кейс 7
+    public static final String INPUT_TITLE_8 = "New claim Open + Edit Claim + transfer In Progress"; //тест-кейс 8
+    public static final String INPUT_TITLE_11 = "BUG Checking value Time created claim"; //тест-кейс 11
+    public static final String INPUT_TITLE_12 = "Создание новой претензии = в этом Title 51 знак..."; //тест-кейс 12
+    public static final String INPUT_TITLE_15 = "Создание претензии с кастомным Executor"; //тест-кейс 15
     public static final String INPUT_DESCRIPTION_7 = "Testing the functionality Creating a new claim!!!!"; //тест-кейс 7
     public static final String INPUT_DESCRIPTION_8 = "Testing functionality \"From Open status to In Progress status\""; //тест-кейс 8
     public static final String INPUT_EDITING_DESCRIPTION_8 = "Editing Claims \"From Open status to In Progress status\""; //тест-кейс 8
-    public static final String INPUT_DESCRIPTION_9 = "Description for test-case #9";                               //тест-кейс 9
-    public static final String INPUT_DESCRIPTION_10 = "Смена статуса Open на In Progress через назначение Executor"; //тест-кейс 10
+    public static final String INPUT_DESCRIPTION_9_10 = "Description for test-cases #9 + #10";                               //тест-кейс 9
+    public static final String INPUT_DESCRIPTION_11 = "BUG Неожиданное поведение при проверке Time"; //тест-кейс 11
+    public static final String INPUT_DESCRIPTION_12 = "Попытка создать Claim с Title > 50 знаков"; //тест-кейс 12
+    public static final String INPUT_DESCRIPTION_15 = "Claim с кастомным Executor не должна сохраняться"; //тест-кейс 15
+
     public static final String COMMENT_CONTENT_CARD_7 = "Переводим в статус \"In progress\"";          //тест-кейс 7
     public static final String COMMENT_CONTENT_EDIT_CARD_7 = "Успешно переведена в статус \"In progress\" (через take to work)"; //тест-кейс 7
     public static final String INPUT_EXECUTOR_TEXT = "Ivanov Ivan Ivanovich";
@@ -89,8 +96,11 @@ public class Data_Claim {
     public static final String CANCEL_EDIT_COMMENT_DESCRIPTION = "Cancel";
 
     // INVALID Создание новой Claim  / тестовые данные
-    public static final String INV_INPUT_TITLE = "Создание новой претензии в этом Title 51 знак     !";
-    public static final String INV_INPUT_EXECUTOR = "Petrov Petr Petrovich";
+    public static final String INV_INPUT_TITLE_12 = "Создание новой претензии = в этом Title 51 знак...!"; //тест-кейс 12
+    public static final String INV_INPUT_TITLE_15 = "!@#$%^&*()|"; //тест-кейс 15
+    public static final String INV_INPUT_EXECUTOR = "Petrov Petr Petrovich"; //тест-кейс 15
+    public static final String INV_INPUT_DESCRIPTION_15 = "!@#$%^&*()|"; //тест-кейс 15
+
     public static final String MODAL_VIEW_WARNING = "Fill empty fields"; // при незаполненных полях после клика по кнопке OK
     public static final String MODAL_VIEW_QUESTION = "The changes won't be saved, do you really want to log out?"; // при незаполненных полях после клика по кнопке CANCEL
     public static final String MODAL_VIEW_OK = "OK";
@@ -102,9 +112,10 @@ public class Data_Claim {
     public static final String FAKE_TITLE_8 = "#07 Fake Title iteration";
     public static final String FAKE_EDITING_TITLE_8 = "#06 Fake Title iteration Editing Claims";
     public static final String FAKE_TITLE_9_10 = "#11 Fake Title iteration Editing Claims";
+    public static final String FAKE_TITLE_11 = "#BUG Проверка значения Time";
+
 
     // для проверки заполненных полей/значений
-    public static final String CREATED_TEXT = "Created";
     public static final String ICON_EDIT_COMMENT_TEXT = "button edit comment";
     public static final String BUTTON_CLOSE = "button close";
 

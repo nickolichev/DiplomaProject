@@ -30,7 +30,7 @@ public class CheckUtils_About {
     }
 
     @Step("экран About / проверяем отображение Version")
-    public void checkVersionValueVisibility() {
+    public void checkVersionValue_Visibility() {
         onView(allOf(withId(Elements_About.ID_VERSION_VALUE),
                 withText(Data_About.VERSION_VALUE_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -40,7 +40,7 @@ public class CheckUtils_About {
     }
 
     @Step("экран About / проверка отображения текста и ссылки Privacy Policy")
-    public void checkPrivacyPolicyVisibility() {
+    public void checkPrivacyPolicy_Visibility() {
         onView(allOf(withId(Elements_About.ID_PRIVACY_POLICY),
                 withText(Data_About.PRIVACY_POLICY_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -56,7 +56,7 @@ public class CheckUtils_About {
     }
 
     @Step("экран About / проверка отображения текста и ссылки Terms Of Use")
-    public void checkTermsOfUseVisibility() {
+    public void checkTermsOfUse_Visibility() {
         onView(allOf(withId(Elements_About.ID_TERMS_OF_USE),
                 withText(Data_About.TERMS_OF_USE_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),

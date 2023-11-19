@@ -187,10 +187,8 @@ public class Utils_Helper {
                     isDisplayed()))
                     .perform(RecyclerViewActions.scrollToPosition(pos));
             try {
-                System.out.println("on position " + pos);
                 onView(withIndex(topicTextMatcher, 0))
                         .check(matches(isDisplayed()));
-                System.out.println("Found position " + pos + ", break");
                 break; // Элемент найден, выходим из цикла
             } catch (NoMatchingViewException ex) {
                 // Элемент не найден, продолжаем скроллинг
@@ -198,10 +196,8 @@ public class Utils_Helper {
         }
 
         if (pos > maxScrollAttempts) {
-            System.out.println("Did not find position");
             return -1;
         }
-        System.out.println("Exiting with found position " + pos);
         return pos;
     }
 
@@ -217,7 +213,9 @@ public class Utils_Helper {
         int n = 1;
         while (invisible && n <= 5) {
             try {
-                onView(allOf(withId(Elements_Claim.ID_LIST_COMMENT_CARD), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
+                onView(allOf(withId(Elements_Claim.ID_LIST_COMMENT_CARD),
+                        isDisplayed()))
+                        .perform(actionOnItemAtPosition(n, swipeUp()));
             } catch (PerformException e) {
                 return false;
             }
@@ -232,7 +230,9 @@ public class Utils_Helper {
 
             if (endScroll) {
                 try {
-                    onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed())).perform(actionOnItemAtPosition(n, swipeUp()));
+                    onView(allOf(withId(Elements_Claim.ID_LIST_CARDS),
+                            isDisplayed()))
+                            .perform(actionOnItemAtPosition(n, swipeUp()));
                 } catch (PerformException e) {
                     return false;
                 }

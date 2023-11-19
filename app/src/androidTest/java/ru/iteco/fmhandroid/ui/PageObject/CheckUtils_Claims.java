@@ -109,13 +109,13 @@ public class CheckUtils_Claims {
                 withParent(allOf(withId(R.id.container_custom_app_bar_include_on_fragment_create_edit_claim),
                         withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                 isDisplayed()))
-                .check(matches(withText("Creating")));
+                .check(matches(withText(Data_Claim.APP_BAR_CREATING_TEXT)));
 
         onView(allOf(withId(Elements_Claim.ID_SUB_TITLE_APP_BAR), withText(Data_Claim.SUB_TITLE_CLAIMS),
                 withParent(allOf(withId(R.id.container_custom_app_bar_include_on_fragment_create_edit_claim),
                         withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class)))),
                 isDisplayed()))
-                .check(matches(withText("Claims")));
+                .check(matches(withText(Data_Claim.APP_BAR_CLAIMS_TEXT)));
     }
 
     @Step("экран Creating Claim / проверка видимости НЕзаполненного поля Title для ввода тестовых данных")
@@ -136,13 +136,13 @@ public class CheckUtils_Claims {
                 .check(matches(withText(Data_Claim.INPUT_TITLE_7)));
     }
 
-    @Step("экран Creating Claim / проверка видимости введенных НЕвалидных тестовых данных в поле Title")
-    public void checkTestInvalidDataTitle_Visibility() {
+    @Step("экран Creating Claim / проверка видимости \"урезанных\" до 50 знаков ранее введенных НЕвалидных тестовых данных в поле Title")
+    public void checkTruncatedTestDataTitle_Visibility() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE),
-                withText("Создание новой претензии в этом Title 51 знак     "),
+                withText(Data_Claim.INPUT_TITLE_12),
                 isDisplayed()))
                 .check(matches(isDisplayed()))
-                .check(matches(withText("Создание новой претензии в этом Title 51 знак     ")));
+                .check(matches(withText(Data_Claim.INPUT_TITLE_12)));
     }
 
     @Step("экран Creating Claim / проверка видимости примечания к полю Title")
@@ -262,21 +262,6 @@ public class CheckUtils_Claims {
     }
 
     // НАБОР МЕТОДОВ для проверки Title во всех test-case:
-
-    @Step("экран Creating Claim / test-case #9 / проверка заполненного тестовыми данными поля Title")
-    public void checkTitle_9_10_Visibility() {
-        onView(allOf(withId(Elements_Claim.ID_TITLE_CARD),
-                withText(Data_Claim.TITLE_TEXT),
-                isDisplayed()))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(Data_Claim.TITLE_TEXT)));
-        onView(allOf(withId(Elements_Claim.ID_TITLE_VALUE_CARD),
-                withText(Data_Claim.FAKE_TITLE_9_10),
-                isDisplayed()))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(Data_Claim.FAKE_TITLE_9_10)));
-    }
-
     @Step("test-case #7 / в раскрытой карточке проверяем строку Title и что видимо ее содержание")
     public void checkTitle_7_Visibility() {
         new Utils_Helper().timerWaitingAsyncOperation500();
@@ -322,6 +307,49 @@ public class CheckUtils_Claims {
                 .check(matches(withText(Data_Claim.FAKE_EDITING_TITLE_8)));
     }
 
+    @Step("экран Creating Claim / test-case #9 / в раскрытой карточке проверяем строку Title и что видимо ее содержание")
+    public void checkTitle_9_10_Visibility() {
+        onView(allOf(withId(Elements_Claim.ID_TITLE_CARD),
+                withText(Data_Claim.TITLE_TEXT),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.TITLE_TEXT)));
+        onView(allOf(withId(Elements_Claim.ID_TITLE_VALUE_CARD),
+                withText(Data_Claim.FAKE_TITLE_9_10),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.FAKE_TITLE_9_10)));
+    }
+
+    @Step("экран Creating Claim / test-case #11 / в раскрытой карточке проверяем строку Title и что видимо ее содержание")
+    public void checkTitle_11_Visibility() {
+        onView(allOf(withId(Elements_Claim.ID_TITLE_CARD),
+                withText(Data_Claim.TITLE_TEXT),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.TITLE_TEXT)));
+        onView(allOf(withId(Elements_Claim.ID_TITLE_VALUE_CARD),
+                withText(Data_Claim.FAKE_TITLE_11),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.FAKE_TITLE_11)));
+    }
+
+    @Step("test-case #12 / в раскрытой карточке проверяем строку Title и что видимо ее содержание")
+    public void checkTitle_12_Visibility() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(allOf(withId(Elements_Claim.ID_TITLE_CARD),
+                withText(Data_Claim.TITLE_TEXT),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.TITLE_TEXT)));
+        onView(allOf(withId(Elements_Claim.ID_TITLE_VALUE_CARD),
+                withText(Data_Claim.INPUT_TITLE_12),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.INPUT_TITLE_12)));
+    }
+
     @Step("в раскрытой карточке проверяем строку Executor и что видимо ее содержание NOT ASSIGNED")
     public void checkIndefinedExecutor_Visibility() {
         onView(allOf(withId(Elements_Claim.ID_EXECUTOR_CARD),
@@ -352,7 +380,7 @@ public class CheckUtils_Claims {
                 .check(matches(withText(Data_Claim.INPUT_EXECUTOR_TEXT)));
     }
 
-    @Step("в раскрытой карточке проверяем что строка \"Plan Date\" видима и что видимы значения Date и Time")
+    @Step("в раскрытой карточке проверяем что строка \"Plan Date\" видима и что видимо значение Date (значение Time не проверяем / Неожиданное поведение")
     public void checkValidPlanDate_Visibility() {
         new Utils_Helper().timerWaitingAsyncOperation500();
         onView(allOf(withId(Elements_Claim.ID_PLAN_DATE_CARD),
@@ -365,6 +393,27 @@ public class CheckUtils_Claims {
                 isDisplayed()))
                 .check(matches(isDisplayed()))
                 .check(matches(withText(Data_Claim.INPUT_DATE)));
+    }
+
+    @Step("test-case #11 / в раскрытой карточке проверяем что строка \"Plan Date\" видима и что видимы значения Date и Time")
+    public void checkValidPlanDateAndTime_Visibility() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        onView(allOf(withId(Elements_Claim.ID_PLAN_DATE_CARD),
+                withText(Data_Claim.PLAN_DATE_TEXT),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.PLAN_DATE_TEXT)));
+        onView(allOf(withId(Elements_Claim.ID_PLAN_DATE_IN_CARD),
+                withText(Data_Claim.INPUT_DATE),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.INPUT_DATE)));
+        // screenshot Allure
+        onView(allOf(withId(Elements_Claim.ID_PLAN_TIME_IN_CARD),
+                withText(Data_Claim.INPUT_TIME),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.INPUT_TIME)));
     }
 
     // НАБОР МЕТОДОВ для проверки Description во всех test-case:
@@ -396,21 +445,44 @@ public class CheckUtils_Claims {
     }
 
     @Step("test-case #9 в раскрытой карточке проверяем что Description отображается и что отображается его содержание")
-    public void checkDescription_9_Visibility() {
+    public void checkDescription_9_10_Visibility() {
         onView(allOf(withId(Elements_Claim.ID_DESCRIPTION_VALUE_CARD),
-                withText(Data_Claim.INPUT_DESCRIPTION_9),
+                withText(Data_Claim.INPUT_DESCRIPTION_9_10),
                 isDisplayed()))
                 .check(matches(isDisplayed()))
-                .check(matches(withText(Data_Claim.INPUT_DESCRIPTION_9)));
+                .check(matches(withText(Data_Claim.INPUT_DESCRIPTION_9_10)));
     }
 
-    @Step("в раскрытой карточке проверяем что строка Created для Description отображается")
-    public void checkCreatedDescription_Visibility() {
-        onView(allOf(withId(Elements_Claim.ID_CREATED_DESCRIPTION_CARD),
-                withText(Data_Claim.CREATED_TEXT),
+    @Step("test-case #11 в раскрытой карточке проверяем что Description отображается и что отображается его содержание")
+    public void checkDescription_11_Visibility() {
+        onView(allOf(withId(Elements_Claim.ID_DESCRIPTION_VALUE_CARD),
+                withText(Data_Claim.INPUT_DESCRIPTION_11),
                 isDisplayed()))
                 .check(matches(isDisplayed()))
-                .check(matches(withText(Data_Claim.CREATED_TEXT)));
+                .check(matches(withText(Data_Claim.INPUT_DESCRIPTION_11)));
+    }
+
+    @Step("test-case #12 в раскрытой карточке проверяем что Description отображается и что отображается его содержание")
+    public void checkDescription_12_Visibility() {
+        onView(allOf(withId(Elements_Claim.ID_DESCRIPTION_VALUE_CARD),
+                withText(Data_Claim.INPUT_DESCRIPTION_12),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.INPUT_DESCRIPTION_12)));
+    }
+
+    @Step("в раскрытой карточке проверяем что строка Created отображается и значение строки Created отображается")
+    public void checkCreatedDateDescription_Visibility() {
+        onView(allOf(withId(Elements_Claim.ID_CREATED_DESCRIPTION_CARD),
+                withText(Data_Claim.CREATED_TEXT_CARD),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(Data_Claim.CREATED_TEXT_CARD)));
+        onView(allOf(withId(Elements_Claim.ID_CREATED_DATE_VALUE_CARD),
+                withText(getCurrentDate()),
+                isDisplayed()))
+                .check(matches(isDisplayed()))
+                .check(matches(withText(getCurrentDate())));
     }
 
     @Step("генерируем значение Creation date")
@@ -419,15 +491,6 @@ public class CheckUtils_Claims {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         Date currentDate = new Date(currentTimeMillis);
         return dateFormat.format(currentDate);
-    }
-
-    @Step("в раскрытой карточке проверяем что значение строки Created для Description отображается")
-    public void checkCreatedDateDescription_Visibility() {
-        onView(allOf(withId(Elements_Claim.ID_CREATED_DATE_VALUE_CARD),
-                withText(getCurrentDate()),
-                isDisplayed()))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(getCurrentDate())));
     }
 
     @Step("в раскрытой карточке проверяем что значение строки Created для Comment отображается")
@@ -447,6 +510,7 @@ public class CheckUtils_Claims {
 
     @Step("в раскрытой карточке проверяем что Author Comment отображается")
     public void checkAuthorComment_Visibility_7() {
+
         onView(allOf(withId(Elements_Claim.ID_COMMENTATOR_VALUE_CARD),
                 withText(Data_Claim.COMMENTATOR_VALUE_CARD),
                 withParent(withParent(withId(R.id.claim_comments_list_recycler_view))),

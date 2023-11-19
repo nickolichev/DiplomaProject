@@ -46,14 +46,14 @@ public class PositiveClaims_Tests {
     @DisplayName("Positive test. Test-case # 5 / Фильтрация Claims по статусам Open + InProgress + Executed + Cancelled")
     public void filteringClaimsByStatusTest() {
         // фильтрация по статусу Open
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_InProgress();
         new Utils_Claims().clickButton_Ok();
         new Utils_Claims().clickExpendClaim();
         new CheckUtils_Claims().checkOpenStatusInCard();
         new Utils_Claims().clickCloseClaim();
         // фильтрация по статусу InProgress
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_Open();
         new Utils_Claims().clickCheckBox_InProgress();
         new Utils_Claims().clickButton_Ok();
@@ -61,7 +61,7 @@ public class PositiveClaims_Tests {
         new CheckUtils_Claims().checkInProgressStatusInCard();
         new Utils_Claims().clickCloseClaim();
         // фильтрация по статусу Executed
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_InProgress();
         new Utils_Claims().clickCheckBox_Executed();
         new Utils_Claims().clickButton_Ok();
@@ -69,7 +69,7 @@ public class PositiveClaims_Tests {
         new CheckUtils_Claims().checkExecutedStatus();
         new Utils_Claims().clickCloseClaim();
         // фильтрация по статусу Cancelled
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_Executed();
         new Utils_Claims().clickCheckBox_Cancelled();
         new Utils_Claims().clickButton_Ok();
@@ -79,31 +79,24 @@ public class PositiveClaims_Tests {
     }
 
     @Test
-    @DisplayName("Positive test. Test-case # 15 / Тестирование отмены процесса создания Claim")
-    public void cancellationProcessCreatingClaimsTest() {
+    @DisplayName("Positive test. Test-case # 6 / Проверить пользовательский интерфейс (UI) панели \"Creating Claims\"")
+    public void checkingUICreatingClaimsViewTest() {
+        new CheckUtils_Claims().checkTitleAppBar();
         new Utils_Claims().clickCreateClaim();
-        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
-        new Utils_Claims().inputTestDataInTitleNewClaim();
-        new Utils_Claims().selectExecutorClaim();
-        new Utils_Claims().inputValidDate();
-        new Utils_Claims().inputValidTime();
-        new Utils_Claims().inputTestDataInDescription_7();
-        new Utils_Claims().clickButtonCancelNewClaim();
-        new CheckUtils_Claims().checkModalViewQuestionText_Visibility();
-        new CheckUtils_Claims().checkModalViewQuestionButtonCancel_Visibility();
-        new CheckUtils_Claims().checkModalViewQuestionButtonOk_Visibility();
-        new Utils_Claims().clickInModalViewButtonCancel();
+        new CheckUtils_Claims().checkFieldTitle_Visibility();
+        new CheckUtils_Claims().checkFieldExecutor_Visibility();
+        new CheckUtils_Claims().checkFieldDate_Visibility();
+        new CheckUtils_Claims().checkFieldTime_Visibility();
+        new CheckUtils_Claims().checkFieldDescription_Visibility();
         new CheckUtils_Claims().checkButtonCancel_Visibility();
-        new Utils_Claims().clickButtonCancelNewClaim();
-        new Utils_Claims().clickInModalViewButtonOk();
-        new CheckUtils_Claims().checkTitleClaims_Visibility();
+        new CheckUtils_Claims().checkButtonSave_Visibility();
     }
 
     @Test
     @DisplayName("Positive test. / BUG / Test-case # 7 / Создание новой претензии со статусом \"Open\" (Испольнитель не определен) + перевод в статус \"IN PROGRESS\" через \"take to work\" + добавление комментария + редактирование комментария.")
     public void createNewClaimInOpenStatus_7_Test() {
         new Summary_Methods_Claims().creatingClaimOpenWithoutExecutor();
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_InProgress();
         new Utils_Claims().clickButton_Ok();
         new Utils_Claims().searchAndOpenClaimByTopic_7();
@@ -120,12 +113,12 @@ public class PositiveClaims_Tests {
         new Utils_Claims().clickSaveComment();
         new Utils_Claims().searchComment_7_ByContent();
         new CheckUtils_Claims().checkAuthorComment_Visibility_7();
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusTakeToWork();
         new CheckUtils_Claims().checkInProgressStatusInCard();
         new CheckUtils_Claims().checkDefinedExecutor_Visibility();
         new Utils_Claims().clickCloseClaim();
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_Open();
         new Utils_Claims().clickCheckBox_InProgress();
         new Utils_Claims().clickButton_Ok();
@@ -150,7 +143,7 @@ public class PositiveClaims_Tests {
         // проверяем незаполненные поля формы + счетчик поля Title + создаем New Claim
         new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
         new Summary_Methods_Claims().creatingClaimOpenStatus_8();
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_InProgress();
 //        new Utils_Claims().clickCheckBox_Open(); // временно
         new Utils_Claims().clickButton_Ok();
@@ -184,15 +177,15 @@ public class PositiveClaims_Tests {
     @Test
     @DisplayName("Positive test. Test-case # 9 / Проверить функционал \"Создание новой претензии\" со статусом \"In Progress\" + Смена статуса  \"In progress\" на \"Open\" через \"Throw off + Смена статуса \"Open\" на \"Cancelled\" через \"Cancel")
     public void createNewClaimInProgressStatusAndTransferOpenAndTransferCancelled_9_Test() {
-        new Summary_Methods_Claims().checkVisibilityInClaimWithInProgressStatus();
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Summary_Methods_Claims().creatingClaimInProgressStatus_9_10();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_Open();
 //        new Utils_Claims().clickCheckBox_InProgress(); // временно
         new Utils_Claims().clickButton_Ok();
-        new Utils_Claims().searchAndOpenClaimByTopic_9();
+        new Utils_Claims().searchAndOpenClaimByTopic_9_10();
         new Summary_Methods_Claims().checkVisibilityInClaimCardWithInProgressStatus();
         // клик на смену статуса
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusThrowOff();
         new CheckUtils_Claims().checkModalViewComment_FieldComment_Visibility();
         new CheckUtils_Claims().checkModalViewComment_ButtonCancel_Visibility();
@@ -202,7 +195,7 @@ public class PositiveClaims_Tests {
         // отменяем ввод тестовых данных в поле Comment
         new Utils_Claims().clickCancel_ModalViewComment();
         // повторно клик на смену статуса
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusThrowOff();
         // повторно вводим тестовые данные в поле Comment
         new Utils_Claims().inputComment_Open_ModalView();
@@ -210,39 +203,71 @@ public class PositiveClaims_Tests {
         new CheckUtils_Claims().checkComment_9_Visibility();
         new Summary_Methods_Claims().checkVisibilityInClaimCardWithOpenStatus_9();
         // меняем статус на Cancelled
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusCancel();
         new CheckUtils_Claims().checkCanceledStatus();
         new Utils_Claims().clickCloseClaim();
     }
 
     @Test
-    @DisplayName("Positive test. Test-case # 10 / Проверить функционал \"Создание новой претензии\" со статусом \"In Progress\" + Смена статуса  \"In progress\" на \"Open\" через \"Throw off + Смена статуса \"Open\" на \"Cancelled\" через \"Cancel")
+    @DisplayName("Positive test. Test-case # 10 / Проверить функционал \"Смена статуса существующей претензии. Статус \"In progress\" меняется на \"Executed\" через \"To execute\"")
     public void createNewClaimInProgressStatusAndTransferExecuted_10_Test() {
-        new Summary_Methods_Claims().checkVisibilityInClaimWithInProgressStatus();
-        new Utils_Claims().clickIconFilter_View_Claims();
+        new Summary_Methods_Claims().creatingClaimInProgressStatus_9_10();
+        new Utils_Claims().clickIconFilterOnClaimsView();
         new Utils_Claims().clickCheckBox_Open();
         new Utils_Claims().clickButton_Ok();
-        new Utils_Claims().searchAndOpenClaimByTopic_9();
+        new Utils_Claims().searchAndOpenClaimByTopic_9_10();
         new Summary_Methods_Claims().checkVisibilityInClaimCardWithInProgressStatus();
         // клик на смену статуса
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusToExecute();
         new CheckUtils_Claims().checkModalViewComment_FieldComment_Visibility();
         new CheckUtils_Claims().checkModalViewComment_ButtonCancel_Visibility();
         new CheckUtils_Claims().checkModalViewComment_ButtonOK_Visibility();
         // вводим тестовые данные в поле Comment
-        new Utils_Claims().inputComment_Executed_ModalView();
+        new Utils_Claims().inputComment_ModalViewComment_Executed();
         // отменяем ввод тестовых данных в поле Comment
         new Utils_Claims().clickCancel_ModalViewComment();
         // повторно клик на смену статуса
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new Utils_Claims().clickChangeStatusToExecute();
         // повторно вводим тестовые данные в поле Comment
-        new Utils_Claims().inputComment_Executed_ModalView();
+        new Utils_Claims().inputComment_ModalViewComment_Executed();
         new Utils_Claims().clickOK_ModalViewComment();
         new CheckUtils_Claims().checkComment_10_Visibility();
         new Summary_Methods_Claims().checkVisibilityInClaimCardWithExecutedStatus_10();
         new Utils_Claims().clickCloseClaim();
+    }
+
+    @Test
+    @DisplayName("BUG / Positive test. Test-case # 11 / Неожиданное поведение / Значение Time (в карточке созданной Claim) отличается от значения, использованного в качестве тестовых данных")
+    public void bugWhenCheckingValueTime_ShouldBeDetected_Test() {
+        new Summary_Methods_Claims().creatingClaimInProgressStatus_11(); // screenshot Allure
+        new Utils_Claims().clickIconFilterOnClaimsView();
+        new Utils_Claims().clickCheckBox_Open();
+        new Utils_Claims().clickButton_Ok();
+        new Utils_Claims().searchAndOpenClaimByTopic_11();
+        new Summary_Methods_Claims().checkVisibilityInClaimCard_11();
+        new CheckUtils_Claims().checkValidPlanDateAndTime_Visibility(); // screenshot Allure
+    }
+        @Test
+    @DisplayName("Positive test. Test-case # 14 / Тестирование отмены процесса создания Claim")
+    public void cancellationProcessCreatingClaimsTest() {
+        new Utils_Claims().clickCreateClaim();
+        new Summary_Methods_Claims().checkAllFieldsAndButtons_Visibility();
+        new Utils_Claims().inputTitleNewClaim_7();
+        new Utils_Claims().selectExecutorClaim();
+        new Utils_Claims().inputValidDate();
+        new Utils_Claims().inputValidTime();
+        new Utils_Claims().inputDescription_7();
+        new Utils_Claims().clickButtonCancelNewClaim();
+        new CheckUtils_Claims().checkModalViewQuestionText_Visibility();
+        new CheckUtils_Claims().checkModalViewQuestionButtonCancel_Visibility();
+        new CheckUtils_Claims().checkModalViewQuestionButtonOk_Visibility();
+        new Utils_Claims().clickInModalViewButtonCancel();
+        new CheckUtils_Claims().checkButtonCancel_Visibility();
+        new Utils_Claims().clickButtonCancelNewClaim();
+        new Utils_Claims().clickInModalViewButtonOk();
+        new CheckUtils_Claims().checkTitleClaims_Visibility();
     }
 }

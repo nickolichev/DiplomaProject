@@ -45,7 +45,7 @@ import ru.iteco.fmhandroid.ui.testData.Data_Claim;
 public class Utils_Claims {
     private int characterCount = 0;
     @Step("экран CLAIMS / клик по иконке FILTER / открытие модального окна FILTERING /")
-    public void clickIconFilter_View_Claims() {
+    public void clickIconFilterOnClaimsView() {
         onView(Matchers.allOf(withId(Elements_Claim.ID_FILTERS_BUTTON),
                 withContentDescription(Data_Claim.FILTER_DESCRIPTION)))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
@@ -124,20 +124,16 @@ public class Utils_Claims {
                 .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_7));
     }
 
-    @Step("test-case #11 / экран CREATING CLAIM / заполнение поля TITLE НЕвалидными данными 51 знак + подсчет знаков")
-    public void inputInvalidTitleNewClaim() {
-        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
-                .perform(ViewActions.replaceText(Data_Claim.INV_INPUT_TITLE));
-        // Обновляем счетчик после ввода текста
-        int characterCount = updateCharacterCount();
-        new Utils_Helper().timerWaitingAsyncOperation500();
-        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
-    }
     @Step("test-case #8 / экран CREATING CLAIM / заполнение поля TITLE")
     public void inputTitleNewClaim_8() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
                 .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE_8));
     }
+
+//    public void inputTitleNewClaim_8() {
+//        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+//                .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_8));
+//    }
 
     @Step("test-case #9 + #10 / экран CREATING CLAIM / заполнение поля TITLE")
     public void inputTitleNewClaim_9_10() {
@@ -145,8 +141,31 @@ public class Utils_Claims {
                 .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE_9_10));
     }
 
+    @Step("test-case #11 / экран CREATING CLAIM / заполнение поля TITLE")
+    public void inputTitleNewClaim_11() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+                .perform(ViewActions.replaceText(Data_Claim.FAKE_TITLE_11));
+        // screenshot Allure
+    }
+//    @Step("test-case #11 / экран CREATING CLAIM / заполнение поля TITLE")
+//    public void inputTitleNewClaim_11() {
+//        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+//                .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_11));
+    // screenshot Allure
+//    }
+
+    @Step("test-case #12 / экран CREATING CLAIM / заполнение поля TITLE НЕвалидными данными 51 знак + подсчет знаков")
+    public void inputInvalidTitleNewClaim() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
+                .perform(ViewActions.replaceText(Data_Claim.INV_INPUT_TITLE_12));
+        // Обновляем счетчик после ввода текста
+        int characterCount = updateCharacterCount();
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        new CheckUtils_Claims().checkCounterValue_Visibility(characterCount);
+    }
+
     @Step("test-case #15 / экран CREATING CLAIM / заполнение поля TITLE")
-    public void inputTestDataInTitleNewClaim() {
+    public void inputTitleNewClaim_15() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_TITLE)))
                 .perform(ViewActions.replaceText(Data_Claim.INPUT_TITLE_7));
     }
@@ -179,21 +198,21 @@ public class Utils_Claims {
     }
 
     @Step("экран CREATING CLAIM/ очистить заполненное поле от тестовых данных в Date")
-    public void clearDateField_CreateNews() {
+    public void clearFieldDate() {
         onView(withId(Elements_Claim.ID_FIELD_DATE))
                 .perform(clearText());
         new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     @Step("экран CREATING CLAIM/ очистить заполненное поле от тестовых данных в Time")
-    public void clearTimeField_CreateNews() {
+    public void clearFieldTime() {
         onView(withId(Elements_Claim.ID_FIELD_TIME))
                 .perform(clearText());
         new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
     @Step("экран CREATING CLAIM/ очистить заполненное поле от тестовых данных в Description")
-    public void clearDescriptionField_CreateNews() {
+    public void clearFieldDescription() {
         onView(withId(Elements_Claim.ID_FIELD_DESCRIPTION))
                 .perform(clearText());
         new Utils_Helper().timerWaitingAsyncOperation1000();
@@ -201,27 +220,33 @@ public class Utils_Claims {
 
     // набор методов для заполнения валидными DESCRIPTION для каждого отдельного test-case
     @Step("test-case #7 заполняем поле Description тестовыми данными")
-    public void inputTestDataInDescription_7() {
+    public void inputDescription_7() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
                 .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_7));
     }
 
     @Step("test-case #8 заполняем поле Description тестовыми данными")
-    public void inputTestDataInDescription_8() {
+    public void inputDescriptionNewClaim_8() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
                 .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_8));
     }
 
     @Step("test-case #9 заполняем поле Description тестовыми данными")
-    public void inputTestDataInDescription_9() {
+    public void inputDescription_9_10() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
-                .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_9));
+                .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_9_10));
     }
 
-    @Step("test-case #10 заполняем поле Description тестовыми данными")
-    public void inputTestDataInDescription_10() {
+    @Step("test-case #11 заполняем поле Description тестовыми данными")
+    public void inputDescription_11() {
         onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
-                .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_10));
+                .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_11));
+    }
+
+    @Step("test-case #12 заполняем поле Description тестовыми данными")
+    public void inputDescription_12() {
+        onView(allOf(withId(Elements_Claim.ID_FIELD_DESCRIPTION)))
+                .perform(ViewActions.replaceText(Data_Claim.INPUT_DESCRIPTION_12));
     }
 
     @Step("Тап по кнопке SAVE / Сохранить new Claim")
@@ -367,7 +392,7 @@ public class Utils_Claims {
     }
 
     @Step("модальное окно Comment / вставить тестовые данные")
-    public void inputComment_Executed_ModalView() {
+    public void inputComment_ModalViewComment_Executed() {
         onView(allOf(withId(Elements_Claim.ID_MODAL_VIEW_INPUT_COMMENT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
                 isDisplayed()))
@@ -491,7 +516,7 @@ public class Utils_Claims {
     }
 
     @Step("test-case #9 +#10 / поиск карточки в списке Claims и открытие карточки")
-    public void searchAndOpenClaimByTopic_9() {
+    public void searchAndOpenClaimByTopic_9_10() {
         if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE_9_10)) {
             return;
         }
@@ -507,6 +532,42 @@ public class Utils_Claims {
         }
     }
 
+    @Step("test-case #11 / поиск карточки в списке Claims и открытие карточки")
+    public void searchAndOpenClaimByTopic_11() {
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.FAKE_TITLE_11)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.FAKE_TITLE_11);
+        if (position != -1) {
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.FAKE_TITLE_11 + "is not successful");
+        }
+    }
+
+    @Step("test-case #12 / поиск карточки в списке Claims и открытие карточки")
+    public void searchAndOpenClaimByTopic_12() {
+        new Utils_Helper().timerWaitingAsyncOperation500();
+        if (Utils_Helper.tryClickOnListItemByTextWithoutScrolling(Data_Claim.INPUT_TITLE_12)) {
+            return;
+        }
+
+        int position = Utils_Helper.findListItemByText(Data_Claim.INPUT_TITLE_12);
+        if (position != -1) {
+            onView(allOf(withId(Elements_Claim.ID_LIST_CARDS), isDisplayed()))
+                    .perform(actionOnItemAtPosition(position, click()));
+            new Utils_Helper().timerWaitingAsyncOperation5000();
+
+        } else {
+            throw new NoSuchElementException("topic search:" + Data_Claim.INPUT_TITLE_12 + "is not successful");
+        }
+    }
+
+
     @Step("экран Claims / раскрытая карточка / клик по кнопке Edite Claim")
     public void clickEditClaim() {
         onView(allOf(withId(Elements_Claim.ID_EDIT_CARD_BUTTON_CARD),
@@ -516,7 +577,7 @@ public class Utils_Claims {
     }
 
     @Step("экран Claims / раскрытая карточка / клик по иконке Смена статуса")
-    public void clickChangeStatusClaim() {
+    public void clickIconChangeStatusClaim() {
         onView(allOf(withId(Elements_Claim.ID_CHANGE_STATUS_ICON_CARD),
                 withContentDescription(Data_Claim.CHANGE_STATUS_TEXT_CARD),
                 childAtPosition(

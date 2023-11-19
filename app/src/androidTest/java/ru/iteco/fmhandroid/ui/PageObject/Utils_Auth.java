@@ -67,36 +67,27 @@ public class Utils_Auth {
 
     @Step("выход из авторизованной сессии")
     public void logOut() {
-        ViewInteraction clickLogOut = onView(
-                allOf(withId(Elements_Auth.ID_IMAGE_LOG_OUT)));
-        clickLogOut.perform(click());
-
-        ViewInteraction buttonLogOut = onView(
-                allOf(withText(Data_Auth.BUTTON_LOG_OUT)));
-        buttonLogOut.perform(click());
+        onView(allOf(withId(Elements_Auth.ID_IMAGE_LOG_OUT))).perform(click());
+        onView(allOf(withText(Data_Auth.BUTTON_LOG_OUT))).perform(click());
     }
 
     @Step("клик по кнопке авторизации Sign In")
     public void clickButtonSignIn() {
-        ViewInteraction button = onView(
-                allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)));
-        button.check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-        button.perform(click());
-
+        onView(allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+                .perform(click());
     }
 
-    @Step("набор утилит для авторизации для Before в тестах")
+    @Step("набор утилит для авторизации в Before тестовых классов")
     public void authorizationUtility() {
         onView(allOf(withId(Elements_Auth.ID_FIELD_LOGIN)));
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN)))
                 .perform(ViewActions.replaceText(Data_Auth.VALID_LOGIN))
                 .perform(ViewActions.closeSoftKeyboard());
-
         onView(allOf(withId(Elements_Auth.ID_FIELD_PASSWORD)));
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD)))
                 .perform(ViewActions.replaceText(Data_Auth.VALID_PASSWORD))
                 .perform(ViewActions.closeSoftKeyboard());
-
         onView(allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN)))
                 .check(matches(ViewMatchers.isDisplayed()))
                 .perform(click());

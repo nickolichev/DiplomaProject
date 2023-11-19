@@ -28,7 +28,7 @@ public class PositiveNews_Tests {
         new Utils_Helper().timerWaitingAsyncOperation3000();
         new Utils_Menu().clickButtonMenu();
         new Utils_Menu().clickButtonNews();
-        new CheckUtils_News().checkTitleNews_Visibility();
+        new CheckUtils_News().checkTitleNewsView_Visibility();
     }
 
     @After
@@ -41,14 +41,14 @@ public class PositiveNews_Tests {
     @DisplayName("Positive test. Test-case # 16 / Отмененный процесс создания News")
     public void cancellationProcessCreatingNewsTest() {
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Utils_News().selectCategoryAdvertisement();
-        new Utils_News().inputTitleCreateNews_Advertisement();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Advertisement();
+        new Utils_News().inputTitle_Advertisement();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Advertisement();
         new Utils_News().clickButtonCancelCreateNews();
         new Summary_Methods_News().checkAllElements_ModalView_CreatingNews_Visibility();
         new Utils_News().clickCancelButtonModalViewCreateNews();
@@ -63,10 +63,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryAdvertisementTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Advertisement();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -99,10 +99,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryBirthdayTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Birthday();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -135,10 +135,10 @@ public class PositiveNews_Tests {
     public void newsInCategorySalaryTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Salary();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -171,10 +171,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryTradeUnionTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_TradeUnion();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -207,10 +207,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryHolidayTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Holiday();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -243,10 +243,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryMassageTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Massage();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -279,10 +279,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryGratitudeTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Gratitude();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -315,10 +315,10 @@ public class PositiveNews_Tests {
     public void newsInCategoryHelpTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputAllFieldsInCreatingNews_Help();
         new Utils_News().clickButtonSaveCreateNews();
         // проверяем, что новая News создана корректно
@@ -351,10 +351,10 @@ public class PositiveNews_Tests {
     public void filterNewsTest() {
         new Summary_Methods_News().checkElements_ViewNews_Visibility();
         new Utils_News().clickEdit_News();
-        new Summary_Methods_News().checkElements_ViewControlPanel_Visibility();
+        new Summary_Methods_News().checkElements_ControlPanelView_Visibility();
         // создаем новую News
         new Utils_News().clickButtonAdd_News();
-        new Summary_Methods_News().checkAllElements_ViewCreatingNews_Visibility();
+        new Summary_Methods_News().checkAllElements_CreatingNewsView_Visibility();
         new Summary_Methods_News().inputFieldsInCreatingNews_Advertisement();
         new Utils_News().clickButtonSaveCreateNews();
         new Utils_Menu().clickButtonMenu();

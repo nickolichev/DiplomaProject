@@ -21,7 +21,7 @@ public class Summary_Methods_News {
 
     @Step("Сводный метод проверок на экране News / верхняя панель экрана")
     public void checkElements_ViewNews_Visibility() {
-        new CheckUtils_News().checkTitleNews_Visibility();
+        new CheckUtils_News().checkTitleNewsView_Visibility();
         new CheckUtils_News().checkButtonSortNews_Visibility();
         new CheckUtils_News().checkButtonFilterNews_Visibility();
         new CheckUtils_News().checkButtonEditNews_Visibility();
@@ -30,7 +30,7 @@ public class Summary_Methods_News {
     }
 
     @Step("Сводный метод проверок на экране Control panel / верхняя панель экрана")
-    public void checkElements_ViewControlPanel_Visibility() {
+    public void checkElements_ControlPanelView_Visibility() {
         new CheckUtils_News().checkTitleControlPanel_Visibility();
         new CheckUtils_News().checkSortControlPanel_Visibility();
         new CheckUtils_News().checkIconFilterControlPanel_Visibility();
@@ -38,8 +38,8 @@ public class Summary_Methods_News {
         new Utils_Helper().timerWaitingAsyncOperation1000();
     }
 
-    @Step("test-case #15 / Сводный метод проверок Title, НЕзаполненных полей и кнопок на экране Creating News")
-    public void checkAllElements_ViewCreatingNews_Visibility() {
+    @Step("All test-cases / Сводный метод проверок Title экрана Creating News + НЕзаполненных полей и кнопок на экране Creating News")
+    public void checkAllElements_CreatingNewsView_Visibility() {
         new CheckUtils_News().checkCreatingNewsTitle_Visibility();
         new CheckUtils_News().checkFieldCategory_Visibility();
         new CheckUtils_News().checkFieldTitle_Visibility();
@@ -66,10 +66,10 @@ public class Summary_Methods_News {
     @Step("test-case #18 / Сводный метод заполнения полей на экране Creating News в Category Advertisement")
     public void inputAllFieldsInCreatingNews_Advertisement() {
         new Utils_News().selectCategoryAdvertisement();
-        new Utils_News().inputTitleCreateNews_Advertisement();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Advertisement();
+        new Utils_News().inputTitle_Advertisement();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Advertisement();
     }
 
     @Step("test-case #18-25 / Сводный метод проверок на экране Control panel / List / созданной NEWS для всех Category")
@@ -84,7 +84,7 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkDeleteControlPanel_Visibility();
         new CheckUtils_News().checkEditControlPanel_Visibility();
         new CheckUtils_News().checkExpendControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Utils_News().clickExpendCardNews();
     }
 
     @Step("test-case #18-25 / Сводный метод проверок на экране Control panel / List / Редактированной NEWS для всех Category")
@@ -96,7 +96,7 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkAuthorControlPanel_Visibility();
         new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
         new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Utils_News().clickExpendCardNews();
     }
 
     @Step("test-case #18 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Advertisement")
@@ -148,10 +148,10 @@ public class Summary_Methods_News {
     @Step("test-case #19 / Сводный метод заполнения полей на экране Creating News в Category Birthday")
     public void inputAllFieldsInCreatingNews_Birthday() {
         new Utils_News().selectCategoryBirthday();
-        new Utils_News().inputTitleCreateNews_Birthday();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Birthday();
+        new Utils_News().inputTitle_Birthday();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Birthday();
     }
 
     @Step("test-case #19 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Birthday")
@@ -205,10 +205,10 @@ public class Summary_Methods_News {
     @Step("test-case #20 / Сводный метод заполнения полей на экране Creating News в Category Salary")
     public void inputAllFieldsInCreatingNews_Salary() {
         new Utils_News().selectCategorySalary();
-        new Utils_News().inputTitleCreateNews_Salary();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Salary();
+        new Utils_News().inputTitle_Salary();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Salary();
     }
 
     @Step("test-case #20 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Salary")
@@ -262,10 +262,10 @@ public class Summary_Methods_News {
     @Step("test-case #21 / Сводный метод заполнения полей на экране Creating News в Category Trade Union")
     public void inputAllFieldsInCreatingNews_TradeUnion() {
         new Utils_News().selectCategoryTradeUnion();
-        new Utils_News().inputTitleCreateNews_TradeUnion();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_TradeUnion();
+        new Utils_News().inputTitle_TradeUnion();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_TradeUnion();
     }
 
     @Step("test-case #21 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Trade Union")
@@ -319,17 +319,17 @@ public class Summary_Methods_News {
         new CheckUtils_News().checkAuthorControlPanel_Visibility();
         new CheckUtils_News().checkAuthorValueControlPanel_Visibility();
         new CheckUtils_News().checkNotActiveControlPanel_Visibility();
-        new Utils_News().clickExpendCard_News();
+        new Utils_News().clickExpendCardNews();
         new CheckUtils_News().checkEditedDescription_TradeUnion_Visibility();
     }
 
     @Step("test-case #22 / Сводный метод заполнения полей на экране Creating News в Category Holiday")
     public void inputAllFieldsInCreatingNews_Holiday() {
         new Utils_News().selectCategoryHoliday();
-        new Utils_News().inputTitleCreateNews_Holiday();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Holiday();
+        new Utils_News().inputTitle_Holiday();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Holiday();
     }
 
     @Step("test-case #22 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Holiday")
@@ -383,10 +383,10 @@ public class Summary_Methods_News {
     @Step("test-case #23 / Сводный метод заполнения полей на экране Creating News в Category Massage")
     public void inputAllFieldsInCreatingNews_Massage() {
         new Utils_News().selectCategoryMassage();
-        new Utils_News().inputTitleCreateNews_Massage();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Massage();
+        new Utils_News().inputTitle_Massage();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Massage();
     }
 
     @Step("test-case #23 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Massage")
@@ -440,10 +440,10 @@ public class Summary_Methods_News {
     @Step("test-case #24 / Сводный метод заполнения полей на экране Creating News в Category Gratitude")
     public void inputAllFieldsInCreatingNews_Gratitude() {
         new Utils_News().selectCategoryGratitude();
-        new Utils_News().inputTitleCreateNews_Gratitude();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Gratitude();
+        new Utils_News().inputTitle_Gratitude();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Gratitude();
     }
 
     @Step("test-case #24 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Gratitude")
@@ -497,10 +497,10 @@ public class Summary_Methods_News {
     @Step("test-case #25 / Сводный метод заполнения полей на экране Creating News в Category Help")
     public void inputAllFieldsInCreatingNews_Help() {
         new Utils_News().selectCategoryHelp();
-        new Utils_News().inputTitleCreateNews_Help();
-        new Utils_News().inputPublicationDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Help();
+        new Utils_News().inputTitle_Help();
+        new Utils_News().inputPublicationDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Help();
     }
 
     @Step("test-case #25 / Сводный метод проверок на экране Control panel / List / созданной NEWS в Category Help")
@@ -554,10 +554,10 @@ public class Summary_Methods_News {
     @Step("test-case #26 / Сводный метод заполнения полей на экране Creating News в Category Advertisement")
     public void inputFieldsInCreatingNews_Advertisement() {
         new Utils_News().selectCategoryAdvertisement();
-        new Utils_News().inputTitleCreateNews_Advertisement();
-        new Utils_News().inputCurrentDateCreateNews();
-        new Utils_News().inputTimeCreateNews();
-        new Utils_News().inputDescriptionCreateNews_Advertisement();
+        new Utils_News().inputTitle_Advertisement();
+        new Utils_News().inputCurrentDate();
+        new Utils_News().inputTime();
+        new Utils_News().inputDescription_Advertisement();
     }
 
     @Step("test-case #26 / экран NEWS / Сводный метод заполнения полей на экране Filter News")

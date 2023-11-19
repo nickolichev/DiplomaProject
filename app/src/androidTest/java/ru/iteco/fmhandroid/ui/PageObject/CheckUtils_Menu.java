@@ -16,7 +16,7 @@ import ru.iteco.fmhandroid.ui.testData.Data_Menu;
 public class CheckUtils_Menu {
 
     @Step("экран Main / окно Menu / Проверка отображения в Menu строки News")
-    public void checkLineVisibilityNews() {
+    public void checkLineNews_Visibility() {
         onView(allOf(withId(Elements_Menu.ID_TITLE_MENU),
                 withText(Data_Menu.NEWS_TEXT),
                 withParent(withParent(withId(Elements_Menu.ID_PARENT_TITLE))),
@@ -26,7 +26,7 @@ public class CheckUtils_Menu {
     }
 
     @Step("экран Main / окно Menu / Проверка отображения в Menu строки Claims")
-    public void checkLineVisibilityClaims() {
+    public void checkLineClaims_Visibility() {
         onView(allOf(withId(Elements_Menu.ID_TITLE_MENU),
                 withText(Data_Menu.CLAIMS_TEXT),
                 withParent(withParent(withId(Elements_Menu.ID_PARENT_TITLE))),
@@ -36,7 +36,7 @@ public class CheckUtils_Menu {
     }
 
     @Step("экран Main / окно Menu / Проверка отображения в Menu строки About")
-    public void checkLineVisibilityAbout() {
+    public void checkLineAbout_Visibility() {
         onView(allOf(withId(Elements_Menu.ID_TITLE_MENU),
                 withText(Data_Menu.ABOUT_TEXT),
                 withParent(withParent(withId(Elements_Menu.ID_PARENT_TITLE))),

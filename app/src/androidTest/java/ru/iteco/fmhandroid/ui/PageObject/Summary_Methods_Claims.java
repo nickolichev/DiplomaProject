@@ -28,7 +28,7 @@ public class Summary_Methods_Claims {
         new Utils_Claims().inputTitleNewClaim_7();
         new Utils_Claims().inputValidDate();
         new Utils_Claims().inputValidTime();
-        new Utils_Claims().inputTestDataInDescription_7();
+        new Utils_Claims().inputDescription_7();
         new CheckUtils_Claims().checkButtonSave_Visibility();
         new Utils_Claims().clickButtonSaveNewClaim();
     }
@@ -41,13 +41,12 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkOpenStatusInCard();
         new CheckUtils_Claims().checkDescription_7_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
         new CheckUtils_Claims().checkAddComment_Visibility();
         new CheckUtils_Claims().checkButtonChangeStatus_Visibility();
         new CheckUtils_Claims().checkEnableStateButtonChangeStatus();
         new Utils_Helper().backSystemButton();
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new CheckUtils_Claims().checkButtonTakeToWorkStatus_Visibility();
         new CheckUtils_Claims().checkButtonCancelStatus_Visibility();
         new Utils_Helper().backSystemButton();
@@ -64,7 +63,6 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkInProgressStatusInCard();
         new CheckUtils_Claims().checkDescription_7_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new Utils_Claims().searchComment_7_ByContent();
         new CheckUtils_Claims().checkAuthorComment_Visibility_7();
         new CheckUtils_Claims().checkCreatedDateComment_Visibility();
@@ -72,7 +70,7 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkButtonChangeStatus_Visibility();
         new CheckUtils_Claims().checkEnableStateButtonChangeStatus();
         new Utils_Helper().backSystemButton();
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new CheckUtils_Claims().checkButtonThrowOffStatus_Visibility();
         new CheckUtils_Claims().checkButtonToExecuteStatus_Visibility();
         new Utils_Helper().backSystemButton();
@@ -87,13 +85,12 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkOpenStatusInCard();
         new CheckUtils_Claims().checkDescription_8_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
         new CheckUtils_Claims().checkAddComment_Visibility();
         new CheckUtils_Claims().checkButtonChangeStatus_Visibility();
         new CheckUtils_Claims().checkEnableStateButtonChangeStatus();
         new Utils_Helper().backSystemButton();
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new CheckUtils_Claims().checkButtonTakeToWorkStatus_Visibility();
         new CheckUtils_Claims().checkButtonCancelStatus_Visibility();
         new Utils_Helper().backSystemButton();
@@ -123,13 +120,12 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkOpenStatusInCard();
         new CheckUtils_Claims().checkEditingDescription_8_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
         new CheckUtils_Claims().checkAddComment_Visibility();
         new CheckUtils_Claims().checkButtonChangeStatus_Visibility();
         new CheckUtils_Claims().checkEnableStateButtonChangeStatus();
         new Utils_Helper().backSystemButton();
-        new Utils_Claims().clickChangeStatusClaim();
+        new Utils_Claims().clickIconChangeStatusClaim();
         new CheckUtils_Claims().checkButtonTakeToWorkStatus_Visibility();
         new CheckUtils_Claims().checkButtonCancelStatus_Visibility();
         new Utils_Helper().backSystemButton();
@@ -142,18 +138,18 @@ public class Summary_Methods_Claims {
         new Utils_Claims().inputTitleNewClaim_8();
         new Utils_Claims().inputValidDate();
         new Utils_Claims().inputValidTime();
-        new Utils_Claims().inputTestDataInDescription_8();
+        new Utils_Claims().inputDescriptionNewClaim_8();
         new Utils_Claims().clickButtonSaveNewClaim();
     }
 
     @Step("test-case #9 + #10 / экран CREATING CLAIM / Сводный метод создания Claim в статусе In Progress")
-    public void checkVisibilityInClaimWithInProgressStatus() {
+    public void creatingClaimInProgressStatus_9_10() {
         new Utils_Claims().clickCreateClaim();
         new Utils_Claims().inputTitleNewClaim_9_10();
         new Utils_Claims().selectExecutorClaim();
         new Utils_Claims().inputValidDate();
         new Utils_Claims().inputValidTime();
-        new Utils_Claims().inputTestDataInDescription_9();
+        new Utils_Claims().inputDescription_9_10();
         new Utils_Claims().clickButtonSaveNewClaim();
     }
 
@@ -163,9 +159,8 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkIndefinedExecutor_Visibility();
         new CheckUtils_Claims().checkValidPlanDate_Visibility();
         new CheckUtils_Claims().checkOpenStatusInCard();
-        new CheckUtils_Claims().checkDescription_9_Visibility();
+        new CheckUtils_Claims().checkDescription_9_10_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
     }
 
@@ -175,9 +170,8 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkDefinedExecutor_Visibility();
         new CheckUtils_Claims().checkValidPlanDate_Visibility();
         new CheckUtils_Claims().checkExecutedStatus();
-        new CheckUtils_Claims().checkDescription_9_Visibility();
+        new CheckUtils_Claims().checkDescription_9_10_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
     }
 
@@ -187,9 +181,52 @@ public class Summary_Methods_Claims {
         new CheckUtils_Claims().checkDefinedExecutor_Visibility();
         new CheckUtils_Claims().checkValidPlanDate_Visibility();
         new CheckUtils_Claims().checkInProgressStatusInCard();
-        new CheckUtils_Claims().checkDescription_9_Visibility();
+        new CheckUtils_Claims().checkDescription_9_10_Visibility();
         new CheckUtils_Claims().checkAuthor_Visibility();
-        new CheckUtils_Claims().checkCreatedDescription_Visibility();
         new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
     }
+
+    @Step("test-case #11 / экран CREATING CLAIM / Сводный метод создания Claim в статусе In Progress")
+    public void creatingClaimInProgressStatus_11() {
+        new Utils_Claims().clickCreateClaim();
+        new Utils_Claims().inputTitleNewClaim_11();
+        new Utils_Claims().selectExecutorClaim();
+        new Utils_Claims().inputValidDate();
+        new Utils_Claims().inputValidTime();           // screenshot Allure
+        new Utils_Claims().inputDescription_11();
+        new Utils_Claims().clickButtonSaveNewClaim();
+    }
+
+    @Step("test-case #11 / Проверка в развернутой карточке Claim")
+    public void checkVisibilityInClaimCard_11() {
+        new CheckUtils_Claims().checkTitle_11_Visibility();
+        new CheckUtils_Claims().checkDefinedExecutor_Visibility();
+        new CheckUtils_Claims().checkValidPlanDate_Visibility();
+        new CheckUtils_Claims().checkInProgressStatusInCard();
+        new CheckUtils_Claims().checkDescription_11_Visibility();
+        new CheckUtils_Claims().checkAuthor_Visibility();
+        new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
+    }
+
+    @Step("test-case #12 / Сводный метод проверок ПОСЛЕ создания Claim в развернутой карточке Claim")
+    public void checkVisibilityInNewClaimWithOpenStatus_12() {
+        new CheckUtils_Claims().checkTitle_12_Visibility();
+        new CheckUtils_Claims().checkIndefinedExecutor_Visibility();
+        new CheckUtils_Claims().checkValidPlanDate_Visibility();
+        new CheckUtils_Claims().checkOpenStatusInCard();
+        new CheckUtils_Claims().checkDescription_12_Visibility();
+        new CheckUtils_Claims().checkAuthor_Visibility();
+        new CheckUtils_Claims().checkCreatedDateDescription_Visibility();
+        new CheckUtils_Claims().checkAddComment_Visibility();
+        new CheckUtils_Claims().checkButtonChangeStatus_Visibility();
+        new CheckUtils_Claims().checkEnableStateButtonChangeStatus();
+        new Utils_Helper().backSystemButton();
+        new Utils_Claims().clickIconChangeStatusClaim();
+        new CheckUtils_Claims().checkButtonTakeToWorkStatus_Visibility();
+        new CheckUtils_Claims().checkButtonCancelStatus_Visibility();
+        new Utils_Helper().backSystemButton();
+        new CheckUtils_Claims().checkIconEditCard_Visibility();
+        new CheckUtils_Claims().checkButtonClose_Visibility();
+    }
+
 }

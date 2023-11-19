@@ -233,7 +233,7 @@ public class Utils_News {
     }
 
     @Step("экран Control panel / List / в НЕраскрытой карточке клик по кнопке Expend")
-    public void clickExpendCard_News() {
+    public void clickExpendCardNews() {
         onView(allOf(withId(Elements_News.ID_LIST_NEWS),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
@@ -292,7 +292,7 @@ public class Utils_News {
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные \"Новый год\" в поле Category")
-    public void inputCustomCategory_CreateNews() {
+    public void inputCustomCategory() {
         onView(allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
                 isDisplayed()))
                 .perform(replaceText(Data_News.CATEGORY_CUSTOM));
@@ -300,167 +300,167 @@ public class Utils_News {
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Новый год\"")
-    public void inputTitleCreateNews_Custom() {
+    public void inputTitle_Custom() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_CUSTOM));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Объявление\"")
-    public void inputTitleCreateNews_Advertisement() {
+    public void inputTitle_Advertisement() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_ADVERTISEMENT));
     }
 
     @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  TITLE ")
-    public void clearTitleField_CreateNews() {
+    public void clearFieldTitle() {
         onView(withId(Elements_News.ID_TITLE_INPUT))
                 .perform(clearText());
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"День рождения\"")
-    public void inputTitleCreateNews_Birthday() {
+    public void inputTitle_Birthday() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_BIRTHDAY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Зарплата\"")
-    public void inputTitleCreateNews_Salary() {
+    public void inputTitle_Salary() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_SALARY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Профсоюз\"")
-    public void inputTitleCreateNews_TradeUnion() {
+    public void inputTitle_TradeUnion() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_TRADE_UNION));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Праздник\"")
-    public void inputTitleCreateNews_Holiday() {
+    public void inputTitle_Holiday() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_HOLIDAY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Массаж\"")
-    public void inputTitleCreateNews_Massage() {
+    public void inputTitle_Massage() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_MASSAGE));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Благодарность\"")
-    public void inputTitleCreateNews_Gratitude() {
+    public void inputTitle_Gratitude() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_GRATITUDE));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Нужна помощь\"")
-    public void inputTitleCreateNews_Help() {
+    public void inputTitle_Help() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_HELP));
     }
 
     @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в  TITLE")
-    public void inputInvalidTitleCreateNews() {
+    public void inputInvalidTitle() {
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_INVALID));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Новый год\"")
-    public void inputDescriptionCreateNews_Custom() {
+    public void inputDescription_Custom() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_CUSTOM));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Объявление\"")
-    public void inputDescriptionCreateNews_Advertisement() {
+    public void inputDescription_Advertisement() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_ADVERTISEMENT));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"День рождения\"")
-    public void inputDescriptionCreateNews_Birthday() {
+    public void inputDescription_Birthday() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_BIRTHDAY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Зарплата\"")
-    public void inputDescriptionCreateNews_Salary() {
+    public void inputDescription_Salary() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_SALARY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Профсоюз\"")
-    public void inputDescriptionCreateNews_TradeUnion() {
+    public void inputDescription_TradeUnion() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_TRADE_UNION));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Праздник\"")
-    public void inputDescriptionCreateNews_Holiday() {
+    public void inputDescription_Holiday() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_HOLIDAY));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Массаж\"")
-    public void inputDescriptionCreateNews_Massage() {
+    public void inputDescription_Massage() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_MASSAGE));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Благодарность\"")
-    public void inputDescriptionCreateNews_Gratitude() {
+    public void inputDescription_Gratitude() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_GRATITUDE));
     }
 
     @Step("экран CREATING NEWS/ вставить тестовые данные в DESCRIPTION по каждой отдельной CATEGORY / \"Нужна помощь\"")
-    public void inputDescriptionCreateNews_Help() {
+    public void inputDescription_Help() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_HELP));
     }
 
     @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Description ")
-    public void clearDescriptionField_CreateNews() {
+    public void clearFieldDescription() {
         onView(withId(Elements_News.ID_DESCRIPTION_INPUT))
                 .perform(clearText());
     }
 
     @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в DESCRIPTION")
-    public void inputInvalidDescriptionCreateNews() {
+    public void inputInvalidDescription() {
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_INVALID));
     }
 
     @Step("экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE")
-    public void inputPublicationDateCreateNews() {
+    public void inputPublicationDate() {
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(Data_News.INPUT_PUBLICATION_DATE_CREATING));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Publication date")
-    public void clearPublicationDateField_CreateNews() {
+    public void clearFieldPublicationDate() {
         onView(withId(Elements_News.ID_CREATING_DATE))
                 .perform(clearText());
     }
 
     @Step("экран CREATING NEWS/ вставить валидные тестовые данные в TIME")
-    public void inputTimeCreateNews() {
+    public void inputTime() {
         onView(allOf(withId(Elements_News.ID_CREATING_TIME)))
                 .perform(replaceText(Data_News.INPUT_TIME_CREATING));
         new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
     @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Time")
-    public void clearTimeField_CreateNews() {
+    public void clearFieldTime() {
         onView(withId(Elements_News.ID_CREATING_TIME))
                 .perform(clearText());
     }
 
     @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в PUBLICATION DATE")
-    public void inputInvalidPublicationDateCreateNews() {
+    public void inputInvalidPublicationDate() {
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(clearText());
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
@@ -468,7 +468,7 @@ public class Utils_News {
     }
 
     @Step("тест-кейс #26 / экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE / текущая дата")
-    public void inputCurrentDateCreateNews() {
+    public void inputCurrentDate() {
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(CheckUtils_News.getCurrentDate()));
         new Utils_Helper().timerWaitingAsyncOperation500();

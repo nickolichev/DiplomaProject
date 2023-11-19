@@ -29,7 +29,7 @@ import ru.iteco.fmhandroid.ui.testData.Data_News;
 
 public class CheckUtils_News {
     @Step("экран NEWS / верхняя панель / проверяем Title экрана")
-    public void checkTitleNews_Visibility() {
+    public void checkTitleNewsView_Visibility() {
         onView(allOf(withText(Data_News.TITLE_NEWS_TEXT),
                 withParent(withParent(withId(Elements_News.ID_TITLE_NEWS))),
                 isDisplayed()))
@@ -63,7 +63,7 @@ public class CheckUtils_News {
                 .check(matches(isDisplayed()));
     }
 
-    @Step("экран Control panel / панель экрана / Title экрана")
+    @Step("экран Control panel / панель экрана / проверка Title экрана")
     public void checkTitleControlPanel_Visibility() {
         new Utils_Helper().timerWaitingAsyncOperation1000();
         onView(allOf(withText(Data_News.CONTROL_PANEL),
@@ -321,7 +321,7 @@ public class CheckUtils_News {
                 .check(matches(withContentDescription(Data_News.EXPEND_CARD_NEWS)));
     }
 
-    @Step("экран Control panel / Filter News  / проверка видимости Title FILTER Control Panel")
+    @Step("экран Control panel / Filter News  / проверка видимости Title экрана FILTER Control Panel")
     public void checkTitleFilterControlPanel_Visibility() {
         onView(allOf(withId(Elements_News.ID_TITLE_FILTER_NEWS),
                 withText(Data_News.TITLE_FILTER_NEWS),
@@ -476,7 +476,7 @@ public class CheckUtils_News {
     }
 
     @Step("экран Control panel / Creating News / проверка видимости иконки-предупреждения о незаполненном поле Category")
-    public void checkIconEmptyFieldCategory_CreatingNews_Visibility() {
+    public void checkIconEmptyFieldCategory_Visibility() {
         onView(allOf(withId(com.google.android.material.R.id.text_input_start_icon),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                 isDisplayed()))
@@ -484,7 +484,7 @@ public class CheckUtils_News {
     }
 
     @Step("экран Control panel / Creating News / проверка видимости иконки-предупреждения о незаполненном поле")
-    public void checkIconEmptyFieldsRemaining_CreatingNews_Visibility() {
+    public void checkIconEmptyFieldsRemaining_Visibility() {
         onView(allOf(withId(com.google.android.material.R.id.text_input_end_icon),
                 withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout.class))),
                 isDisplayed(),
