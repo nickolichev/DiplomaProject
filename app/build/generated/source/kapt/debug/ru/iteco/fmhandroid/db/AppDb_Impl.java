@@ -27,10 +27,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import ru.iteco.fmhandroid.dao.ClaimCommentDao;
-import ru.iteco.fmhandroid.dao.ClaimCommentDao_Impl;
-import ru.iteco.fmhandroid.dao.ClaimDao;
-import ru.iteco.fmhandroid.dao.ClaimDao_Impl;
 import ru.iteco.fmhandroid.dao.NewsCategoryDao;
 import ru.iteco.fmhandroid.dao.NewsCategoryDao_Impl;
 import ru.iteco.fmhandroid.dao.NewsDao;
@@ -38,10 +34,6 @@ import ru.iteco.fmhandroid.dao.NewsDao_Impl;
 
 @SuppressWarnings({"unchecked", "deprecation"})
 public final class AppDb_Impl extends AppDb {
-  private volatile ClaimDao _claimDao;
-
-  private volatile ClaimCommentDao _claimCommentDao;
-
   private volatile NewsDao _newsDao;
 
   private volatile NewsCategoryDao _newsCategoryDao;
@@ -51,18 +43,14 @@ public final class AppDb_Impl extends AppDb {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ClaimEntity` (`id` INTEGER, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `creatorId` INTEGER NOT NULL, `creatorName` TEXT NOT NULL, `executorId` INTEGER, `executorName` TEXT, `createDate` INTEGER NOT NULL, `planExecuteDate` INTEGER NOT NULL, `factExecuteDate` INTEGER, `status` TEXT NOT NULL, PRIMARY KEY(`id`))");
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `ClaimCommentEntity` (`id` INTEGER, `claimId` INTEGER NOT NULL, `description` TEXT NOT NULL, `creatorId` INTEGER NOT NULL, `creatorName` TEXT NOT NULL, `createDate` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsEntity` (`id` INTEGER, `newsCategoryId` INTEGER NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `creatorId` INTEGER NOT NULL, `creatorName` TEXT NOT NULL, `createDate` INTEGER NOT NULL, `publishDate` INTEGER NOT NULL, `publishEnabled` INTEGER NOT NULL, `isOpen` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `NewsCategoryEntity` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `deleted` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '65a184ebbca087433fa16c9a55eaa869')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '62c885b1ac0904b19418e2fad9c46414')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("DROP TABLE IF EXISTS `ClaimEntity`");
-        _db.execSQL("DROP TABLE IF EXISTS `ClaimCommentEntity`");
         _db.execSQL("DROP TABLE IF EXISTS `NewsEntity`");
         _db.execSQL("DROP TABLE IF EXISTS `NewsCategoryEntity`");
         if (mCallbacks != null) {
@@ -103,43 +91,6 @@ public final class AppDb_Impl extends AppDb {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsClaimEntity = new HashMap<String, TableInfo.Column>(11);
-        _columnsClaimEntity.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("description", new TableInfo.Column("description", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("creatorId", new TableInfo.Column("creatorId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("creatorName", new TableInfo.Column("creatorName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("executorId", new TableInfo.Column("executorId", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("executorName", new TableInfo.Column("executorName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("createDate", new TableInfo.Column("createDate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("planExecuteDate", new TableInfo.Column("planExecuteDate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("factExecuteDate", new TableInfo.Column("factExecuteDate", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimEntity.put("status", new TableInfo.Column("status", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysClaimEntity = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesClaimEntity = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoClaimEntity = new TableInfo("ClaimEntity", _columnsClaimEntity, _foreignKeysClaimEntity, _indicesClaimEntity);
-        final TableInfo _existingClaimEntity = TableInfo.read(_db, "ClaimEntity");
-        if (! _infoClaimEntity.equals(_existingClaimEntity)) {
-          return new RoomOpenHelper.ValidationResult(false, "ClaimEntity(ru.iteco.fmhandroid.entity.ClaimEntity).\n"
-                  + " Expected:\n" + _infoClaimEntity + "\n"
-                  + " Found:\n" + _existingClaimEntity);
-        }
-        final HashMap<String, TableInfo.Column> _columnsClaimCommentEntity = new HashMap<String, TableInfo.Column>(6);
-        _columnsClaimCommentEntity.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimCommentEntity.put("claimId", new TableInfo.Column("claimId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimCommentEntity.put("description", new TableInfo.Column("description", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimCommentEntity.put("creatorId", new TableInfo.Column("creatorId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimCommentEntity.put("creatorName", new TableInfo.Column("creatorName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsClaimCommentEntity.put("createDate", new TableInfo.Column("createDate", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysClaimCommentEntity = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesClaimCommentEntity = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoClaimCommentEntity = new TableInfo("ClaimCommentEntity", _columnsClaimCommentEntity, _foreignKeysClaimCommentEntity, _indicesClaimCommentEntity);
-        final TableInfo _existingClaimCommentEntity = TableInfo.read(_db, "ClaimCommentEntity");
-        if (! _infoClaimCommentEntity.equals(_existingClaimCommentEntity)) {
-          return new RoomOpenHelper.ValidationResult(false, "ClaimCommentEntity(ru.iteco.fmhandroid.entity.ClaimCommentEntity).\n"
-                  + " Expected:\n" + _infoClaimCommentEntity + "\n"
-                  + " Found:\n" + _existingClaimCommentEntity);
-        }
         final HashMap<String, TableInfo.Column> _columnsNewsEntity = new HashMap<String, TableInfo.Column>(10);
         _columnsNewsEntity.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsNewsEntity.put("newsCategoryId", new TableInfo.Column("newsCategoryId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -175,7 +126,7 @@ public final class AppDb_Impl extends AppDb {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "65a184ebbca087433fa16c9a55eaa869", "15ead7323ca534b5c05ea4dd98e912d8");
+    }, "62c885b1ac0904b19418e2fad9c46414", "f9da9204c809ff26bb954dc806ec40b3");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -188,7 +139,7 @@ public final class AppDb_Impl extends AppDb {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "ClaimEntity","ClaimCommentEntity","NewsEntity","NewsCategoryEntity");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "NewsEntity","NewsCategoryEntity");
   }
 
   @Override
@@ -197,8 +148,6 @@ public final class AppDb_Impl extends AppDb {
     final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
     try {
       super.beginTransaction();
-      _db.execSQL("DELETE FROM `ClaimEntity`");
-      _db.execSQL("DELETE FROM `ClaimCommentEntity`");
       _db.execSQL("DELETE FROM `NewsEntity`");
       _db.execSQL("DELETE FROM `NewsCategoryEntity`");
       super.setTransactionSuccessful();
@@ -214,8 +163,6 @@ public final class AppDb_Impl extends AppDb {
   @Override
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
-    _typeConvertersMap.put(ClaimDao.class, ClaimDao_Impl.getRequiredConverters());
-    _typeConvertersMap.put(ClaimCommentDao.class, ClaimCommentDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(NewsDao.class, NewsDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(NewsCategoryDao.class, NewsCategoryDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
@@ -231,34 +178,6 @@ public final class AppDb_Impl extends AppDb {
   public List<Migration> getAutoMigrations(
       @NonNull Map<Class<? extends AutoMigrationSpec>, AutoMigrationSpec> autoMigrationSpecsMap) {
     return Arrays.asList();
-  }
-
-  @Override
-  public ClaimDao getClaimDao() {
-    if (_claimDao != null) {
-      return _claimDao;
-    } else {
-      synchronized(this) {
-        if(_claimDao == null) {
-          _claimDao = new ClaimDao_Impl(this);
-        }
-        return _claimDao;
-      }
-    }
-  }
-
-  @Override
-  public ClaimCommentDao getClaimCommentDao() {
-    if (_claimCommentDao != null) {
-      return _claimCommentDao;
-    } else {
-      synchronized(this) {
-        if(_claimCommentDao == null) {
-          _claimCommentDao = new ClaimCommentDao_Impl(this);
-        }
-        return _claimCommentDao;
-      }
-    }
   }
 
   @Override

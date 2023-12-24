@@ -13,14 +13,15 @@ import android.view.View;
 
 import org.hamcrest.core.IsInstanceOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_About;
 import ru.iteco.fmhandroid.ui.testData.Data_About;
 
 public class CheckUtils_About {
 
-    @Step("экран About / проверка отображения Title экрана")
     public void checkTitleAbout_Visibility() {
+        Allure.step("экран About / проверка отображения Title экрана");
         onView(allOf(withId(Elements_About.ID_TITLE_VERSION),
                 withText(Data_About.TITLE_VERSION_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -29,8 +30,8 @@ public class CheckUtils_About {
                 .check(matches(withText(Data_About.TITLE_VERSION_TEXT)));
     }
 
-    @Step("экран About / проверяем отображение Version")
     public void checkVersionValue_Visibility() {
+        Allure.step("экран About / проверяем отображение Version");
         onView(allOf(withId(Elements_About.ID_VERSION_VALUE),
                 withText(Data_About.VERSION_VALUE_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -39,8 +40,8 @@ public class CheckUtils_About {
                 .check(matches(withText(Data_About.VERSION_VALUE_TEXT)));
     }
 
-    @Step("экран About / проверка отображения текста и ссылки Privacy Policy")
     public void checkPrivacyPolicy_Visibility() {
+        Allure.step("экран About / проверка отображения текста и ссылки Privacy Policy");
         onView(allOf(withId(Elements_About.ID_PRIVACY_POLICY),
                 withText(Data_About.PRIVACY_POLICY_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -55,8 +56,8 @@ public class CheckUtils_About {
                 .check(matches(withText(Data_About.PRIVACY_POLICY_VALUE_TEXT)));
     }
 
-    @Step("экран About / проверка отображения текста и ссылки Terms Of Use")
     public void checkTermsOfUse_Visibility() {
+        Allure.step("экран About / проверка отображения текста и ссылки Terms Of Use");
         onView(allOf(withId(Elements_About.ID_TERMS_OF_USE),
                 withText(Data_About.TERMS_OF_USE_TEXT),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),

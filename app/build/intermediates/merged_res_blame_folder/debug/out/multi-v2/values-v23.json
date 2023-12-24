@@ -4,7 +4,7 @@
             "outputFile": "/Users/DiplomaProject/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/e6efc27dfa81c629fccf609be12ea9d5/transformed/material-1.5.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/a033a0e187995154ff6f839a360b79fa/transformed/material-1.5.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,5,8,13,17,20,23,26,31,34,38",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/22ac00210824fe2bdd55c7923e480ab8/transformed/appcompat-1.4.1/res/values-v23/values-v23.xml",
+                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/393abb846a281f42d2b0014fdaa421c7/transformed/appcompat-1.4.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -34,7 +34,7 @@
                     }
                 },
                 {
-                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/92b045537a2dfae78e94d8e264db146a/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/63b0bc2ce888e62e5704fc808f47331a/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

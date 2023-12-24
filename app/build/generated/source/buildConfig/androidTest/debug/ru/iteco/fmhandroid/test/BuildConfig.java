@@ -8,5 +8,5 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "ru.iteco.fmhandroid.test";
   public static final String BUILD_TYPE = "debug";
   // Field from build type: debug
-  public static final String BASE_URL = "http://www.981757-ca08998.tmweb.ru:8080/fmh/";
+  public static final String BASE_URL = "https://test.vhospice.org/api/fmh/";
 }

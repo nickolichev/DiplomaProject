@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginBottom="10dp"
-                android:focusableInTouchMode="false"
                 android:hint="@string/login"
                 android:textColorHint="#BABABA"
                 app:boxBackgroundColor="@color/white"

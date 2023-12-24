@@ -23,9 +23,6 @@ public final class FragmentMainBinding implements ViewBinding {
   public final TopCustomAppBarBinding containerCustomAppBarIncludeOnFragmentMain;
 
   @NonNull
-  public final ContainerListClaimBinding containerListClaimIncludeOnFragmentMain;
-
-  @NonNull
   public final ContainerListNewsBinding containerListNewsIncludeOnFragmentMain;
 
   @NonNull
@@ -33,12 +30,10 @@ public final class FragmentMainBinding implements ViewBinding {
 
   private FragmentMainBinding(@NonNull LinearLayout rootView,
       @NonNull TopCustomAppBarBinding containerCustomAppBarIncludeOnFragmentMain,
-      @NonNull ContainerListClaimBinding containerListClaimIncludeOnFragmentMain,
       @NonNull ContainerListNewsBinding containerListNewsIncludeOnFragmentMain,
       @NonNull SwipeRefreshLayout mainSwipeRefresh) {
     this.rootView = rootView;
     this.containerCustomAppBarIncludeOnFragmentMain = containerCustomAppBarIncludeOnFragmentMain;
-    this.containerListClaimIncludeOnFragmentMain = containerListClaimIncludeOnFragmentMain;
     this.containerListNewsIncludeOnFragmentMain = containerListNewsIncludeOnFragmentMain;
     this.mainSwipeRefresh = mainSwipeRefresh;
   }
@@ -77,13 +72,6 @@ public final class FragmentMainBinding implements ViewBinding {
       }
       TopCustomAppBarBinding binding_containerCustomAppBarIncludeOnFragmentMain = TopCustomAppBarBinding.bind(containerCustomAppBarIncludeOnFragmentMain);
 
-      id = R.id.container_list_claim_include_on_fragment_main;
-      View containerListClaimIncludeOnFragmentMain = ViewBindings.findChildViewById(rootView, id);
-      if (containerListClaimIncludeOnFragmentMain == null) {
-        break missingId;
-      }
-      ContainerListClaimBinding binding_containerListClaimIncludeOnFragmentMain = ContainerListClaimBinding.bind(containerListClaimIncludeOnFragmentMain);
-
       id = R.id.container_list_news_include_on_fragment_main;
       View containerListNewsIncludeOnFragmentMain = ViewBindings.findChildViewById(rootView, id);
       if (containerListNewsIncludeOnFragmentMain == null) {
@@ -99,7 +87,6 @@ public final class FragmentMainBinding implements ViewBinding {
 
       return new FragmentMainBinding((LinearLayout) rootView,
           binding_containerCustomAppBarIncludeOnFragmentMain,
-          binding_containerListClaimIncludeOnFragmentMain,
           binding_containerListNewsIncludeOnFragmentMain, mainSwipeRefresh);
     }
     String missingId = rootView.getResources().getResourceName(id);

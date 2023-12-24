@@ -1627,7 +1627,6 @@
     <string name="abc_shareactionprovider_share_with_application">Share with <ns2:g example="Mail" id="application_name">%s</ns2:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="about">About</string>
-    <string name="add_claim_button">Add new claim button</string>
     <string name="add_news_button">Add news button</string>
     <string name="all_claims">all claims</string>
     <string name="all_news">All news</string>
@@ -1647,16 +1646,12 @@
     <string name="button_edit_comment">button edit comment</string>
     <string name="button_settings">button settings</string>
     <string name="cancel">Cancel</string>
-    <string name="cancel_claim">Cancel</string>
     <string name="cancellation">The changes won\'t be saved, do you really want to log out?</string>
     <string name="cancelled">Cancelled</string>
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="chip_text">Chip text</string>
-    <string name="claim">Claim</string>
-    <string name="claim_comments_load_error">Error loading comments</string>
-    <string name="claims">Claims</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
     <string name="com.crashlytics.android.build_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
     <string name="comment">Comment</string>

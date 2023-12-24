@@ -12,5 +12,9 @@ public class Data_Auth {
     public static final String VALID_LOGIN = "login2";
     public static final String VALID_PASSWORD = "password2";
     public static final String INVALID_LOGIN = "login3";
+    public static final String CYRILLIC_LOGIN = "логин2";
+
     public static final String INVALID_PASSWORD = "password3";
+    public static final String CYRILLIC_PASSWORD = "пароль2";
+
 }

@@ -84,9 +84,6 @@ public class NewsControlPanelFragmentDirections private constructor() {
     public fun actionNewsControlPanelFragmentToMainFragment(): NavDirections =
         ActionOnlyNavDirections(R.id.action_newsControlPanelFragment_to_mainFragment)
 
-    public fun actionNewsControlPanelFragmentToClaimListFragment(): NavDirections =
-        ActionOnlyNavDirections(R.id.action_newsControlPanelFragment_to_claimListFragment)
-
     public fun actionNewsControlPanelFragmentToNewsListFragment(newsFilterArgs: NewsFilterArgs?):
         NavDirections = ActionNewsControlPanelFragmentToNewsListFragment(newsFilterArgs)
 

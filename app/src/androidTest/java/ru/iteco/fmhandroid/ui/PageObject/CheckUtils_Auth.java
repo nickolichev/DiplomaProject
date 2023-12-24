@@ -14,13 +14,14 @@ import android.view.View;
 
 import org.hamcrest.core.IsInstanceOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_Auth;
 import ru.iteco.fmhandroid.ui.testData.Data_Auth;
 
 public class CheckUtils_Auth {
-    @Step("экран AUTHORIZATION / проверяем отображение Title экрана")
     public void checkTitleAuthView_Visibility() {
+        Allure.step("экран AUTHORIZATION / проверяем отображение Title экрана");
         onView(allOf(withText(Data_Auth.TITLE_AUTHORIZATION),
                 withParent(withParent(withId(Elements_Auth.ID_TITLE_AUTHORIZATION))),
                 isDisplayed()))
@@ -28,8 +29,8 @@ public class CheckUtils_Auth {
                 .check(matches(withText(Data_Auth.TITLE_AUTHORIZATION)));
     }
 
-    @Step("экран AUTHORIZATION / проверяем отображение поля ввода Login")
     public void checkFieldLoginAuthView_Visibility() {
+        Allure.step("экран AUTHORIZATION / проверяем отображение поля ввода Login");
         onView(allOf(withHint(Data_Auth.FIELD_LOGIN),
                 withParent(withParent(withId(Elements_Auth.ID_FIELD_LOGIN))),
                 isDisplayed()))
@@ -37,8 +38,8 @@ public class CheckUtils_Auth {
                 .check(matches(withHint(Data_Auth.FIELD_LOGIN)));
     }
 
-    @Step("экран AUTHORIZATION / проверяем отображение поля ввода Login")
     public void checkFieldPasswordAuthView_Visibility() {
+        Allure.step("экран AUTHORIZATION / проверяем отображение поля ввода Password");
         onView(allOf(withHint(Data_Auth.FIELD_PASSWORD),
                 withParent(withParent(withId(Elements_Auth.ID_FIELD_PASSWORD))),
                 isDisplayed()))
@@ -46,8 +47,8 @@ public class CheckUtils_Auth {
                 .check(matches(withHint(Data_Auth.FIELD_PASSWORD)));
     }
 
-    @Step("экран AUTHORIZATION / проверяем отображение кнопки SIGN IN")
     public void checkButtonSignInAuthView_Visibility() {
+        Allure.step("экран AUTHORIZATION / проверяем отображение кнопки SIGN IN");
         onView(allOf(withId(Elements_Auth.ID_BUTTON_SIGN_IN),
                 withText(Data_Auth.BUTTON_SIGN_IN),
                 withContentDescription(Data_Auth.BUTTON_SAVE),

@@ -52,10 +52,6 @@
         "source": "/Users/DiplomaProject/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_item_claim.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/item_claim.xml"
-    },
-    {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_fragment_auth.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/layout/fragment_auth.xml"
     },
@@ -114,10 +110,6 @@
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_ic_our_mission_21x23.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/ic_our_mission_21x23.xml"
-    },
-    {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_app_background_4000x4000.jpg.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/drawable/app_background_4000x4000.jpg"
     },
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.png.flat",
@@ -236,10 +228,6 @@
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/background_splash_screen_title_2.xml"
     },
     {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_fragment_create_edit_claim.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/fragment_create_edit_claim.xml"
-    },
-    {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/raw_icon_massage.png.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/raw/icon_massage.png"
     },
@@ -292,10 +280,6 @@
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/ic_authorization.xml"
     },
     {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_fragment_list_claim.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/fragment_list_claim.xml"
-    },
-    {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_ic_status_processing.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/ic_status_processing.xml"
     },
@@ -312,20 +296,12 @@
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/our_mission_item_title_background_rounded_corner.xml"
     },
     {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_container_list_claim.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/container_list_claim.xml"
-    },
-    {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_background_splash_screen_title_3.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/background_splash_screen_title_3.xml"
     },
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_image_splashscreen_17.jpg.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/image_splashscreen_17.jpg"
-    },
-    {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/menu_menu_claim_status_processing.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/menu/menu_claim_status_processing.xml"
     },
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.png.flat",
@@ -342,10 +318,6 @@
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_ic_arrow_back.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/drawable/ic_arrow_back.xml"
-    },
-    {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_claim_filtering_dialog.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/claim_filtering_dialog.xml"
     },
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
@@ -414,10 +386,6 @@
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/Users/DiplomaProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/layout_fragment_open_claim.xml.flat",
-        "source": "/Users/DiplomaProject/app/src/main/res/layout/fragment_open_claim.xml"
     },
     {
         "merged": "/Users/DiplomaProject/app/build/intermediates/merged_res/debug/drawable_ic_main_menu_button.xml.flat",

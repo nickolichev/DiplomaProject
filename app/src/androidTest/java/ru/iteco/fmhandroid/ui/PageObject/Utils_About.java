@@ -19,14 +19,15 @@ import androidx.test.uiautomator.UiDevice;
 
 import org.hamcrest.core.AllOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_About;
 
 
 public class Utils_About {
 
-    @Step("экран About / переход по гиперссылке на страницу Privacy Policy")
     public void clickPrivacyPolicy() {
+        Allure.step("экран About / переход по гиперссылке на страницу Privacy Policy");
         ViewInteraction url = onView(
                 AllOf.allOf(withId(Elements_About.ID_PRIVACY_POLICY_VALUE)));
         url.check(matches(isDisplayed()));
@@ -37,8 +38,8 @@ public class Utils_About {
         Intents.release();
     }
 
-    @Step("экран About / переход по гиперссылке на страницу Terms Of Use")
     public void clickTermsOfUse() {
+        Allure.step("экран About / переход по гиперссылке на страницу Terms Of Use");
         ViewInteraction url = onView(
                 AllOf.allOf(withId(Elements_About.ID_TERMS_OF_USE_VALUE)));
         url.check(matches(isDisplayed()));
@@ -49,15 +50,15 @@ public class Utils_About {
         Intents.release();
     }
 
-    @Step("страница браузера / возврат в приложение")
     public void returnFromBrowserToApp() {
+        Allure.step("страница браузера / возврат в приложение");
         UiDevice app;
         app = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         app.pressBack();
     }
 
-    @Step("экран About / клик по кнопке Back")
     public void clickButtonBackAboutView() {
+        Allure.step("экран About / клик по кнопке Back");
         ViewInteraction clickLogOut = onView(
                 allOf(withId(Elements_About.ID_BUTTON_BACK)));
         clickLogOut.perform(click());

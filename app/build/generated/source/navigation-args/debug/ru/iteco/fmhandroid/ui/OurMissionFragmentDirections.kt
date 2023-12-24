@@ -39,9 +39,6 @@ public class OurMissionFragmentDirections private constructor() {
     public fun actionOurMissionFragmentToNewsListFragment(newsFilterArgs: NewsFilterArgs?):
         NavDirections = ActionOurMissionFragmentToNewsListFragment(newsFilterArgs)
 
-    public fun actionOurMissionFragmentToClaimListFragment(): NavDirections =
-        ActionOnlyNavDirections(R.id.action_our_mission_fragment_to_claimListFragment)
-
     public fun actionOurMissionFragmentToAboutFragment(): NavDirections =
         ActionOnlyNavDirections(R.id.action_our_mission_fragment_to_aboutFragment)
 

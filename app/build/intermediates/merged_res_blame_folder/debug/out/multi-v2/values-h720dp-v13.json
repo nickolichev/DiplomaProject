@@ -4,7 +4,7 @@
             "outputFile": "/Users/DiplomaProject/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/22ac00210824fe2bdd55c7923e480ab8/transformed/appcompat-1.4.1/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "source": "/Users/andreynickolichev/.gradle/caches/transforms-3/393abb846a281f42d2b0014fdaa421c7/transformed/appcompat-1.4.1/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

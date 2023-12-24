@@ -34,13 +34,11 @@ import javax.inject.Provider;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import ru.iteco.fmhandroid.api.ApiModule;
-import ru.iteco.fmhandroid.api.ApiModule_ProvideClaimApiFactory;
 import ru.iteco.fmhandroid.api.ApiModule_ProvideNewsApiFactory;
 import ru.iteco.fmhandroid.api.ApiModule_ProvideUserApiFactory;
 import ru.iteco.fmhandroid.api.AuthApi;
 import ru.iteco.fmhandroid.api.AuthApiModule;
 import ru.iteco.fmhandroid.api.AuthApiModule_ProvideAuthApiFactory;
-import ru.iteco.fmhandroid.api.ClaimApi;
 import ru.iteco.fmhandroid.api.NetworkModule;
 import ru.iteco.fmhandroid.api.NetworkModule_AuthorizedOkhttpFactory;
 import ru.iteco.fmhandroid.api.NetworkModule_LoggingInterceptorFactory;
@@ -55,11 +53,7 @@ import ru.iteco.fmhandroid.api.RefreshApiModule_ProvideRefreshTokensApiFactory;
 import ru.iteco.fmhandroid.api.RefreshTokensApi;
 import ru.iteco.fmhandroid.api.UserApi;
 import ru.iteco.fmhandroid.auth.AppAuth;
-import ru.iteco.fmhandroid.dao.ClaimCommentDao;
-import ru.iteco.fmhandroid.dao.ClaimDao;
 import ru.iteco.fmhandroid.dao.DaoModule;
-import ru.iteco.fmhandroid.dao.DaoModule_ProvideClaimCommentDaoFactory;
-import ru.iteco.fmhandroid.dao.DaoModule_ProvideClaimDaoFactory;
 import ru.iteco.fmhandroid.dao.DaoModule_ProvideNewsCategoryDaoFactory;
 import ru.iteco.fmhandroid.dao.DaoModule_ProvideNewsDaoFactory;
 import ru.iteco.fmhandroid.dao.NewsCategoryDao;
@@ -69,30 +63,20 @@ import ru.iteco.fmhandroid.db.DbModule;
 import ru.iteco.fmhandroid.db.DbModule_ProvideDbFactory;
 import ru.iteco.fmhandroid.repository.authRepository.AuthRepository;
 import ru.iteco.fmhandroid.repository.authRepository.AuthRepositoryImpl;
-import ru.iteco.fmhandroid.repository.claimRepository.ClaimRepositoryImpl;
 import ru.iteco.fmhandroid.repository.newsRepository.NewsRepositoryImpl;
 import ru.iteco.fmhandroid.repository.userRepository.UserRepositoryImpl;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.AuthFragment;
-import ru.iteco.fmhandroid.ui.ClaimListFilteringDialogFragment;
-import ru.iteco.fmhandroid.ui.ClaimListFragment;
-import ru.iteco.fmhandroid.ui.CreateEditClaimCommentFragment;
-import ru.iteco.fmhandroid.ui.CreateEditClaimFragment;
 import ru.iteco.fmhandroid.ui.CreateEditNewsFragment;
 import ru.iteco.fmhandroid.ui.FilterNewsListFragment;
 import ru.iteco.fmhandroid.ui.MainFragment;
 import ru.iteco.fmhandroid.ui.NewsControlPanelFragment;
 import ru.iteco.fmhandroid.ui.NewsListFragment;
-import ru.iteco.fmhandroid.ui.OpenClaimFragment;
 import ru.iteco.fmhandroid.ui.OurMissionFragment;
 import ru.iteco.fmhandroid.ui.SplashScreenFragment;
 import ru.iteco.fmhandroid.ui.SplashScreenFragment_MembersInjector;
 import ru.iteco.fmhandroid.viewmodel.AuthViewModel;
 import ru.iteco.fmhandroid.viewmodel.AuthViewModel_HiltModules_KeyModule_ProvideFactory;
-import ru.iteco.fmhandroid.viewmodel.ClaimCardViewModel;
-import ru.iteco.fmhandroid.viewmodel.ClaimCardViewModel_HiltModules_KeyModule_ProvideFactory;
-import ru.iteco.fmhandroid.viewmodel.ClaimViewModel;
-import ru.iteco.fmhandroid.viewmodel.ClaimViewModel_HiltModules_KeyModule_ProvideFactory;
 import ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel;
 import ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel_HiltModules_KeyModule_ProvideFactory;
 import ru.iteco.fmhandroid.viewmodel.NewsViewModel;
@@ -120,11 +104,7 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
 
   private Provider<UserRepositoryImpl> userRepositoryImplProvider;
 
-  private Provider<ClaimApi> provideClaimApiProvider;
-
   private Provider<AppDb> provideDbProvider;
-
-  private Provider<ClaimRepositoryImpl> claimRepositoryImplProvider;
 
   private Provider<NewsApi> provideNewsApiProvider;
 
@@ -165,14 +145,6 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
     return NetworkModule_ProvideAuthorizedRetrofitFactory.provideAuthorizedRetrofit(authorizedOkHttpClient());
   }
 
-  private ClaimDao claimDao() {
-    return DaoModule_ProvideClaimDaoFactory.provideClaimDao(provideDbProvider.get());
-  }
-
-  private ClaimCommentDao claimCommentDao() {
-    return DaoModule_ProvideClaimCommentDaoFactory.provideClaimCommentDao(provideDbProvider.get());
-  }
-
   private NewsDao newsDao() {
     return DaoModule_ProvideNewsDaoFactory.provideNewsDao(provideDbProvider.get());
   }
@@ -189,11 +161,9 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
     this.authRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<AuthRepositoryImpl>(singletonC, 2));
     this.provideUserApiProvider = DoubleCheck.provider(new SwitchingProvider<UserApi>(singletonC, 1));
     this.userRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<UserRepositoryImpl>(singletonC, 5));
-    this.provideClaimApiProvider = DoubleCheck.provider(new SwitchingProvider<ClaimApi>(singletonC, 7));
-    this.provideDbProvider = DoubleCheck.provider(new SwitchingProvider<AppDb>(singletonC, 8));
-    this.claimRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<ClaimRepositoryImpl>(singletonC, 6));
-    this.provideNewsApiProvider = DoubleCheck.provider(new SwitchingProvider<NewsApi>(singletonC, 10));
-    this.newsRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<NewsRepositoryImpl>(singletonC, 9));
+    this.provideDbProvider = DoubleCheck.provider(new SwitchingProvider<AppDb>(singletonC, 7));
+    this.provideNewsApiProvider = DoubleCheck.provider(new SwitchingProvider<NewsApi>(singletonC, 8));
+    this.newsRepositoryImplProvider = DoubleCheck.provider(new SwitchingProvider<NewsRepositoryImpl>(singletonC, 6));
   }
 
   @Override
@@ -531,24 +501,6 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
     }
 
     @Override
-    public void injectClaimListFilteringDialogFragment(
-        ClaimListFilteringDialogFragment claimListFilteringDialogFragment) {
-    }
-
-    @Override
-    public void injectClaimListFragment(ClaimListFragment claimListFragment) {
-    }
-
-    @Override
-    public void injectCreateEditClaimCommentFragment(
-        CreateEditClaimCommentFragment createEditClaimCommentFragment) {
-    }
-
-    @Override
-    public void injectCreateEditClaimFragment(CreateEditClaimFragment createEditClaimFragment) {
-    }
-
-    @Override
     public void injectCreateEditNewsFragment(CreateEditNewsFragment createEditNewsFragment) {
     }
 
@@ -566,10 +518,6 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
 
     @Override
     public void injectNewsListFragment(NewsListFragment newsListFragment) {
-    }
-
-    @Override
-    public void injectOpenClaimFragment(OpenClaimFragment openClaimFragment) {
     }
 
     @Override
@@ -629,7 +577,7 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
 
     @Override
     public Set<String> getViewModelKeys() {
-      return SetBuilder.<String>newSetBuilder(5).add(AuthViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(ClaimCardViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(ClaimViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(NewsControlPanelViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(NewsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
+      return SetBuilder.<String>newSetBuilder(3).add(AuthViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(NewsControlPanelViewModel_HiltModules_KeyModule_ProvideFactory.provide()).add(NewsViewModel_HiltModules_KeyModule_ProvideFactory.provide()).build();
     }
 
     @Override
@@ -661,10 +609,6 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
 
     private Provider<AuthViewModel> authViewModelProvider;
 
-    private Provider<ClaimCardViewModel> claimCardViewModelProvider;
-
-    private Provider<ClaimViewModel> claimViewModelProvider;
-
     private Provider<NewsControlPanelViewModel> newsControlPanelViewModelProvider;
 
     private Provider<NewsViewModel> newsViewModelProvider;
@@ -681,15 +625,13 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
     @SuppressWarnings("unchecked")
     private void initialize(final SavedStateHandle savedStateHandleParam) {
       this.authViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 0);
-      this.claimCardViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 1);
-      this.claimViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 2);
-      this.newsControlPanelViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 3);
-      this.newsViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 4);
+      this.newsControlPanelViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 1);
+      this.newsViewModelProvider = new SwitchingProvider<>(singletonC, activityRetainedCImpl, viewModelCImpl, 2);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(5).put("ru.iteco.fmhandroid.viewmodel.AuthViewModel", ((Provider) authViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.ClaimCardViewModel", ((Provider) claimCardViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.ClaimViewModel", ((Provider) claimViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel", ((Provider) newsControlPanelViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.NewsViewModel", ((Provider) newsViewModelProvider)).build();
+      return MapBuilder.<String, Provider<ViewModel>>newMapBuilder(3).put("ru.iteco.fmhandroid.viewmodel.AuthViewModel", ((Provider) authViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel", ((Provider) newsControlPanelViewModelProvider)).put("ru.iteco.fmhandroid.viewmodel.NewsViewModel", ((Provider) newsViewModelProvider)).build();
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -716,16 +658,10 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
           case 0: // ru.iteco.fmhandroid.viewmodel.AuthViewModel 
           return (T) new AuthViewModel(singletonC.userRepositoryImplProvider.get(), (AuthRepository) ((Provider) singletonC.authRepositoryImplProvider).get(), singletonC.appAuthProvider.get());
 
-          case 1: // ru.iteco.fmhandroid.viewmodel.ClaimCardViewModel 
-          return (T) new ClaimCardViewModel(singletonC.claimRepositoryImplProvider.get(), singletonC.userRepositoryImplProvider.get());
-
-          case 2: // ru.iteco.fmhandroid.viewmodel.ClaimViewModel 
-          return (T) new ClaimViewModel(singletonC.claimRepositoryImplProvider.get());
-
-          case 3: // ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel 
+          case 1: // ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel 
           return (T) new NewsControlPanelViewModel(singletonC.newsRepositoryImplProvider.get(), singletonC.userRepositoryImplProvider.get());
 
-          case 4: // ru.iteco.fmhandroid.viewmodel.NewsViewModel 
+          case 2: // ru.iteco.fmhandroid.viewmodel.NewsViewModel 
           return (T) new NewsViewModel(singletonC.newsRepositoryImplProvider.get(), singletonC.userRepositoryImplProvider.get());
 
           default: throw new AssertionError(id);
@@ -836,19 +772,13 @@ public final class DaggerFhmApplication_HiltComponents_SingletonC extends FhmApp
         case 5: // ru.iteco.fmhandroid.repository.userRepository.UserRepositoryImpl 
         return (T) new UserRepositoryImpl(singletonC.provideUserApiProvider.get());
 
-        case 6: // ru.iteco.fmhandroid.repository.claimRepository.ClaimRepositoryImpl 
-        return (T) new ClaimRepositoryImpl(singletonC.provideClaimApiProvider.get(), singletonC.claimDao(), singletonC.claimCommentDao());
-
-        case 7: // ru.iteco.fmhandroid.api.ClaimApi 
-        return (T) ApiModule_ProvideClaimApiFactory.provideClaimApi(singletonC.authorizedRetrofit());
-
-        case 8: // ru.iteco.fmhandroid.db.AppDb 
-        return (T) DbModule_ProvideDbFactory.provideDb(ApplicationContextModule_ProvideContextFactory.provideContext(singletonC.applicationContextModule));
-
-        case 9: // ru.iteco.fmhandroid.repository.newsRepository.NewsRepositoryImpl 
+        case 6: // ru.iteco.fmhandroid.repository.newsRepository.NewsRepositoryImpl 
         return (T) new NewsRepositoryImpl(singletonC.newsDao(), singletonC.newsCategoryDao(), singletonC.provideNewsApiProvider.get());
 
-        case 10: // ru.iteco.fmhandroid.api.NewsApi 
+        case 7: // ru.iteco.fmhandroid.db.AppDb 
+        return (T) DbModule_ProvideDbFactory.provideDb(ApplicationContextModule_ProvideContextFactory.provideContext(singletonC.applicationContextModule));
+
+        case 8: // ru.iteco.fmhandroid.api.NewsApi 
         return (T) ApiModule_ProvideNewsApiFactory.provideNewsApi(singletonC.authorizedRetrofit());
 
         default: throw new AssertionError(id);

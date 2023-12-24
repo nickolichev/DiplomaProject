@@ -48,3 +48,6 @@ captures/
 
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
+/.gradle/
+/.idea/
+/allure-results/

@@ -31,29 +31,32 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.IsInstanceOf;
 
+import io.qameta.allure.kotlin.Allure;
 import io.qameta.allure.kotlin.Step;
+import ru.iteco.fmhandroid.ProjectIdlingResources;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.resourceIDData.Elements_News;
 import ru.iteco.fmhandroid.ui.testData.Data_News;
 
 public class Utils_News {
+    ProjectIdlingResources idlingResource = new ProjectIdlingResources();
 
-    @Step("экран NEWS / нераскрытые карточки / клик по кнопке FILTER")
     public void clickFilter_News() {
+        Allure.step("экран NEWS / нераскрытые карточки / клик по кнопке FILTER");
         onView(Matchers.allOf(withId(Elements_News.ID_BUTTON_FILTER_NEWS)))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
                 .perform(click());
     }
 
-    @Step("экран NEWS / нераскрытые карточки / клик по кнопке EDIT")
     public void clickEdit_News() {
+        Allure.step("экран NEWS / нераскрытые карточки / клик по кнопке EDIT");
         onView(Matchers.allOf(withId(Elements_News.ID_BUTTON_EDIT_NEWS)))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Объявление\"")
     public void selectCategoryAdvertisement() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Объявление\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -63,8 +66,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"День рождения\"")
     public void selectCategoryBirthday() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"День рождения\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -74,8 +77,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Зарплата\"")
     public void selectCategorySalary() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Зарплата\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -85,8 +88,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Профсоюз\"")
     public void selectCategoryTradeUnion() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Профсоюз\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -96,8 +99,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Праздник\"")
     public void selectCategoryHoliday() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Праздник\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -107,8 +110,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Массаж\"")
     public void selectCategoryMassage() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Массаж\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -118,8 +121,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Благодарность\"")
     public void selectCategoryGratitude() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Благодарность\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -129,8 +132,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Нужна помощь\"")
     public void selectCategoryHelp() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в CATEGORY  тестовых данных \"Нужна помощь\"");
         onView(allOf(withId(Elements_News.ID_DROP_DOWN_CATEGORY_CONTROL),
                 isDisplayed()))
                 .perform(click());
@@ -140,66 +143,43 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных")
     public void inputDateStart_FilterNews() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных");
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_START_TEST_DATA));
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных")
     public void inputDateEnd_FilterNews() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных");
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_END_TEST_DATA));
     }
 
-    @Step("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE END тестовых данных")
-    public void inputDateEnd() {
-        onView(allOf(withId(Elements_News.ID_DATE_END)))
-                .perform(replaceText(CheckUtils_News.getCurrentDate()));
-    }
-
-    @Step("тест-кейс #26 / NEWS / экран FILTER NEWS / ввод в DATE START тестовых данных")
-    public void inputDateStart() {
-        onView(allOf(withId(Elements_News.ID_DATE_START)))
-                .perform(replaceText(CheckUtils_News.getCurrentDate()));
-    }
-
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных ПОСЛЕ Editing")
     public void inputDateStart_AfterEditing_FilterNews() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в DATE START тестовых данных ПОСЛЕ Editing");
         onView(allOf(withId(Elements_News.ID_DATE_START)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных ПОСЛЕ Editing")
     public void inputDateEnd_AfterEditing_FilterNews() {
+        Allure.step("Control Panel / экран FILTER NEWS / ввод в DATE END тестовых данных ПОСЛЕ Editing");
         onView(allOf(withId(Elements_News.ID_DATE_END)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
 
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE START НЕвалидных тестовых данных")
-    public void inputInvalidDateStart_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_DATE_START)))
-                .perform(replaceText(Data_News.DATE_INVALID));
-    }
-
-    @Step("Control Panel / экран FILTER NEWS / ввод в DATE END НЕвалидных тестовых данных")
-    public void inputInvalidDateEnd_FilterNews() {
-        onView(allOf(withId(Elements_News.ID_DATE_END)))
-                .perform(replaceText(Data_News.DATE_INVALID));
-    }
-
-    @Step("Control Panel / экран FILTER NEWS / клик по кнопке FILTER")
     public void clickButtonFilter_FilterNews() {
+        Allure.step("Control Panel / экран FILTER NEWS / клик по кнопке FILTER");
+        new Utils_Helper().startTimer(idlingResource);
         onView(allOf(withId(Elements_News.ID_BUTTON_FILTER),
                 withText(Data_News.BUTTON_FILTER),
                 withParent(withParent(withId(R.id.nav_host_fragment))),
                 isDisplayed()))
                 .perform(click());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 
-    @Step("экран Control panel / клик по иконке FILTER")
     public void clickButtonFilter_ControlPanel() {
+        Allure.step("экран Control panel / клик по иконке FILTER");
         onView(allOf(withId(Elements_News.ID_ICON_FILTER_NEWS_CONTROL),
                 childAtPosition(
                         childAtPosition(
@@ -210,8 +190,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран Control panel / клик по иконке CREATING NEWS")
     public void clickButtonAdd_News() {
+        Allure.step("экран Control panel / клик по иконке CREATING NEWS");
         onView(allOf(withId(Elements_News.ID_BUTTON_ADD_NEWS),
                 withContentDescription(Data_News.BUTTON_ADD_NEWS),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
@@ -219,8 +199,9 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран Control panel / в НЕраскрытой карточке клик по иконке DELETE")
     public void clickButtonDelete_News() {
+        Allure.step("экран Control panel / в НЕраскрытой карточке клик по иконке DELETE");
+        new Utils_Helper().startTimer(idlingResource);
         onView(allOf(withId(R.id.delete_news_item_image_view),
                 withContentDescription("News delete button"),
                 childAtPosition(
@@ -230,20 +211,23 @@ public class Utils_News {
                         14),
                 isDisplayed()))
                 .perform(click());
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 
-    @Step("экран Control panel / List / в НЕраскрытой карточке клик по кнопке Expend")
     public void clickExpendCardNews() {
+        Allure.step("экран Control panel / List / в НЕраскрытой карточке клик по кнопке Expend");
+        new Utils_Helper().startTimer(idlingResource);
         onView(allOf(withId(Elements_News.ID_LIST_NEWS),
                 childAtPosition(
                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
                         0)))
                 .perform(actionOnItemAtPosition(0, click()));
-        new Utils_Helper().timerWaitingAsyncOperation500();
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 
-    @Step("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке OK")
     public void clickOklModalDelete() {
+        Allure.step("экран Control panel / клик в модальном окне-предупреждении DELETE по кнопке OK");
+        new Utils_Helper().startTimer(idlingResource);
         ViewInteraction ok = onView(
                 allOf(withId(Elements_News.ID_MODAL_OK),
                         withText(Data_News.OK_MODAL),
@@ -252,12 +236,14 @@ public class Utils_News {
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 3)));
-        new Utils_Helper().timerWaitingAsyncOperation1000();
+        new Utils_Helper().endTimerAndSleep(idlingResource);
+        new Utils_Helper().startTimer(idlingResource);
         ok.perform(scrollTo(), click());
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 
-    @Step("экран Control panel / List / в НЕраскрытой карточке клик по иконке EDIT")
     public void clickButtonEditNews() {
+        Allure.step("экран Control panel / List / в НЕраскрытой карточке клик по иконке EDIT");
         onView(allOf(withId(Elements_News.ID_BUTTON_EDIT),
                 withContentDescription(Data_News.BUTTON_EDIT),
                 withParent(withParent(withId(R.id.news_item_material_card_view))),
@@ -265,8 +251,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран Control panel / FILTER / клик по check-box Active")
     public void clickActive_ControlPanel_Filter() {
+        Allure.step("экран Control panel / FILTER / клик по check-box Active");
         onView(allOf(withId(Elements_News.ID_ACTIVE_CONTROL),
                 withText(Data_News.STATUS_ACTIVE_CONTROL_FILTER),
                 childAtPosition(
@@ -278,8 +264,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран Control panel / FILTER / клик по check-box Not Active")
     public void clickNotActive_ControlPanel_Filter() {
+        Allure.step("экран Control panel / FILTER / клик по check-box Not Active");
         onView(allOf(withId(Elements_News.ID_NOT_ACTIVE_CONTROL),
                 withText(Data_News.STATUS_NOT_ACTIVE_CONTROL_FILTER),
                 childAtPosition(
@@ -291,203 +277,183 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные \"Новый год\" в поле Category")
     public void inputCustomCategory() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные \"Новый год\" в поле Category");
         onView(allOf(withId(Elements_News.ID_CREATING_CATEGORY_TEXT),
                 isDisplayed()))
                 .perform(replaceText(Data_News.CATEGORY_CUSTOM));
-        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Новый год\"")
     public void inputTitle_Custom() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Новый год\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_CUSTOM));
-        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Объявление\"")
     public void inputTitle_Advertisement() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Объявление\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_ADVERTISEMENT));
     }
 
-    @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  TITLE ")
     public void clearFieldTitle() {
+        Allure.step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  TITLE");
         onView(withId(Elements_News.ID_TITLE_INPUT))
                 .perform(clearText());
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"День рождения\"")
     public void inputTitle_Birthday() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"День рождения\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_BIRTHDAY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Зарплата\"")
     public void inputTitle_Salary() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Зарплата\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_SALARY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Профсоюз\"")
     public void inputTitle_TradeUnion() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Профсоюз\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_TRADE_UNION));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Праздник\"")
     public void inputTitle_Holiday() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Праздник\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_HOLIDAY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Массаж\"")
     public void inputTitle_Massage() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Массаж\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_MASSAGE));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Благодарность\"")
     public void inputTitle_Gratitude() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Благодарность\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_GRATITUDE));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Нужна помощь\"")
     public void inputTitle_Help() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  TITLE по каждой отдельной CATEGORY / \"Нужна помощь\"");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_HELP));
     }
 
-    @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в  TITLE")
     public void inputInvalidTitle() {
+        Allure.step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в  TITLE");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_CARD_INVALID));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Новый год\"")
     public void inputDescription_Custom() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Новый год\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_CUSTOM));
-        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Объявление\"")
     public void inputDescription_Advertisement() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Объявление\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_ADVERTISEMENT));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"День рождения\"")
     public void inputDescription_Birthday() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"День рождения\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_BIRTHDAY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Зарплата\"")
     public void inputDescription_Salary() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Зарплата\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_SALARY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Профсоюз\"")
     public void inputDescription_TradeUnion() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Профсоюз\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_TRADE_UNION));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Праздник\"")
     public void inputDescription_Holiday() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Праздник\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_HOLIDAY));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Массаж\"")
     public void inputDescription_Massage() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Массаж\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_MASSAGE));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Благодарность\"")
     public void inputDescription_Gratitude() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в  DESCRIPTION по каждой отдельной CATEGORY / \"Благодарность\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_GRATITUDE));
     }
 
-    @Step("экран CREATING NEWS/ вставить тестовые данные в DESCRIPTION по каждой отдельной CATEGORY / \"Нужна помощь\"")
     public void inputDescription_Help() {
+        Allure.step("экран CREATING NEWS/ вставить тестовые данные в DESCRIPTION по каждой отдельной CATEGORY / \"Нужна помощь\"");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_HELP));
     }
 
-    @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Description ")
     public void clearFieldDescription() {
+        Allure.step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Description");
         onView(withId(Elements_News.ID_DESCRIPTION_INPUT))
                 .perform(clearText());
     }
 
-    @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в DESCRIPTION")
     public void inputInvalidDescription() {
+        Allure.step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в DESCRIPTION");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_INVALID));
     }
 
-    @Step("экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE")
     public void inputPublicationDate() {
+        Allure.step("экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE");
         onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
                 .perform(replaceText(Data_News.INPUT_PUBLICATION_DATE_CREATING));
-        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
-    @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Publication date")
     public void clearFieldPublicationDate() {
+        Allure.step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Publication date");
         onView(withId(Elements_News.ID_CREATING_DATE))
                 .perform(clearText());
     }
 
-    @Step("экран CREATING NEWS/ вставить валидные тестовые данные в TIME")
     public void inputTime() {
+        Allure.step("экран CREATING NEWS/ вставить валидные тестовые данные в TIME");
         onView(allOf(withId(Elements_News.ID_CREATING_TIME)))
                 .perform(replaceText(Data_News.INPUT_TIME_CREATING));
-        new Utils_Helper().timerWaitingAsyncOperation500();
     }
 
-    @Step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Time")
     public void clearFieldTime() {
+        Allure.step("экран CREATING NEWS/ очистить заполненное поле от тестовых данных в  Time");
         onView(withId(Elements_News.ID_CREATING_TIME))
                 .perform(clearText());
     }
 
-    @Step("экран CREATING NEWS/ вставить НЕвалидные тестовые данные в PUBLICATION DATE")
-    public void inputInvalidPublicationDate() {
-        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
-                .perform(clearText());
-        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
-                .perform(replaceText(Data_News.INPUT_INVALID_PUBLICATION_DATE_CREATING));
-    }
-
-    @Step("тест-кейс #26 / экран CREATING NEWS/ вставить валидные тестовые данные в PUBLICATION DATE / текущая дата")
-    public void inputCurrentDate() {
-        onView(allOf(withId(Elements_News.ID_CREATING_DATE)))
-                .perform(replaceText(CheckUtils_News.getCurrentDate()));
-        new Utils_Helper().timerWaitingAsyncOperation500();
-    }
-
-    @Step("экран CREATING NEWS/ клик по кнопке SAVE")
-    public void clickButtonSaveCreateNews() {
-        new Utils_Helper().timerWaitingAsyncOperation500();
+    public void clickButtonSaveCreatingNews() {
+        Allure.step("экран CREATING NEWS/ клик по кнопке SAVE");
+        new Utils_Helper().startTimer(idlingResource);
         onView(allOf(withId(Elements_News.ID_CREATING_SAVE),
                 withText(Data_News.SAVE_CREATING_TEXT),
                 withContentDescription(Data_News.SAVE_CREATING_DESCRIPTION),
                 withParent(withParent(IsInstanceOf.<View>instanceOf(androidx.cardview.widget.CardView.class))),
                 isDisplayed()))
                 .perform(click());
-        new Utils_Helper().timerWaitingAsyncOperation500();
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 
-    @Step("экран CREATING NEWS/ клик по кнопке CANCEL")
     public void clickButtonCancelCreateNews() {
+        Allure.step("экран CREATING NEWS/ клик по кнопке CANCEL");
         onView(allOf(withId(Elements_News.ID_CREATING_CANCEL),
                 withText(Data_News.CANCEL_CREATING_TEXT),
                 withContentDescription(Data_News.CANCEL_CREATING_DESCRIPTION),
@@ -496,8 +462,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран CREATING NEWS/ модальное окно-предупреждение / клик по кнопке CANCEL")
     public void clickCancelButtonModalViewCreateNews() {
+        Allure.step("экран CREATING NEWS/ модальное окно-предупреждение / клик по кнопке CANCEL");
         onView(allOf(withId(Elements_News.ID_MODAL_CANCEL),
                 withText(Data_News.CANCEL_MODAL),
                 withParent(withParent(withId(com.google.android.material.R.id.buttonPanel))),
@@ -505,8 +471,8 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран CREATING NEWS/ модальное окно-предупреждение / клик по кнопке OK")
-    public void clickOkButtonModalViewCreateNews() {
+    public void clickOkButtonModalViewCreatingNews() {
+        Allure.step("экран CREATING NEWS/ модальное окно-предупреждение / клик по кнопке OK");
         onView(allOf(withId(Elements_News.ID_MODAL_OK),
                 withText(Data_News.OK_MODAL),
                 withParent(withParent(withId(com.google.android.material.R.id.buttonPanel))),
@@ -514,116 +480,116 @@ public class Utils_News {
                 .perform(click());
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для ADVERTISEMENT")
     public void inputTitleEdited_Advertisement() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для ADVERTISEMENT");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_ADVERTISEMENT));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для BIRTHDAY")
     public void inputTitleEdited_Birthday() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для BIRTHDAY");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_BIRTHDAY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для SALARY")
     public void inputTitleEdited_Salary() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для SALARY");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_SALARY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для TRADE_UNION")
     public void inputTitleEdited_TradeUnion() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для TRADE_UNION");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_TRADE_UNION));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для HOLIDAY")
     public void inputTitleEdited_Holiday() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для HOLIDAY");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_HOLIDAY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для MASSAGE")
     public void inputTitleEdited_Massage() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для MASSAGE");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_MASSAGE));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для GRATITUDE")
     public void inputTitleEdited_Gratitude() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для GRATITUDE");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_GRATITUDE));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный TITLE для HELP")
     public void inputTitleEdited_Help() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный TITLE для HELP");
         onView(allOf(withId(Elements_News.ID_TITLE_INPUT)))
                 .perform(replaceText(Data_News.TITLE_EDIT_HELP));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для ADVERTISEMENT")
     public void inputDescriptionEdited_Advertisement() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для ADVERTISEMENT");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_ADVERTISEMENT));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для BIRTHDAY")
     public void inputDescriptionEdited_Birthday() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для BIRTHDAY");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_BIRTHDAY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для SALARY")
     public void inputDescriptionEdited_Salary() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для SALARY");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_SALARY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для TRADE_UNION")
     public void inputDescriptionEdited_TradeUnion() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для TRADE_UNION");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_TRADE_UNION));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для HOLIDAY")
     public void inputDescriptionEdited_Holiday() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для HOLIDAY");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_HOLIDAY));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для MASSAGE")
     public void inputDescriptionEdited_Massage() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для MASSAGE");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_MASSAGE));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для GRATITUDE")
     public void inputDescriptionEdited_Gratitude() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для GRATITUDE");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_GRATITUDE));
     }
 
-    @Step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для HELP")
     public void inputDescriptionEdited_Help() {
+        Allure.step("экран EDITING NEWS/ вставить отредактированный DESCRIPTION для HELP");
         onView(allOf(withId(Elements_News.ID_DESCRIPTION_INPUT)))
                 .perform(replaceText(Data_News.DESCRIPTION_EDIT_HELP));
     }
 
-    @Step("экран EDITING NEWS/ вставить EDIT-тестовые данные в DATE")
     public void inputDateEditedNews() {
+        Allure.step("экран EDITING NEWS/ вставить EDIT-тестовые данные в DATE");
         onView(allOf(withId(Elements_News.ID_DATE_INPUT)))
                 .perform(replaceText(Data_News.DATE_EDITED));
     }
 
-    @Step("экран EDITING NEWS/ вставить EDIT-тестовые данные EDIT в TIME")
     public void inputTimeEditedNews() {
+        Allure.step("экран EDITING NEWS/ вставить EDIT-тестовые данные EDIT в TIME");
         onView(allOf(withId(Elements_News.ID_TIME_INPUT)))
                 .perform(replaceText(Data_News.TIME_EDITED));
     }
 
-    @Step("экран EDITING NEWS / клик по  SWITCH статуса / для ON и OFF")
     public void clickSwitch() {
+        Allure.step("экран EDITING NEWS / клик по  SWITCH статуса / для ON и OFF");
         onView(allOf(withId(Elements_News.ID_SWITCH),
                 withText(Data_News.SWITCH_TEXT),
                 childAtPosition(
@@ -634,8 +600,9 @@ public class Utils_News {
                 .perform(scrollTo(), click());
     }
 
-    @Step("экран EDITING NEWS / клик по кнопке SAVE")
     public void clickSaveEditing() {
+        Allure.step("экран EDITING NEWS / клик по кнопке SAVE");
+        new Utils_Helper().startTimer(idlingResource);
         onView(allOf(withId(Elements_News.ID_SAVE_EDITING),
                 withText(Data_News.SAVE_BUTTON),
                 withContentDescription(Data_News.SAVE_BUTTON),
@@ -645,5 +612,6 @@ public class Utils_News {
                                 0),
                         6)))
                 .perform(scrollTo(), click());
+        new Utils_Helper().endTimerAndSleep(idlingResource);
     }
 }

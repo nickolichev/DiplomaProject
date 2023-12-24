@@ -51,26 +51,18 @@ import ru.iteco.fmhandroid.api.RefreshApiModule;
 import ru.iteco.fmhandroid.dao.DaoModule;
 import ru.iteco.fmhandroid.db.DbModule;
 import ru.iteco.fmhandroid.repository.authRepository.AuthRepositoryModule;
-import ru.iteco.fmhandroid.repository.claimRepository.ClaimRepositoryModule;
 import ru.iteco.fmhandroid.repository.newsRepository.NewsRepositoryModule;
 import ru.iteco.fmhandroid.repository.userRepository.UserRepositoryModule;
 import ru.iteco.fmhandroid.ui.AppActivity_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.AuthFragment_GeneratedInjector;
-import ru.iteco.fmhandroid.ui.ClaimListFilteringDialogFragment_GeneratedInjector;
-import ru.iteco.fmhandroid.ui.ClaimListFragment_GeneratedInjector;
-import ru.iteco.fmhandroid.ui.CreateEditClaimCommentFragment_GeneratedInjector;
-import ru.iteco.fmhandroid.ui.CreateEditClaimFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.CreateEditNewsFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.FilterNewsListFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.MainFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.NewsControlPanelFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.NewsListFragment_GeneratedInjector;
-import ru.iteco.fmhandroid.ui.OpenClaimFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.OurMissionFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.ui.SplashScreenFragment_GeneratedInjector;
 import ru.iteco.fmhandroid.viewmodel.AuthViewModel_HiltModules;
-import ru.iteco.fmhandroid.viewmodel.ClaimCardViewModel_HiltModules;
-import ru.iteco.fmhandroid.viewmodel.ClaimViewModel_HiltModules;
 import ru.iteco.fmhandroid.viewmodel.NewsControlPanelViewModel_HiltModules;
 import ru.iteco.fmhandroid.viewmodel.NewsViewModel_HiltModules;
 
@@ -147,7 +139,6 @@ public final class FhmApplication_HiltComponents {
           ApplicationContextModule.class,
           AuthApiModule.class,
           AuthRepositoryModule.class,
-          ClaimRepositoryModule.class,
           DaoModule.class,
           DbModule.class,
           ActivityRetainedCBuilderModule.class,
@@ -180,8 +171,6 @@ public final class FhmApplication_HiltComponents {
   @Subcomponent(
       modules = {
           AuthViewModel_HiltModules.KeyModule.class,
-          ClaimCardViewModel_HiltModules.KeyModule.class,
-          ClaimViewModel_HiltModules.KeyModule.class,
           ActivityCBuilderModule.class,
           ViewModelCBuilderModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
@@ -223,8 +212,6 @@ public final class FhmApplication_HiltComponents {
   @Subcomponent(
       modules = {
           AuthViewModel_HiltModules.BindsModule.class,
-          ClaimCardViewModel_HiltModules.BindsModule.class,
-          ClaimViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
           NewsControlPanelViewModel_HiltModules.BindsModule.class,
           NewsViewModel_HiltModules.BindsModule.class
@@ -257,16 +244,11 @@ public final class FhmApplication_HiltComponents {
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,
       GeneratedComponent,
       AuthFragment_GeneratedInjector,
-      ClaimListFilteringDialogFragment_GeneratedInjector,
-      ClaimListFragment_GeneratedInjector,
-      CreateEditClaimCommentFragment_GeneratedInjector,
-      CreateEditClaimFragment_GeneratedInjector,
       CreateEditNewsFragment_GeneratedInjector,
       FilterNewsListFragment_GeneratedInjector,
       MainFragment_GeneratedInjector,
       NewsControlPanelFragment_GeneratedInjector,
       NewsListFragment_GeneratedInjector,
-      OpenClaimFragment_GeneratedInjector,
       OurMissionFragment_GeneratedInjector,
       SplashScreenFragment_GeneratedInjector {
     @Subcomponent.Builder

@@ -64,9 +64,6 @@ public class NewsListFragmentDirections private constructor() {
     public fun actionNewsListFragmentToMainFragment(): NavDirections =
         ActionOnlyNavDirections(R.id.action_newsListFragment_to_mainFragment)
 
-    public fun actionNewsListFragmentToClaimListFragment(): NavDirections =
-        ActionOnlyNavDirections(R.id.action_newsListFragment_to_claimListFragment)
-
     public fun actionNewsListFragmentToAuthFragment(): NavDirections =
         ActionOnlyNavDirections(R.id.action_newsListFragment_to_authFragment)
 

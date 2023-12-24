@@ -10,5 +10,5 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 14;
   public static final String VERSION_NAME = "1.0.0";
   // Field from build type: debug
-  public static final String BASE_URL = "http://www.981757-ca08998.tmweb.ru:8080/fmh/";
+  public static final String BASE_URL = "https://test.vhospice.org/api/fmh/";
 }
